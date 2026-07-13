@@ -165,7 +165,7 @@ function App() {
                     src="/images/speaker-1.jpg"
                     alt="Portrait placeholder for Prof. Christopher Griffiths"
                     width={800}
-                    height={533}
+                    height={1200}
                   />
                 </div>
                 <div className="speaker-meta">
@@ -181,7 +181,7 @@ function App() {
                     src="/images/speaker-2.jpg"
                     alt="Portrait placeholder for Dr. Pravit Asawanonda"
                     width={800}
-                    height={533}
+                    height={1200}
                   />
                 </div>
                 <div className="speaker-meta">
@@ -241,9 +241,9 @@ function App() {
             <div className="symposium-visual reveal">
               <img
                 src="/images/symposium.jpg"
-                alt="Clinical conference symposium atmosphere"
+                alt="Conference symposium atmosphere"
                 width={1200}
-                height={1200}
+                height={800}
               />
             </div>
             <div className="symposium-copy reveal reveal-delay-1">

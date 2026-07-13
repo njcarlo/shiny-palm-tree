@@ -6,10 +6,10 @@
   --teal-mid: #1a7a73;
   --mist: #e8f0ee;
   --mist-deep: #d4e4e0;
-  --cream: #f7f5f0;
-  --sand: #efe8db;
-  --amber: #c4842d;
-  --amber-bright: #e8b86d;
+  --cream: #f2f6f5;
+  --sand: #e6efec;
+  --amber: #b8872a;
+  --amber-bright: #d4a84b;
   --white: #ffffff;
   --line: rgba(15, 28, 27, 0.12);
 
@@ -464,7 +464,8 @@ button {
 }
 
 .speaker-photo {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 4;
+  max-height: 420px;
   overflow: hidden;
   border-radius: 2px;
 }
@@ -473,6 +474,7 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
   transition: transform 0.8s var(--ease);
 }
 
@@ -641,7 +643,7 @@ button {
 }
 
 .symposium-visual {
-  aspect-ratio: 1;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   border-radius: 2px;
 }
@@ -742,8 +744,8 @@ button {
 }
 
 .tier.bronze .logo-placeholder {
-  background: #f5ebe0;
-  color: #8a5a30;
+  background: #e8ebe4;
+  color: #5c6b4a;
 }
 
 /* ——— Team ——— */
