@@ -32,4 +32,4 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           channelId: live
-          projectId: ${{ vars.FIREBASE_PROJECT_ID || 'psoriasis-conference-2025' }}
+          projectId: ${{ vars.FIREBASE_PROJECT_ID || 'psoriasis-conference' }}

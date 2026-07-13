@@ -18,16 +18,29 @@ npm run preview
 
 ## Deploy to Firebase Hosting
 
-1. Create a Firebase project at [Firebase Console](https://console.firebase.google.com/) (or use an existing one).
-2. Enable **Hosting** in that project.
-3. Update `.firebaserc` with your Firebase project ID if it differs from `psoriasis-conference-2025`.
-4. Authenticate and deploy:
+Your live URL will be:
+
+**`https://<project-id>.web.app`**
+
+No custom domain needed. The URL is only as clean as the **project ID** you choose when creating the Firebase project — there are no random characters unless Firebase auto-generates the ID for you.
+
+### Get a clean URL
+
+1. Go to [Firebase Console](https://console.firebase.google.com/) → **Add project**.
+2. When asked for a **Project ID**, type your own (e.g. `psoriasis-conference`) instead of accepting the auto-generated one like `psoriasis-conference-a1b2c`.
+3. Enable **Hosting** in that project.
+4. If your project ID differs from `psoriasis-conference`, update `.firebaserc`.
+5. Deploy:
 
 ```bash
 npx firebase login
 npx firebase use --add
 npm run deploy
 ```
+
+Your site will be live at e.g. `https://psoriasis-conference.web.app` (and `https://psoriasis-conference.firebaseapp.com`).
+
+> **Note:** Project IDs must be globally unique. If `psoriasis-conference` is taken, try something close like `pds-psoriasis-conference` or `psoriasis-conference-ph`. Avoid preview-channel deploys for production — those add extra suffixes to the URL.
 
 ### GitHub Actions deploy
 
