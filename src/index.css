@@ -42,6 +42,11 @@ body {
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  transition: padding-bottom 0.4s var(--ease);
+}
+
+body.has-sticky-bar {
+  padding-bottom: 5.5rem;
 }
 
 img {
@@ -84,6 +89,7 @@ button {
   opacity: 0.04;
   pointer-events: none;
   z-index: 0;
+  will-change: transform;
 }
 
 .page-glow {
@@ -101,7 +107,7 @@ button {
   left: 50%;
   transform: translateX(-50%);
   background: rgba(245, 208, 51, 0.12);
-  animation: float-glow 8s var(--ease) infinite alternate;
+  will-change: transform;
 }
 
 .page-glow--mid {
@@ -110,18 +116,7 @@ button {
   top: 45%;
   right: -100px;
   background: rgba(45, 122, 92, 0.2);
-  animation: float-glow 10s var(--ease) infinite alternate-reverse;
-}
-
-@keyframes float-glow {
-  from {
-    transform: translateX(-50%) translateY(0);
-    opacity: 0.7;
-  }
-  to {
-    transform: translateX(-50%) translateY(30px);
-    opacity: 1;
-  }
+  will-change: transform;
 }
 
 .page > *:not(.page-glow):not(.page-texture) {
@@ -153,8 +148,45 @@ button {
 
 /* ——— Hero ——— */
 .hero {
+  position: relative;
   text-align: center;
   padding-bottom: 3rem;
+  overflow: hidden;
+}
+
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  max-height: 90vh;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hero-particle {
+  position: absolute;
+  bottom: -10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--yellow-soft), var(--yellow));
+  opacity: 0;
+  box-shadow: 0 0 12px var(--yellow-glow);
+  animation: particle-rise linear infinite;
+}
+
+@keyframes particle-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.5);
+  }
+  15% {
+    opacity: 0.85;
+  }
+  85% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100vh) scale(1);
+  }
 }
 
 .hero-poster-wrap {
@@ -162,6 +194,12 @@ button {
   width: min(100%, 760px);
   margin: 0 auto;
   padding: 2rem var(--space) 0;
+  z-index: 1;
+}
+
+.hero-poster-parallax {
+  position: relative;
+  will-change: transform;
 }
 
 .hero-poster-glow {
@@ -189,7 +227,46 @@ button {
   width: 100%;
   margin: 0 auto;
   filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.35));
-  animation: hero-float 6s var(--ease) infinite alternate;
+  animation:
+    hero-float 6s var(--ease) infinite alternate,
+    hero-enter 1.2s var(--ease) both;
+}
+
+.hero-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 42%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 58%
+  );
+  transform: translateX(-120%) skewX(-12deg);
+  animation: hero-shine-sweep 5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 3;
+  border-radius: 8px;
+}
+
+@keyframes hero-shine-sweep {
+  0%,
+  65% {
+    transform: translateX(-120%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(120%) skewX(-12deg);
+  }
+}
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes hero-float {
@@ -205,10 +282,16 @@ button {
   max-width: var(--max);
   margin: 0 auto;
   padding: 2.5rem var(--space) 0;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-details-parallax {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
+  will-change: transform, opacity;
 }
 
 .hero-meta {
@@ -588,6 +671,7 @@ button {
 .symposium-visual {
   position: relative;
   text-align: center;
+  will-change: transform;
 }
 
 .symposium-frame {
@@ -908,6 +992,76 @@ button {
   color: var(--yellow-soft);
 }
 
+/* ——— Sticky register bar ——— */
+.sticky-register {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 200;
+  padding: 0.75rem var(--space) calc(0.75rem + env(safe-area-inset-bottom));
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(6, 26, 20, 0.92) 30%,
+    rgba(6, 26, 20, 0.98) 100%
+  );
+  backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(245, 208, 51, 0.25);
+  transform: translateY(110%);
+  opacity: 0;
+  transition:
+    transform 0.45s var(--ease),
+    opacity 0.45s var(--ease);
+  pointer-events: none;
+}
+
+.sticky-register--visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sticky-register__inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.sticky-register__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.sticky-register__copy strong {
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--yellow);
+}
+
+.sticky-register__copy span {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sticky-register__btn {
+  flex-shrink: 0;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.75rem;
+}
+
+.sticky-register__btn span {
+  display: none;
+}
+
 /* ——— Mobile ——— */
 @media (max-width: 720px) {
   .speakers {
@@ -965,10 +1119,22 @@ button {
   }
 
   .hero-poster,
-  .page-glow--top,
   .hero-poster-glow,
+  .hero-shine,
+  .hero-particle,
   .btn-shine::after {
     animation: none;
+  }
+
+  .hero-poster-wrap,
+  .hero-details,
+  .page-glow,
+  .page-texture,
+  .symposium-visual,
+  .hero-details-parallax,
+  .hero-poster-parallax {
+    transform: none !important;
+    opacity: 1 !important;
   }
 
   .btn-yellow:hover:not(:disabled),
@@ -976,5 +1142,9 @@ button {
   .tier-card:hover,
   .team-logo-ring:hover {
     transform: none;
+  }
+
+  .sticky-register {
+    transition: none;
   }
 }

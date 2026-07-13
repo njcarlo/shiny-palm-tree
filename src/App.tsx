@@ -1,4 +1,4 @@
-import { useEffect, useRef, type RefObject } from 'react'
+import { useEffect, useRef, useState, type RefObject } from 'react'
 
 function useReveal(): RefObject<HTMLDivElement | null> {
   const ref = useRef<HTMLDivElement | null>(null)
@@ -27,28 +27,165 @@ function useReveal(): RefObject<HTMLDivElement | null> {
   return ref
 }
 
+function useParallax() {
+  const heroPosterRef = useRef<HTMLDivElement | null>(null)
+  const heroDetailsRef = useRef<HTMLDivElement | null>(null)
+  const glowTopRef = useRef<HTMLDivElement | null>(null)
+  const glowMidRef = useRef<HTMLDivElement | null>(null)
+  const textureRef = useRef<HTMLDivElement | null>(null)
+  const symposiumRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduced) return
+
+    let ticking = false
+
+    const update = () => {
+      const y = window.scrollY
+
+      if (heroPosterRef.current) {
+        heroPosterRef.current.style.transform = `translate3d(0, ${y * 0.28}px, 0) scale(${1 + y * 0.00008})`
+      }
+      if (heroDetailsRef.current) {
+        heroDetailsRef.current.style.transform = `translate3d(0, ${y * 0.12}px, 0)`
+        heroDetailsRef.current.style.opacity = `${Math.max(0, 1 - y / 700)}`
+      }
+      if (glowTopRef.current) {
+        glowTopRef.current.style.transform = `translate3d(-50%, ${y * 0.15}px, 0)`
+      }
+      if (glowMidRef.current) {
+        glowMidRef.current.style.transform = `translate3d(0, ${y * -0.08}px, 0)`
+      }
+      if (textureRef.current) {
+        textureRef.current.style.transform = `translate3d(0, ${y * 0.05}px, 0)`
+      }
+      if (symposiumRef.current) {
+        const rect = symposiumRef.current.getBoundingClientRect()
+        const center = rect.top + rect.height / 2 - window.innerHeight / 2
+        symposiumRef.current.style.transform = `translate3d(0, ${center * -0.06}px, 0)`
+      }
+
+      ticking = false
+    }
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true
+        requestAnimationFrame(update)
+      }
+    }
+
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  return {
+    heroPosterRef,
+    heroDetailsRef,
+    glowTopRef,
+    glowMidRef,
+    textureRef,
+    symposiumRef,
+  }
+}
+
+function useStickyRegister() {
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const registerEl = document.getElementById('register')
+    const heroEl = document.getElementById('top')
+
+    const update = () => {
+      const heroBottom = heroEl?.getBoundingClientRect().bottom ?? 0
+      const registerTop = registerEl?.getBoundingClientRect().top ?? Infinity
+      const show = heroBottom < 0 && registerTop > window.innerHeight * 0.5
+      setVisible(show)
+    }
+
+    update()
+    window.addEventListener('scroll', update, { passive: true })
+    window.addEventListener('resize', update)
+    return () => {
+      window.removeEventListener('scroll', update)
+      window.removeEventListener('resize', update)
+    }
+  }, [])
+
+  useEffect(() => {
+    document.body.classList.toggle('has-sticky-bar', visible)
+    return () => document.body.classList.remove('has-sticky-bar')
+  }, [visible])
+
+  return visible
+}
+
+const PARTICLES = Array.from({ length: 18 }, (_, i) => ({
+  id: i,
+  left: `${(i * 17 + 11) % 94}%`,
+  delay: `${(i % 6) * 0.7}s`,
+  duration: `${4 + (i % 5)}s`,
+  size: `${4 + (i % 4)}px`,
+}))
+
 export default function App() {
   const pageRef = useReveal()
+  const parallax = useParallax()
+  const stickyVisible = useStickyRegister()
 
   return (
     <div className="page" ref={pageRef}>
-      <div className="page-glow page-glow--top" aria-hidden="true" />
-      <div className="page-glow page-glow--mid" aria-hidden="true" />
-      <div className="page-texture" aria-hidden="true" />
+      <div
+        className="page-glow page-glow--top"
+        ref={parallax.glowTopRef}
+        aria-hidden="true"
+      />
+      <div
+        className="page-glow page-glow--mid"
+        ref={parallax.glowMidRef}
+        aria-hidden="true"
+      />
+      <div
+        className="page-texture"
+        ref={parallax.textureRef}
+        aria-hidden="true"
+      />
 
       <section className="hero" id="top">
+        <div className="hero-particles" aria-hidden="true">
+          {PARTICLES.map((p) => (
+            <span
+              key={p.id}
+              className="hero-particle"
+              style={{
+                left: p.left,
+                animationDelay: p.delay,
+                animationDuration: p.duration,
+                width: p.size,
+                height: p.size,
+              }}
+            />
+          ))}
+        </div>
+
         <div className="hero-poster-wrap reveal">
-          <div className="hero-poster-glow" aria-hidden="true" />
-          <img
-            className="hero-poster"
-            src="/images/hero-poster.png"
-            alt="2025 Psoriasis Conference Philippines — Transforming Care: The Future of Psoriasis Management"
-            width={1449}
-            height={2048}
-          />
+          <div className="hero-poster-parallax" ref={parallax.heroPosterRef}>
+            <div className="hero-poster-glow" aria-hidden="true" />
+            <div className="hero-shine" aria-hidden="true" />
+            <img
+              className="hero-poster"
+              src="/images/hero-poster.png"
+              alt="2025 Psoriasis Conference Philippines — Transforming Care: The Future of Psoriasis Management"
+              width={1449}
+              height={2048}
+            />
+          </div>
         </div>
 
         <div className="hero-details reveal reveal-delay-1">
+          <div className="hero-details-parallax" ref={parallax.heroDetailsRef}>
           <div className="hero-meta">
             <span className="pill">August 13, 2025</span>
             <span className="pill pill--outline">8:30 AM – 5:00 PM</span>
@@ -75,6 +212,7 @@ export default function App() {
             <span>Secure your spot now</span>
             <small>Limited seats available</small>
           </a>
+          </div>
         </div>
       </section>
 
@@ -151,7 +289,7 @@ export default function App() {
 
       <section className="section symposium reveal" id="symposium">
         <div className="symposium-grid">
-          <div className="symposium-visual">
+          <div className="symposium-visual" ref={parallax.symposiumRef}>
             <div className="symposium-frame">
               <img
                 className="symposium-flyer"
@@ -316,6 +454,21 @@ export default function App() {
           www.mattandphoebe-prod.com
         </a>
       </footer>
+
+      <aside
+        className={`sticky-register${stickyVisible ? ' sticky-register--visible' : ''}`}
+        aria-label="Quick registration"
+      >
+        <div className="sticky-register__inner">
+          <div className="sticky-register__copy">
+            <strong>Aug 13, 2025</strong>
+            <span>Velvet Ballroom · Seda BGC</span>
+          </div>
+          <a className="btn btn-yellow btn-shine sticky-register__btn" href="#register">
+            Register now
+          </a>
+        </div>
+      </aside>
     </div>
   )
 }
