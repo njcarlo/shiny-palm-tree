@@ -1,8 +1,44 @@
+import { useEffect, useRef, type RefObject } from 'react'
+
+function useReveal(): RefObject<HTMLDivElement | null> {
+  const ref = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    const root = ref.current
+    if (!root) return
+
+    const targets = root.querySelectorAll('.reveal')
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible')
+            observer.unobserve(entry.target)
+          }
+        }
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -30px 0px' },
+    )
+
+    targets.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
+
+  return ref
+}
+
 export default function App() {
+  const pageRef = useReveal()
+
   return (
-    <div className="page">
+    <div className="page" ref={pageRef}>
+      <div className="page-glow page-glow--top" aria-hidden="true" />
+      <div className="page-glow page-glow--mid" aria-hidden="true" />
+      <div className="page-texture" aria-hidden="true" />
+
       <section className="hero" id="top">
-        <div className="hero-poster-wrap">
+        <div className="hero-poster-wrap reveal">
+          <div className="hero-poster-glow" aria-hidden="true" />
           <img
             className="hero-poster"
             src="/images/hero-poster.png"
@@ -12,48 +48,74 @@ export default function App() {
           />
         </div>
 
-        <div className="hero-details">
+        <div className="hero-details reveal reveal-delay-1">
+          <div className="hero-meta">
+            <span className="pill">August 13, 2025</span>
+            <span className="pill pill--outline">8:30 AM – 5:00 PM</span>
+          </div>
+
           <p className="hero-detail-line">
-            August 13, 2025, 8:30 AM to 5:00 PM
+            Velvet Ballroom, Seda BGC
             <br />
-            Velvet Ballroom, Seda BGC, Taguig City, Metro Manila, Philippines
+            Taguig City, Metro Manila, Philippines
           </p>
-          <p className="hero-credits">3 PRC CPD Units · 50 PDS CME Units</p>
-          <a className="btn btn-yellow" href="#register">
-            Secure your spot now. Limited seats available!
+
+          <div className="hero-badges">
+            <div className="credit-badge">
+              <strong>3</strong>
+              <span>PRC CPD Units</span>
+            </div>
+            <div className="credit-badge">
+              <strong>50</strong>
+              <span>PDS CME Units</span>
+            </div>
+          </div>
+
+          <a className="btn btn-yellow btn-shine" href="#register">
+            <span>Secure your spot now</span>
+            <small>Limited seats available</small>
           </a>
         </div>
       </section>
 
-      <section className="section" id="highlights">
-        <h2 className="section-title">Highlights</h2>
+      <section className="section panel reveal" id="highlights">
+        <div className="section-eyebrow">Featured sessions</div>
+        <h2 className="section-title">
+          <span>Highlights</span>
+        </h2>
         <p className="section-lead">
           Free Communication, Great Debate in Psoriasis Treatment, and Plenary
-          Lectures
+          Lectures from world-renowned experts.
         </p>
 
         <div className="speakers">
-          <article className="speaker">
-            <img
-              className="speaker-photo"
-              src="/images/griffiths.png"
-              alt="Prof. Christopher Griffiths"
-              width={370}
-              height={370}
-            />
+          <article className="speaker-card reveal reveal-delay-1">
+            <div className="speaker-ring">
+              <img
+                className="speaker-photo"
+                src="/images/griffiths.png"
+                alt="Prof. Christopher Griffiths"
+                width={370}
+                height={370}
+              />
+            </div>
+            <p className="speaker-tag">Keynote</p>
             <h3 className="speaker-talk">Psoriasis: Road to Cure</h3>
             <p className="speaker-name">Prof. Christopher Griffiths</p>
             <p className="speaker-country">United Kingdom</p>
           </article>
 
-          <article className="speaker">
-            <img
-              className="speaker-photo"
-              src="/images/asawanonda.png"
-              alt="Dr. Pravit Asawanonda"
-              width={360}
-              height={360}
-            />
+          <article className="speaker-card reveal reveal-delay-2">
+            <div className="speaker-ring">
+              <img
+                className="speaker-photo"
+                src="/images/asawanonda.png"
+                alt="Dr. Pravit Asawanonda"
+                width={360}
+                height={360}
+              />
+            </div>
+            <p className="speaker-tag">Plenary</p>
             <h3 className="speaker-talk">
               Role of Phototherapy in the Age of Biologics
             </h3>
@@ -62,61 +124,79 @@ export default function App() {
           </article>
         </div>
 
-        <a className="btn btn-yellow" href="#register">
+        <a className="btn btn-yellow btn-outline-hover" href="#register">
           Click To View Event Program
         </a>
       </section>
 
-      <section className="section" id="abstract">
-        <h2 className="section-title section-title-long">
-          Pioneer Psoriasis Progress: Submit your Research Now
-        </h2>
-        <p className="section-body">
-          Join us in advancing the understanding and management of psoriasis.
-          Share your research, clinical insights, or innovative approaches with
-          the community. Submit your abstract today and be part of the
-          conversation shaping the future of psoriasis care.
-        </p>
-        <p className="deadline">
-          Extended deadline: June 30, 2025 · 12:00 noon
-        </p>
-        <button className="btn btn-yellow btn-disabled" type="button" disabled>
-          Submission Closed
-        </button>
+      <section className="section reveal" id="abstract">
+        <div className="feature-card">
+          <div className="feature-card__glow" aria-hidden="true" />
+          <h2 className="section-title section-title-long">
+            Pioneer Psoriasis Progress: Submit your Research Now
+          </h2>
+          <p className="section-body">
+            Join us in advancing the understanding and management of psoriasis.
+            Share your research, clinical insights, or innovative approaches
+            with the community — and help shape the future of psoriasis care.
+          </p>
+          <p className="deadline">
+            Extended deadline: June 30, 2025 · 12:00 noon
+          </p>
+          <button className="btn btn-yellow btn-disabled" type="button" disabled>
+            Submission Closed
+          </button>
+        </div>
       </section>
 
-      <section className="section symposium" id="symposium">
+      <section className="section symposium reveal" id="symposium">
         <div className="symposium-grid">
-          <img
-            className="symposium-flyer"
-            src="/images/novartis-flyer.jpg"
-            alt="Novartis Lunch Symposium flyer"
-            width={480}
-            height={720}
-          />
+          <div className="symposium-visual">
+            <div className="symposium-frame">
+              <img
+                className="symposium-flyer"
+                src="/images/novartis-flyer.jpg"
+                alt="Novartis Lunch Symposium flyer"
+                width={480}
+                height={720}
+              />
+            </div>
+            <span className="symposium-badge">Lunch Symposium</span>
+          </div>
+
           <div className="symposium-copy">
+            <p className="section-eyebrow section-eyebrow--left">Novartis</p>
             <h2 className="symposium-title">
               Are Biologics The ‘New Normal’ In The Management of Psoriatic
               Disease?
             </h2>
-            <p className="section-body">
+            <p className="section-body section-body--left">
               Uncover real-world insights on the use of biologics in psoriatic
               disease during the Novartis Lunch Symposium at the PDS Psoriasis
-              Conference this August 13, 2025 with Dr. Patricia Tinio, Dr.
-              Bernardita Policarpio, and special guest Rheumatologist, Dr.
-              Genevieve Katigbak.
+              Conference this August 13, 2025.
             </p>
+            <ul className="panelists">
+              <li>Dr. Patricia Tinio</li>
+              <li>Dr. Bernardita Policarpio</li>
+              <li>
+                Dr. Genevieve Katigbak
+                <em>Rheumatologist · special guest</em>
+              </li>
+            </ul>
             <p className="symposium-closing">See you there!</p>
           </div>
         </div>
       </section>
 
-      <section className="section sponsors" id="sponsors">
-        <h2 className="section-title">Thank you to our sponsors</h2>
+      <section className="section sponsors reveal" id="sponsors">
+        <div className="section-eyebrow">Our partners</div>
+        <h2 className="section-title">
+          <span>Thank you to our sponsors</span>
+        </h2>
 
-        <div className="sponsor-tier">
+        <div className="sponsor-tier sponsor-tier--platinum">
           <h3 className="tier-label">Platinum sponsor</h3>
-          <div className="tier-card tier-card-wide">
+          <div className="tier-card tier-card-wide tier-card--glow">
             <img
               src="/images/sponsors-platinum.jpg"
               alt="Novartis — Platinum sponsor"
@@ -157,35 +237,32 @@ export default function App() {
         <div className="sponsor-tier">
           <h3 className="tier-label">Minor sponsors</h3>
           <div className="tier-grid-minor">
-            <div className="tier-card tier-card-minor">
-              <img src="/images/sponsors/minor-1.png" alt="Medilight" />
-            </div>
-            <div className="tier-card tier-card-minor">
-              <img src="/images/sponsors/minor-2.png" alt="Hyphens" />
-            </div>
-            <div className="tier-card tier-card-minor">
-              <img src="/images/sponsors/minor-3.png" alt="Vexxa" />
-            </div>
-            <div className="tier-card tier-card-minor">
-              <img src="/images/sponsors/minor-4.png" alt="Spectrumed" />
-            </div>
-            <div className="tier-card tier-card-minor">
-              <img src="/images/sponsors/minor-5.png" alt="FSPC" />
-            </div>
-            <div className="tier-card tier-card-minor">
-              <img src="/images/sponsors/minor-6.png" alt="Glenmark" />
-            </div>
+            {[
+              ['minor-1.png', 'Medilight'],
+              ['minor-2.png', 'Hyphens'],
+              ['minor-3.png', 'Vexxa'],
+              ['minor-4.png', 'Spectrumed'],
+              ['minor-5.png', 'FSPC'],
+              ['minor-6.png', 'Glenmark'],
+            ].map(([file, name]) => (
+              <div className="tier-card tier-card-minor" key={file}>
+                <img src={`/images/sponsors/${file}`} alt={name} />
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="section team" id="team">
-        <h2 className="section-title">Meet the team</h2>
+      <section className="section team reveal" id="team">
+        <div className="section-eyebrow">Organizers</div>
+        <h2 className="section-title">
+          <span>Meet the team</span>
+        </h2>
         <p className="section-body team-body">
           Our team of dedicated dermatologists brings together expertise,
-          compassion, and a commitment to excellence in skin health. United by
-          a shared mission to advance dermatologic science and improve patient
-          outcomes.
+          compassion, and a commitment to excellence in skin health — united
+          by a shared mission to advance dermatologic science and improve
+          patient outcomes.
         </p>
 
         <div className="team-buttons">
@@ -198,13 +275,34 @@ export default function App() {
         </div>
 
         <div className="team-logos">
-          <img src="/images/logo-photo.png" alt="Photodermatology logo" />
-          <img src="/images/logo-pds.png" alt="PDS logo" />
-          <img src="/images/logo-immuno.png" alt="Immunodermatology logo" />
+          <div className="team-logo-ring">
+            <img src="/images/logo-photo.png" alt="Photodermatology logo" />
+          </div>
+          <div className="team-logo-ring team-logo-ring--center">
+            <img src="/images/logo-pds.png" alt="PDS logo" />
+          </div>
+          <div className="team-logo-ring">
+            <img src="/images/logo-immuno.png" alt="Immunodermatology logo" />
+          </div>
         </div>
       </section>
 
-      <footer className="footer" id="register">
+      <section className="cta-banner reveal" id="register">
+        <div className="cta-banner__inner">
+          <p className="cta-banner__label">Don’t miss out</p>
+          <h2 className="cta-banner__title">
+            Join the brightest minds reshaping psoriasis care
+          </h2>
+          <p className="cta-banner__text">
+            August 13, 2025 · Velvet Ballroom, Seda BGC · 3 PRC CPD · 50 PDS CME
+          </p>
+          <a className="btn btn-yellow btn-shine" href="#top">
+            Register for the conference
+          </a>
+        </div>
+      </section>
+
+      <footer className="footer">
         <p className="footer-title">2025 Psoriasis Conference Philippines</p>
         <p className="footer-powered">
           Powered by Matt and Phoebe Creative Productions
