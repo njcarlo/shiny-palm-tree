@@ -213,7 +213,7 @@ function HomePage() {
 
             <div className="session-group">
               <p className="session-group-label">Speakers</p>
-              <div className="speakers speakers--mods">
+              <div className="speakers speakers--spk">
                 {session.speakers.map((speaker) => (
                   <SpeakerCard
                     key={speaker.slug}

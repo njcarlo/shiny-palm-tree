@@ -844,6 +844,11 @@ button {
   margin-bottom: 0;
 }
 
+.speakers--spk {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 0;
+}
+
 .speakers--mods {
   grid-template-columns: repeat(2, minmax(0, 200px));
   justify-content: center;
@@ -1797,7 +1802,8 @@ button {
   }
 
   .speakers,
-  .speakers--grid {
+  .speakers--grid,
+  .speakers--spk {
     grid-template-columns: 1fr;
     gap: 1.25rem;
     max-width: 300px;
@@ -1948,7 +1954,8 @@ button {
 }
 
 @media (min-width: 721px) and (max-width: 900px) {
-  .speakers--grid {
+  .speakers--grid,
+  .speakers--spk {
     grid-template-columns: repeat(2, 1fr);
   }
 }
