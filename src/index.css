@@ -1,10 +1,11 @@
 :root {
   /* ── Brand palette (immunoderm-color-hexcodes.png) ── */
-  --navy-950:   #000f24;
-  --navy-dark:  #001e46;
-  --navy-mid:   #002a5c;
-  --navy-light: #003d7a;
-  --navy-footer:#000a18;
+  /* Deep tones matched from poster background sampling */
+  --navy-950:   #040c06;   /* near-black green  — poster bottom */
+  --navy-dark:  #0b1c0e;   /* very dark forest   — poster lower-mid */
+  --navy-mid:   #112814;   /* dark forest green  — poster mid */
+  --navy-light: #1b3d1e;   /* medium dark green  — poster upper-mid */
+  --navy-footer:#020804;   /* deepest near-black */
   --accent-lime:     #a0ff32;
   --accent-lime-soft:#b8ff5c;
   --accent-lime-deep:#7ecc28;
@@ -12,7 +13,14 @@
   --accent-mint: #c8ffc8;
   --accent-glow: rgba(160, 255, 50, 0.4);
 
-  /* Legacy aliases */
+  /* Poster-extracted tones */
+  --poster-bright: #09da95;  /* bright cyan-green — poster top */
+  --poster-mid:    #0cba81;  /* medium green       — poster upper */
+  --poster-forest: #124231;  /* dark forest        — poster mid */
+  --poster-sage:   #a5c5a5;  /* light sage         — poster lower */
+  --poster-olive:  #273a19;  /* dark olive         — poster bottom */
+
+  /* Legacy aliases (keep existing code working) */
   --green-950:   var(--navy-950);
   --green-dark:  var(--navy-dark);
   --green-mid:   var(--navy-mid);
@@ -27,8 +35,8 @@
   /* Off-white body text — never pure #fff on dark for display copy */
   --white:      #f0faff;
   --text-muted: rgba(192, 248, 220, 0.82);
-  --glass:      rgba(255, 255, 255, 0.06);
-  --glass-border: rgba(160, 255, 50, 0.2);
+  --glass:      rgba(9, 218, 149, 0.05);
+  --glass-border: rgba(9, 218, 149, 0.2);
 
   --font: 'Montserrat', Arial, Helvetica, sans-serif;
   --font-display: 'Cormorant Garamond', Georgia, serif;
@@ -83,7 +91,7 @@ body {
   font-family: var(--font);
   font-size: var(--step-0);      /* 16px base — never hardcoded */
   color: var(--white);
-  background: var(--navy-950);
+  background: #030a05;           /* fallback while poster loads */
   line-height: var(--lh-body);   /* 1.6 — within 1.5–1.65 spec */
   letter-spacing: var(--ls-body);
   -webkit-font-smoothing: antialiased;
@@ -117,37 +125,43 @@ button {
 .page {
   position: relative;
   min-height: 100vh;
-  /* Layered deep-field base — darkest at the very bottom */
+  /* Poster image as actual background + dark overlay for readability */
   background:
-    radial-gradient(ellipse 140% 70% at 50% -5%,  rgba(0, 255, 170, 0.11) 0%, transparent 58%),
-    radial-gradient(ellipse 70%  60% at 108% 22%, rgba(160, 255, 50, 0.07) 0%, transparent 65%),
-    radial-gradient(ellipse 60%  55% at -8%  62%, rgba(0,  80, 220, 0.07) 0%, transparent 65%),
-    radial-gradient(ellipse 90%  45% at 50%  108%, rgba(0,  14,  36, 0.95) 0%, transparent 72%),
-    linear-gradient(180deg, #002558 0%, #001a3d 30%, #000d24 70%, #000914 100%);
+    /* Readability gradient — lightest at hero, deepest at bottom */
+    linear-gradient(180deg,
+      rgba(4, 14, 8, 0.55)  0%,
+      rgba(3, 10, 6, 0.72) 25%,
+      rgba(2,  7, 4, 0.86) 55%,
+      rgba(1,  5, 3, 0.95) 100%
+    ),
+    /* Poster image — the actual event background */
+    url('/images/assets/immuderm-masterclass-2026-full-color.webp')
+      center top / cover no-repeat;
 }
 
-/* Dot-grid — precision / scientific feel, very subtle */
+/* Dot-grid — precision / scientific feel, poster-green toned */
 .page-dots {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
   background-image:
-    radial-gradient(circle, rgba(160, 255, 50, 0.18) 1px, transparent 1px);
+    radial-gradient(circle, rgba(9, 218, 149, 0.22) 1px, transparent 1px);
   background-size: 36px 36px;
-  opacity: 0.28;
-  mask-image: radial-gradient(ellipse 100% 100% at 50% 0%, rgba(0,0,0,0.6) 0%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 0%, rgba(0,0,0,0.6) 0%, transparent 75%);
+  opacity: 0.25;
+  mask-image: radial-gradient(ellipse 100% 100% at 50% 0%, rgba(0,0,0,0.7) 0%, transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 0%, rgba(0,0,0,0.7) 0%, transparent 72%);
 }
 
-/* Seamless tile pattern — background weave */
+/* Seamless tile pattern — layer over poster background */
 .page-pattern {
   position: fixed;
   inset: 0;
-  background: url('/images/assets/pattern_immunoderm.webp') center / 420px repeat;
-  opacity: 0.05;
+  background: url('/images/assets/pattern_immunoderm.webp') center / 400px repeat;
+  opacity: 0.08;
   pointer-events: none;
   z-index: 0;
+  mix-blend-mode: overlay;
 }
 
 /* Fine grain / noise texture — material depth */
@@ -179,40 +193,40 @@ button {
   filter: blur(100px);
 }
 
-/* Top-left cyan bloom */
+/* Top-left — poster's bright cyan-green bloom */
 .bg-orb--1 {
   width: clamp(400px, 55vmax, 800px);
   height: clamp(400px, 55vmax, 800px);
   top: -18%;
   left: -12%;
-  background: radial-gradient(circle, rgba(0, 255, 170, 0.13) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(9, 218, 149, 0.18) 0%, transparent 70%);
 }
 
-/* Right-centre lime bloom */
+/* Right-centre — lime-green bloom */
 .bg-orb--2 {
   width: clamp(320px, 45vmax, 680px);
   height: clamp(320px, 45vmax, 680px);
   top: 38%;
   right: -14%;
-  background: radial-gradient(circle, rgba(160, 255, 50, 0.09) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(88, 218, 111, 0.12) 0%, transparent 70%);
 }
 
-/* Centre-left cool blue bloom */
+/* Centre-left — deep forest green bloom */
 .bg-orb--3 {
   width: clamp(350px, 50vmax, 720px);
   height: clamp(250px, 36vmax, 520px);
   bottom: 8%;
   left: 10%;
-  background: radial-gradient(ellipse, rgba(0, 50, 180, 0.1) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(18, 66, 49, 0.35) 0%, transparent 70%);
 }
 
-/* Subtle top-right accent */
+/* Top-right — mid-green accent */
 .bg-orb--4 {
   width: clamp(200px, 28vmax, 440px);
   height: clamp(200px, 28vmax, 440px);
   top: 12%;
   right: 8%;
-  background: radial-gradient(circle, rgba(0, 200, 255, 0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(12, 186, 129, 0.1) 0%, transparent 70%);
 }
 
 .page > *:not(.page-pattern):not(.page-grain):not(.page-dots):not(.bg-orbs):not(.modal-backdrop) {
@@ -331,10 +345,8 @@ button {
   padding-bottom: 5rem;
   overflow: hidden;
   content-visibility: visible;
-  /* Hero-specific inner atmosphere */
-  background:
-    radial-gradient(ellipse 80% 50% at 50% 0%,   rgba(0, 255, 170, 0.08) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 30% at 85% 40%,  rgba(160, 255, 50, 0.06) 0%, transparent 70%);
+  /* Hero lets the poster background show through — no extra fill needed */
+  background: none;
 }
 
 /* Diagonal light-ray sweep across hero */
@@ -1355,10 +1367,10 @@ button {
   max-width: none;
   padding: 5.5rem var(--space) 5rem;
   background:
-    radial-gradient(ellipse 80% 60% at 50% 0%,  rgba(0, 255, 170, 0.1), transparent 60%),
-    radial-gradient(ellipse 60% 40% at 0%   80%, rgba(160, 255, 50, 0.06), transparent 70%),
-    linear-gradient(180deg, #010c1f 0%, #000914 100%);
-  border-top: 1px solid rgba(160, 255, 50, 0.18);
+    radial-gradient(ellipse 80% 60% at 50%  0%, rgba(9, 218, 149, 0.12), transparent 60%),
+    radial-gradient(ellipse 60% 40% at  0% 80%, rgba(88, 218, 111, 0.07), transparent 70%),
+    linear-gradient(180deg, #07120a 0%, #040a06 100%);
+  border-top: 1px solid rgba(9, 218, 149, 0.2);
   overflow: hidden;
 }
 
