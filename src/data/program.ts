@@ -2,14 +2,16 @@ export type Speaker = {
   slug: string
   name: string
   credentials?: string
+  designation?: string
   role?: string
   country?: string
+  isModerator?: boolean
 }
 
 export type Session = {
   id: string
   title: string
-  moderators: string[]
+  moderators: Speaker[]
   speakers: Speaker[]
 }
 
@@ -17,7 +19,20 @@ export const PROGRAM: Session[] = [
   {
     id: 'session-1',
     title: 'Mitigating Complications in Immunodermatology',
-    moderators: ['Dr. Melanie Doria-Ruiz', 'Dr. Rogelio Balagat'],
+    moderators: [
+      {
+        slug: 'melanie-doria-ruiz',
+        name: 'Dr. Melanie Doria-Ruiz',
+        designation: 'Moderator',
+        isModerator: true,
+      },
+      {
+        slug: 'rogelio-balagat',
+        name: 'Dr. Rogelio Balagat',
+        designation: 'Moderator',
+        isModerator: true,
+      },
+    ],
     speakers: [
       { slug: 'amanda-esquivel', name: 'Dr. Amanda Christine Esquivel' },
       { slug: 'kenneth-samala', name: 'Dr. Kenneth Samala' },
@@ -31,7 +46,20 @@ export const PROGRAM: Session[] = [
   {
     id: 'session-2',
     title: 'New Insights in Urticaria',
-    moderators: ['Dr. Cybill Uy', 'Dr. Josef Symon Concha'],
+    moderators: [
+      {
+        slug: 'cybill-uy',
+        name: 'Dr. Cybill Uy',
+        designation: 'Moderator',
+        isModerator: true,
+      },
+      {
+        slug: 'josef-concha',
+        name: 'Dr. Josef Symon Concha',
+        designation: 'Moderator',
+        isModerator: true,
+      },
+    ],
     speakers: [
       { slug: 'katrina-canlas-estrella', name: 'Dr. Katrina Canlas-Estrella' },
       { slug: 'roxanne-casis-hao', name: 'Dr. Roxanne Casis-Hao' },
@@ -40,7 +68,20 @@ export const PROGRAM: Session[] = [
   {
     id: 'session-3',
     title: 'Blistering Across Generations',
-    moderators: ['Dr. Johanna Pauline Lazo-Dizon', 'Dr. Kristine Natalee Legaspi'],
+    moderators: [
+      {
+        slug: 'johanna-lazo-dizon',
+        name: 'Dr. Johanna Pauline Lazo-Dizon',
+        designation: 'Moderator',
+        isModerator: true,
+      },
+      {
+        slug: 'kristine-legaspi',
+        name: 'Dr. Kristine Natalee Legaspi',
+        designation: 'Moderator',
+        isModerator: true,
+      },
+    ],
     speakers: [
       { slug: 'jasmin-jamora', name: 'Dr. Maria Jasmin Jamora' },
       { slug: 'clarisse-mendoza', name: 'Dr. Clarisse Mendoza' },
@@ -49,13 +90,15 @@ export const PROGRAM: Session[] = [
   },
 ]
 
-export const OPENING_SPEAKER = {
+export const OPENING_SPEAKER: Speaker = {
   slug: 'jasmin-jamora',
   name: 'Maria Jasmin Jamora, MD, FPDS',
-  role: 'President, Philippine Dermatological Society',
+  designation: 'President, Philippine Dermatological Society',
+  role: 'Opening Remarks',
 }
 
-export const CLOSING_SPEAKER = {
+export const CLOSING_SPEAKER: Speaker = {
   slug: 'bryan-guevara',
   name: 'Dr. Bryan Guevara',
+  role: 'Closing Remarks',
 }

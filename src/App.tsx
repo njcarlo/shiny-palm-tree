@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState, type RefObject } from 'react'
+import { useCallback, useEffect, useRef, useState, type RefObject } from 'react'
 import { Link, Routes, Route } from 'react-router-dom'
 import { ImageSlot } from './components/ImageSlot'
+import { SpeakerModal } from './components/SpeakerModal'
 import { ASSETS, speakerImage } from './data/images'
-import { CLOSING_SPEAKER, OPENING_SPEAKER, PROGRAM } from './data/program'
+import { CLOSING_SPEAKER, OPENING_SPEAKER, PROGRAM, type Speaker } from './data/program'
 import SignupPage from './pages/SignupPage'
 
 function useReveal(): RefObject<HTMLDivElement | null> {
@@ -62,6 +63,8 @@ function useStickyRegister() {
   return visible
 }
 
+type ModalState = { speaker: Speaker; sessionTitle?: string } | null
+
 export default function App() {
   return (
     <Routes>
@@ -71,9 +74,54 @@ export default function App() {
   )
 }
 
+function SpeakerCard({
+  speaker,
+  sessionTitle,
+  onSelect,
+}: {
+  speaker: Speaker
+  sessionTitle?: string
+  onSelect: (s: Speaker, t?: string) => void
+}) {
+  return (
+    <article
+      className={`speaker-card speaker-card--clickable${speaker.isModerator ? ' speaker-card--mod' : ''}`}
+      onClick={() => onSelect(speaker, sessionTitle)}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onSelect(speaker, sessionTitle) }}
+      aria-label={`View ${speaker.name} details`}
+    >
+      <div className="speaker-ring">
+        <ImageSlot
+          src={speakerImage(speaker.slug)}
+          alt={speaker.name}
+          placeholderLabel={speaker.name}
+          className="speaker-photo"
+          variant="speaker"
+        />
+      </div>
+      <h3 className="speaker-name">{speaker.name}</h3>
+      {speaker.isModerator && (
+        <span className="speaker-role-tag speaker-role-tag--mod">Moderator</span>
+      )}
+      {!speaker.isModerator && (
+        <span className="speaker-role-tag speaker-role-tag--spk">Speaker</span>
+      )}
+    </article>
+  )
+}
+
 function HomePage() {
   const pageRef = useReveal()
   const stickyVisible = useStickyRegister()
+  const [modal, setModal] = useState<ModalState>(null)
+
+  const openModal = useCallback((speaker: Speaker, sessionTitle?: string) => {
+    setModal({ speaker, sessionTitle })
+  }, [])
+
+  const closeModal = useCallback(() => setModal(null), [])
 
   return (
     <div className="page" ref={pageRef}>
@@ -124,7 +172,14 @@ function HomePage() {
 
       <section className="section panel reveal" id="opening">
         <div className="section-eyebrow">Opening remarks</div>
-        <div className="featured-speaker">
+        <div
+          className="featured-speaker featured-speaker--clickable"
+          onClick={() => openModal(OPENING_SPEAKER)}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') openModal(OPENING_SPEAKER) }}
+          aria-label={`View ${OPENING_SPEAKER.name} details`}
+        >
           <div className="speaker-ring">
             <ImageSlot
               src={speakerImage(OPENING_SPEAKER.slug)}
@@ -135,7 +190,7 @@ function HomePage() {
             />
           </div>
           <h2 className="featured-name">{OPENING_SPEAKER.name}</h2>
-          <p className="featured-role">{OPENING_SPEAKER.role}</p>
+          <p className="featured-role">{OPENING_SPEAKER.designation}</p>
         </div>
       </section>
 
@@ -146,25 +201,33 @@ function HomePage() {
             <h2 className="section-title section-title-long">
               <span>{session.title}</span>
             </h2>
-            <p className="session-mods">
-              Moderators: {session.moderators.join(' · ')}
-            </p>
 
-            <div className="speakers speakers--grid">
-              {session.speakers.map((speaker) => (
-                <article className="speaker-card" key={speaker.slug}>
-                  <div className="speaker-ring">
-                    <ImageSlot
-                      src={speakerImage(speaker.slug)}
-                      alt={speaker.name}
-                      placeholderLabel={speaker.name}
-                      className="speaker-photo"
-                      variant="speaker"
-                    />
-                  </div>
-                  <h3 className="speaker-name">{speaker.name}</h3>
-                </article>
-              ))}
+            <div className="session-group">
+              <p className="session-group-label">Moderators</p>
+              <div className="speakers speakers--mods">
+                {session.moderators.map((mod) => (
+                  <SpeakerCard
+                    key={mod.slug}
+                    speaker={mod}
+                    sessionTitle={session.title}
+                    onSelect={openModal}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <div className="session-group">
+              <p className="session-group-label">Speakers</p>
+              <div className="speakers speakers--grid">
+                {session.speakers.map((speaker) => (
+                  <SpeakerCard
+                    key={speaker.slug}
+                    speaker={speaker}
+                    sessionTitle={session.title}
+                    onSelect={openModal}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -172,7 +235,14 @@ function HomePage() {
 
       <section className="section reveal" id="closing">
         <div className="section-eyebrow">Closing remarks</div>
-        <div className="featured-speaker">
+        <div
+          className="featured-speaker featured-speaker--clickable"
+          onClick={() => openModal(CLOSING_SPEAKER)}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') openModal(CLOSING_SPEAKER) }}
+          aria-label={`View ${CLOSING_SPEAKER.name} details`}
+        >
           <div className="speaker-ring">
             <ImageSlot
               src={speakerImage(CLOSING_SPEAKER.slug)}
@@ -183,6 +253,9 @@ function HomePage() {
             />
           </div>
           <h2 className="featured-name">{CLOSING_SPEAKER.name}</h2>
+          {CLOSING_SPEAKER.role && (
+            <p className="featured-role">{CLOSING_SPEAKER.role}</p>
+          )}
         </div>
       </section>
 
@@ -259,6 +332,14 @@ function HomePage() {
           </Link>
         </div>
       </aside>
+
+      {modal && (
+        <SpeakerModal
+          speaker={modal.speaker}
+          sessionTitle={modal.sessionTitle}
+          onClose={closeModal}
+        />
+      )}
     </div>
   )
 }
