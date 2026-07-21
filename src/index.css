@@ -125,18 +125,21 @@ button {
 .page {
   position: relative;
   min-height: 100vh;
-  /* Poster image as actual background + dark overlay for readability */
+  /* Pattern tile as the actual page background */
   background:
-    /* Readability gradient — lightest at hero, deepest at bottom */
+    /* Dark overlay — lighter at top, deeper lower for readability */
     linear-gradient(180deg,
-      rgba(4, 14, 8, 0.55)  0%,
-      rgba(3, 10, 6, 0.72) 25%,
-      rgba(2,  7, 4, 0.86) 55%,
-      rgba(1,  5, 3, 0.95) 100%
+      rgba(4, 14, 8, 0.60)  0%,
+      rgba(3, 10, 6, 0.74) 25%,
+      rgba(2,  7, 4, 0.88) 55%,
+      rgba(1,  5, 3, 0.96) 100%
     ),
-    /* Poster image — the actual event background */
-    url('/images/assets/immuderm-masterclass-2026-full-color.webp')
-      center top / cover no-repeat;
+    /* Ambient colour blooms over the pattern */
+    radial-gradient(ellipse 140% 60% at 50%  0%,  rgba(9, 218, 149, 0.22) 0%, transparent 55%),
+    radial-gradient(ellipse  70% 55% at 110% 22%, rgba(88, 218, 111, 0.14) 0%, transparent 65%),
+    radial-gradient(ellipse  60% 50% at  -8% 65%, rgba(0, 140,  80, 0.12) 0%, transparent 65%),
+    /* Pattern as the background tile */
+    url('/images/assets/pattern_immunoderm.webp') center / 420px repeat;
 }
 
 /* Dot-grid — precision / scientific feel, poster-green toned */
@@ -153,15 +156,9 @@ button {
   -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 0%, rgba(0,0,0,0.7) 0%, transparent 72%);
 }
 
-/* Seamless tile pattern — layer over poster background */
+/* Pattern is now the page background — this overlay is no longer needed */
 .page-pattern {
-  position: fixed;
-  inset: 0;
-  background: url('/images/assets/pattern_immunoderm.webp') center / 400px repeat;
-  opacity: 0.08;
-  pointer-events: none;
-  z-index: 0;
-  mix-blend-mode: overlay;
+  display: none;
 }
 
 /* Fine grain / noise texture — material depth */
