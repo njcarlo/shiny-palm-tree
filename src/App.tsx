@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState, type RefObject } from 'react'
+import { Link, Routes, Route } from 'react-router-dom'
 import { ImageSlot } from './components/ImageSlot'
 import { ASSETS, speakerImage } from './data/images'
 import { CLOSING_SPEAKER, OPENING_SPEAKER, PROGRAM } from './data/program'
+import SignupPage from './pages/SignupPage'
 
 function useReveal(): RefObject<HTMLDivElement | null> {
   const ref = useRef<HTMLDivElement | null>(null)
@@ -61,6 +63,15 @@ function useStickyRegister() {
 }
 
 export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/signup" element={<SignupPage />} />
+    </Routes>
+  )
+}
+
+function HomePage() {
   const pageRef = useReveal()
   const stickyVisible = useStickyRegister()
 
@@ -106,7 +117,7 @@ export default function App() {
 
           <a className="btn btn-yellow btn-shine" href="#register">
             <span>Register now</span>
-            <small>Free & regular slots available</small>
+            <small>Regular registration open</small>
           </a>
         </div>
       </section>
@@ -178,20 +189,10 @@ export default function App() {
       <section className="section reveal" id="register">
         <div className="section-eyebrow">Registration</div>
         <h2 className="section-title">
-          <span>Choose your registration</span>
+          <span>Regular Registration</span>
         </h2>
 
-        <div className="register-grid">
-          <figure className="register-card">
-            <ImageSlot
-              src={ASSETS.registerFree}
-              alt="Free registration"
-              placeholderLabel="registerpost-free-01.png"
-              className="register-image"
-              variant="flyer"
-            />
-            <figcaption>Free slot</figcaption>
-          </figure>
+        <div className="register-single">
           <figure className="register-card">
             <ImageSlot
               src={ASSETS.registerRegular}
@@ -200,8 +201,11 @@ export default function App() {
               className="register-image"
               variant="flyer"
             />
-            <figcaption>Regular slot</figcaption>
           </figure>
+          <Link to="/signup" className="btn btn-yellow btn-shine">
+            <span>Register now</span>
+            <small>Secure your slot today</small>
+          </Link>
         </div>
       </section>
 
@@ -250,9 +254,9 @@ export default function App() {
             <strong>Masterclass 2026</strong>
             <span>Register today</span>
           </div>
-          <a className="btn btn-yellow btn-shine sticky-register__btn" href="#register">
+          <Link to="/signup" className="btn btn-yellow btn-shine sticky-register__btn">
             Register now
-          </a>
+          </Link>
         </div>
       </aside>
     </div>

@@ -3,7 +3,6 @@ export const ASSETS = {
   pattern: '/images/assets/pattern_immunoderm.webp',
   logoCombined: '/images/assets/pds-immunoderm-logo.webp',
   logoPds: '/images/assets/pds-logo.webp',
-  registerFree: '/images/assets/registerpost-free-01.webp',
   registerRegular: '/images/assets/registerpost-regular-01.webp',
 } as const
 
