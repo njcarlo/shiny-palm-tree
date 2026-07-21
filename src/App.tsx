@@ -212,12 +212,12 @@ function HomePage() {
             </h2>
 
             <div className="session-group">
-              <p className="session-group-label">Moderators</p>
+              <p className="session-group-label">Speakers</p>
               <div className="speakers speakers--mods">
-                {session.moderators.map((mod) => (
+                {session.speakers.map((speaker) => (
                   <SpeakerCard
-                    key={mod.slug}
-                    speaker={mod}
+                    key={speaker.slug}
+                    speaker={speaker}
                     sessionTitle={session.title}
                     onSelect={openModal}
                   />
@@ -226,12 +226,12 @@ function HomePage() {
             </div>
 
             <div className="session-group">
-              <p className="session-group-label">Speakers</p>
+              <p className="session-group-label">Moderators</p>
               <div className="speakers speakers--grid">
-                {session.speakers.map((speaker) => (
+                {session.moderators.map((mod) => (
                   <SpeakerCard
-                    key={speaker.slug}
-                    speaker={speaker}
+                    key={mod.slug}
+                    speaker={mod}
                     sessionTitle={session.title}
                     onSelect={openModal}
                   />
