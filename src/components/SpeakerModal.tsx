@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import type { Speaker } from '../data/program'
 import { speakerImage } from '../data/images'
 import { ImageSlot } from './ImageSlot'
@@ -10,12 +11,14 @@ type Props = {
 }
 
 export function SpeakerModal({ speaker, sessionTitle, onClose }: Props) {
+  // Lock body scroll while open
   useEffect(() => {
     const prev = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     return () => { document.body.style.overflow = prev }
   }, [])
 
+  // Close on Escape
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.key === 'Escape') onClose()
@@ -24,7 +27,7 @@ export function SpeakerModal({ speaker, sessionTitle, onClose }: Props) {
     return () => window.removeEventListener('keydown', onKey)
   }, [onClose])
 
-  return (
+  const content = (
     <div
       className="modal-backdrop"
       role="dialog"
@@ -84,4 +87,7 @@ export function SpeakerModal({ speaker, sessionTitle, onClose }: Props) {
       </div>
     </div>
   )
+
+  // Portal into document.body — bypasses ALL parent stacking contexts
+  return createPortal(content, document.body)
 }
