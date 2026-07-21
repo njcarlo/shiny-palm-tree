@@ -185,7 +185,18 @@ button {
 .image-slot--speaker {
   aspect-ratio: 1;
   border-radius: 50%;
-  min-height: 0;
+  border-style: solid;
+  border-color: rgba(160, 255, 50, 0.3);
+}
+
+.image-slot--speaker .image-slot__frame {
+  padding: 0.5rem;
+}
+
+.image-slot--speaker .image-slot__icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  opacity: 0.6;
 }
 
 .image-slot--logo {
@@ -786,10 +797,12 @@ button {
   margin-bottom: 0.5rem;
 }
 
-.speaker-name {
+.speaker-card .speaker-name {
   font-size: 0.92rem;
   font-weight: 600;
   color: var(--yellow-soft);
+  line-height: 1.35;
+  text-wrap: balance;
 }
 
 .speaker-country {
@@ -1207,17 +1220,154 @@ button {
 
 /* ——— Mobile ——— */
 @media (max-width: 720px) {
+  :root {
+    --space: 1rem;
+  }
+
+  .page {
+    overflow-x: hidden;
+  }
+
+  .hero-logos {
+    display: none;
+  }
+
+  .hero-poster-wrap {
+    padding: 1rem var(--space) 0;
+    width: 100%;
+  }
+
+  .hero-poster {
+    filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.35));
+  }
+
+  .hero-details {
+    padding: 1.75rem var(--space) 0;
+  }
+
+  .hero-meta {
+    gap: 0.5rem;
+  }
+
+  .pill {
+    font-size: 0.68rem;
+    padding: 0.4rem 0.7rem;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-detail-line {
+    font-size: 1rem;
+    padding: 0 0.25rem;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .section {
+    padding: 2.25rem var(--space);
+  }
+
+  .section-title {
+    font-size: clamp(1.25rem, 5.5vw, 1.65rem);
+    letter-spacing: 0.05em;
+  }
+
+  .section-title-long {
+    max-width: none;
+    font-size: clamp(1.05rem, 4.8vw, 1.35rem);
+    padding: 0 0.15rem;
+  }
+
+  .session-card {
+    padding: 1.25rem 0.85rem;
+  }
+
+  .session-mods {
+    font-size: 0.8rem;
+    line-height: 1.55;
+    margin-bottom: 1.5rem;
+    padding: 0 0.15rem;
+  }
+
   .speakers,
   .speakers--grid {
-    grid-template-columns: 1fr 1fr;
-    max-width: none;
-    margin-inline: 0;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 280px;
+    margin-inline: auto;
+  }
+
+  .speaker-card {
+    padding: 1.15rem 0.85rem 1.35rem;
+  }
+
+  .speaker-ring {
+    width: min(100%, 140px);
+    margin-bottom: 0.75rem;
+  }
+
+  .speaker-card .speaker-name {
+    font-size: 0.85rem;
+    max-width: 22ch;
+    margin-inline: auto;
+  }
+
+  .featured-speaker {
+    padding: 0 0.5rem;
+  }
+
+  .featured-name {
+    font-size: 1rem;
+    line-height: 1.4;
+    text-wrap: balance;
+  }
+
+  .featured-role {
+    font-size: 0.85rem;
+    line-height: 1.5;
   }
 
   .register-grid {
     grid-template-columns: 1fr;
-    max-width: 320px;
+    max-width: min(100%, 320px);
     margin-inline: auto;
+    gap: 1.25rem;
+  }
+
+  .register-image {
+    max-width: 100%;
+  }
+
+  .team-logos {
+    gap: 1.25rem;
+  }
+
+  .team-logo-ring--center {
+    transform: none;
+  }
+
+  .team-logo-ring--center:hover {
+    transform: scale(1.05);
+  }
+
+  .sticky-register {
+    padding: 0.65rem var(--space) calc(0.65rem + env(safe-area-inset-bottom));
+  }
+
+  .sticky-register__inner {
+    gap: 0.75rem;
+  }
+
+  .sticky-register__btn {
+    padding: 0.7rem 1rem;
+    font-size: 0.7rem;
+    min-width: 7.5rem;
+  }
+
+  body.has-sticky-bar {
+    padding-bottom: 5rem;
   }
 
   .symposium-grid {
@@ -1254,7 +1404,35 @@ button {
   }
 
   .panel {
-    margin-inline: 0.5rem;
+    margin-inline: 0;
+    padding: 2rem 1rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .pill {
+    width: 100%;
+    text-align: center;
+  }
+
+  .sticky-register__inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sticky-register__btn {
+    width: 100%;
+    max-width: none;
+  }
+
+  .sticky-register__copy span {
+    white-space: normal;
+  }
+}
+
+@media (min-width: 721px) and (max-width: 900px) {
+  .speakers--grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 

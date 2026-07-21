@@ -55,8 +55,12 @@ export function ImageSlot({
               strokeLinejoin="round"
             />
           </svg>
-          <p className="image-slot__label">{placeholderLabel}</p>
-          <p className="image-slot__path">Drop file at: {src}</p>
+          {variant !== 'speaker' && (
+            <p className="image-slot__label">{placeholderLabel}</p>
+          )}
+          {variant !== 'speaker' && variant !== 'logo' && (
+            <p className="image-slot__path">Drop file at: {src}</p>
+          )}
         </div>
       </div>
     )
