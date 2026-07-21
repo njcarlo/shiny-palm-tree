@@ -86,6 +86,9 @@ export default function App() {
             placeholderLabel="Hero artwork (full color)"
             className="hero-poster"
             variant="hero"
+            width={1520}
+            height={469}
+            priority
           />
         </div>
 

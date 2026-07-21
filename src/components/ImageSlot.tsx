@@ -10,6 +10,7 @@ type ImageSlotProps = {
   width?: number
   height?: number
   variant?: ImageSlotVariant
+  priority?: boolean
 }
 
 export function ImageSlot({
@@ -20,6 +21,7 @@ export function ImageSlot({
   width,
   height,
   variant = 'card',
+  priority = false,
 }: ImageSlotProps) {
   const [missing, setMissing] = useState(false)
 
@@ -73,7 +75,9 @@ export function ImageSlot({
       alt={alt}
       width={width}
       height={height}
-      loading="lazy"
+      loading={priority ? 'eager' : 'lazy'}
+      fetchPriority={priority ? 'high' : 'auto'}
+      decoding={priority ? 'sync' : 'async'}
       onError={() => setMissing(true)}
     />
   )

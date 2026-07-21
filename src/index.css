@@ -99,7 +99,7 @@ button {
 .page-pattern {
   position: fixed;
   inset: 0;
-  background: url('/images/assets/pattern_immunoderm.png') center / 480px repeat;
+  background: url('/images/assets/pattern_immunoderm.webp') center / 480px repeat;
   opacity: 0.06;
   pointer-events: none;
   z-index: 0;
@@ -220,6 +220,7 @@ button {
   text-align: center;
   padding-bottom: 3rem;
   overflow: hidden;
+  content-visibility: visible;
 }
 
 .hero-logos {
@@ -543,6 +544,8 @@ button {
   margin: 0 auto;
   padding: 3.5rem var(--space);
   text-align: center;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 480px;
 }
 
 .panel {
