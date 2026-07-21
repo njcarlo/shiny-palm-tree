@@ -117,41 +117,105 @@ button {
 .page {
   position: relative;
   min-height: 100vh;
+  /* Layered deep-field base — darkest at the very bottom */
   background:
-    radial-gradient(ellipse 120% 60% at 50% -10%, rgba(0, 255, 170, 0.14), transparent 55%),
-    radial-gradient(ellipse 80% 50% at 100% 40%, rgba(160, 255, 50, 0.1), transparent 50%),
-    linear-gradient(
-      180deg,
-      var(--navy-mid) 0%,
-      var(--navy-dark) 35%,
-      var(--navy-950) 100%
-    );
+    radial-gradient(ellipse 140% 70% at 50% -5%,  rgba(0, 255, 170, 0.11) 0%, transparent 58%),
+    radial-gradient(ellipse 70%  60% at 108% 22%, rgba(160, 255, 50, 0.07) 0%, transparent 65%),
+    radial-gradient(ellipse 60%  55% at -8%  62%, rgba(0,  80, 220, 0.07) 0%, transparent 65%),
+    radial-gradient(ellipse 90%  45% at 50%  108%, rgba(0,  14,  36, 0.95) 0%, transparent 72%),
+    linear-gradient(180deg, #002558 0%, #001a3d 30%, #000d24 70%, #000914 100%);
 }
 
-/* Seamless tile pattern */
+/* Dot-grid — precision / scientific feel, very subtle */
+.page-dots {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(circle, rgba(160, 255, 50, 0.18) 1px, transparent 1px);
+  background-size: 36px 36px;
+  opacity: 0.28;
+  mask-image: radial-gradient(ellipse 100% 100% at 50% 0%, rgba(0,0,0,0.6) 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 0%, rgba(0,0,0,0.6) 0%, transparent 75%);
+}
+
+/* Seamless tile pattern — background weave */
 .page-pattern {
   position: fixed;
   inset: 0;
-  background: url('/images/assets/pattern_immunoderm.webp') center / 480px repeat;
-  opacity: 0.07;
+  background: url('/images/assets/pattern_immunoderm.webp') center / 420px repeat;
+  opacity: 0.05;
   pointer-events: none;
   z-index: 0;
 }
 
-/* Fine grain / noise texture — adds material depth */
+/* Fine grain / noise texture — material depth */
 .page-grain {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.045;
+  opacity: 0.05;
   background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23g)'/%3E%3C/svg%3E");
   background-size: 320px 320px;
   mix-blend-mode: overlay;
 }
 
-.page > *:not(.page-pattern):not(.page-grain):not(.modal-backdrop) {
+/* Ambient orbs — blurred colour light sources for depth */
+.bg-orbs {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(100px);
+}
+
+/* Top-left cyan bloom */
+.bg-orb--1 {
+  width: clamp(400px, 55vmax, 800px);
+  height: clamp(400px, 55vmax, 800px);
+  top: -18%;
+  left: -12%;
+  background: radial-gradient(circle, rgba(0, 255, 170, 0.13) 0%, transparent 70%);
+}
+
+/* Right-centre lime bloom */
+.bg-orb--2 {
+  width: clamp(320px, 45vmax, 680px);
+  height: clamp(320px, 45vmax, 680px);
+  top: 38%;
+  right: -14%;
+  background: radial-gradient(circle, rgba(160, 255, 50, 0.09) 0%, transparent 70%);
+}
+
+/* Centre-left cool blue bloom */
+.bg-orb--3 {
+  width: clamp(350px, 50vmax, 720px);
+  height: clamp(250px, 36vmax, 520px);
+  bottom: 8%;
+  left: 10%;
+  background: radial-gradient(ellipse, rgba(0, 50, 180, 0.1) 0%, transparent 70%);
+}
+
+/* Subtle top-right accent */
+.bg-orb--4 {
+  width: clamp(200px, 28vmax, 440px);
+  height: clamp(200px, 28vmax, 440px);
+  top: 12%;
+  right: 8%;
+  background: radial-gradient(circle, rgba(0, 200, 255, 0.06) 0%, transparent 70%);
+}
+
+.page > *:not(.page-pattern):not(.page-grain):not(.page-dots):not(.bg-orbs):not(.modal-backdrop) {
   position: relative;
   z-index: 1;
 }
@@ -267,6 +331,40 @@ button {
   padding-bottom: 5rem;
   overflow: hidden;
   content-visibility: visible;
+  /* Hero-specific inner atmosphere */
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%,   rgba(0, 255, 170, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 85% 40%,  rgba(160, 255, 50, 0.06) 0%, transparent 70%);
+}
+
+/* Diagonal light-ray sweep across hero */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      115deg,
+      transparent 35%,
+      rgba(0, 255, 170, 0.04) 48%,
+      rgba(160, 255, 50, 0.03) 52%,
+      transparent 65%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Bottom fade — hero blends into first section */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, rgba(0, 13, 36, 0.55));
+  pointer-events: none;
+  z-index: 0;
 }
 
 .hero-logos {
@@ -601,34 +699,62 @@ button {
   contain-intrinsic-size: auto 520px;
 }
 
+/* Subtle glowing top edge — separates sections visually */
+.section + .section {
+  border-top: 1px solid rgba(160, 255, 50, 0.07);
+}
+
 .panel {
   position: relative;
   margin-top: 1rem;
   padding: 4rem clamp(1.75rem, 5vw, 3rem);
   background:
-    linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-  border: 1px solid var(--glass-border);
+    linear-gradient(145deg,
+      rgba(0, 60, 120, 0.25) 0%,
+      rgba(0, 30, 70, 0.15)  50%,
+      rgba(0, 15, 40, 0.2)   100%
+    );
+  border: 1px solid rgba(160, 255, 50, 0.18);
   border-radius: calc(var(--radius) + 4px);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(24px);
   box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    0 24px 64px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 0 1px rgba(0, 255, 170, 0.04);
   overflow: hidden;
 }
 
-/* Subtle diagonal shimmer line across glass panels */
+/* Diagonal shimmer + top highlight on glass panels */
 .panel::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.04) 0%,
-    transparent 50%,
-    rgba(160, 255, 50, 0.03) 100%
-  );
+  background:
+    linear-gradient(135deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      transparent 45%,
+      rgba(160, 255, 50, 0.03) 100%
+    );
   pointer-events: none;
   border-radius: inherit;
+}
+
+/* Top accent line on panels */
+.panel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 255, 170, 0.6) 30%,
+    rgba(160, 255, 50, 0.6) 70%,
+    transparent
+  );
+  pointer-events: none;
 }
 
 /* All-caps eyebrow — ls-caps per spec */
@@ -818,30 +944,49 @@ button {
   position: relative;
   padding: clamp(2rem, 5vw, 3rem);
   background:
-    linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-  border: 1px solid var(--glass-border);
+    linear-gradient(150deg,
+      rgba(0, 50, 110, 0.3)  0%,
+      rgba(0, 25, 60, 0.2)   55%,
+      rgba(0, 10, 30, 0.25)  100%
+    );
+  border: 1px solid rgba(160, 255, 50, 0.15);
   border-radius: calc(var(--radius) + 4px);
-  backdrop-filter: blur(14px);
+  backdrop-filter: blur(18px);
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    0 12px 48px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 0 0 1px rgba(0, 255, 170, 0.03);
   overflow: hidden;
 }
 
+/* Lime→cyan top accent line */
 .session-card::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 1px;
+  height: 2px;
   background: linear-gradient(
     90deg,
-    transparent,
-    rgba(160, 255, 50, 0.5) 30%,
-    rgba(0, 255, 170, 0.5) 70%,
-    transparent
+    transparent 0%,
+    rgba(160, 255, 50, 0.7) 25%,
+    rgba(0, 255, 170, 0.7) 75%,
+    transparent 100%
   );
+  pointer-events: none;
+}
+
+/* Inner glow bloom — medical depth */
+.session-card::after {
+  content: '';
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 80%;
+  background: radial-gradient(ellipse, rgba(0, 255, 170, 0.05) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -888,16 +1033,22 @@ button {
 
 .speaker-card {
   padding: 2rem 1.25rem 1.75rem;
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(160deg,
+      rgba(0, 45, 100, 0.35) 0%,
+      rgba(0, 20, 55, 0.25)  100%
+    );
+  border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: var(--radius);
   transition:
     transform 0.4s var(--ease),
     border-color 0.4s var(--ease),
-    box-shadow 0.4s var(--ease);
+    box-shadow 0.4s var(--ease),
+    background 0.4s var(--ease);
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .speaker-card--clickable {
@@ -912,12 +1063,22 @@ button {
 .speaker-card:hover,
 .speaker-card--clickable:hover {
   transform: translateY(-6px);
-  border-color: rgba(160, 255, 50, 0.45);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.25);
+  border-color: rgba(160, 255, 50, 0.5);
+  box-shadow:
+    0 20px 48px rgba(0, 0, 0, 0.3),
+    0 0 24px rgba(160, 255, 50, 0.08);
+  background:
+    linear-gradient(160deg,
+      rgba(0, 60, 120, 0.45) 0%,
+      rgba(0, 25, 65, 0.35)  100%
+    );
 }
 
 .speaker-card--mod:hover {
-  border-color: rgba(0, 255, 170, 0.5);
+  border-color: rgba(0, 255, 170, 0.55);
+  box-shadow:
+    0 20px 48px rgba(0, 0, 0, 0.3),
+    0 0 24px rgba(0, 255, 170, 0.08);
 }
 
 /* ——— Role tag ——— */
@@ -1194,13 +1355,25 @@ button {
   max-width: none;
   padding: 5.5rem var(--space) 5rem;
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(160, 255, 50, 0.1), transparent 60%),
-    linear-gradient(180deg, var(--green-footer) 0%, var(--green-950) 100%);
-  border-top: 1px solid rgba(160, 255, 50, 0.15);
+    radial-gradient(ellipse 80% 60% at 50% 0%,  rgba(0, 255, 170, 0.1), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 0%   80%, rgba(160, 255, 50, 0.06), transparent 70%),
+    linear-gradient(180deg, #010c1f 0%, #000914 100%);
+  border-top: 1px solid rgba(160, 255, 50, 0.18);
   overflow: hidden;
 }
 
-/* Noise grain on team section for material texture */
+/* Dot grid in team section */
+.team::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(160, 255, 50, 0.15) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+/* Noise grain */
 .team::after {
   content: '';
   position: absolute;
@@ -1208,7 +1381,7 @@ button {
   background-image:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23g)'/%3E%3C/svg%3E");
   background-size: 256px 256px;
-  opacity: 0.03;
+  opacity: 0.04;
   mix-blend-mode: overlay;
   pointer-events: none;
 }

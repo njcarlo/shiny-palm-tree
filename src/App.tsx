@@ -125,8 +125,16 @@ function HomePage() {
 
   return (
     <div className="page" ref={pageRef}>
+      {/* Fixed background layers — deepest first */}
+      <div className="bg-orbs" aria-hidden="true">
+        <div className="bg-orb bg-orb--1" />
+        <div className="bg-orb bg-orb--2" />
+        <div className="bg-orb bg-orb--3" />
+        <div className="bg-orb bg-orb--4" />
+      </div>
+      <div className="page-dots"    aria-hidden="true" />
       <div className="page-pattern" aria-hidden="true" />
-      <div className="page-grain" aria-hidden="true" />
+      <div className="page-grain"   aria-hidden="true" />
 
       <section className="hero" id="top">
         <div className="hero-logos reveal">
