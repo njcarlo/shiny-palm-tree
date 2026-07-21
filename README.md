@@ -19,6 +19,20 @@ Official logos, hero artwork, pattern, and registration graphics live in `public
 
 ## Deploy
 
+Manual deploy:
+
 ```bash
 npm run deploy
 ```
+
+### Automatic deploy (GitHub Actions)
+
+Pushes to `main` or `cursor/psoriasis-conference-site-bf05` trigger a deploy to [immunodermatology-masterclass.web.app](https://immunodermatology-masterclass.web.app).
+
+One-time setup — add a repo secret:
+
+1. Run `firebase login:ci` locally and copy the token.
+2. In GitHub: **Settings → Secrets and variables → Actions → New repository secret**
+3. Name: `FIREBASE_TOKEN`, value: the token from step 1.
+
+To disable auto-deploy later (e.g. when gating changes behind review), remove the branch from `.github/workflows/firebase-hosting.yml` or delete the workflow file.
