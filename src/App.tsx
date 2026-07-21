@@ -126,6 +126,7 @@ function HomePage() {
   return (
     <div className="page" ref={pageRef}>
       <div className="page-pattern" aria-hidden="true" />
+      <div className="page-grain" aria-hidden="true" />
 
       <section className="hero" id="top">
         <div className="hero-logos reveal">
