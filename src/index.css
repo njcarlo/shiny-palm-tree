@@ -1028,8 +1028,7 @@ button {
 /* ——— Role tag ——— */
 .speaker-role-tag {
   display: inline-block;
-  /* Push to card bottom so SPEAKER/MODERATOR badges align across a row */
-  margin-top: auto;
+  margin-top: 0;
   padding: 0.26rem 0.75rem;
   font-size: var(--step--2);          /* 0.563rem — micro label */
   font-weight: 500;
@@ -1096,6 +1095,8 @@ button {
   text-wrap: balance;
   margin-top: 0.25rem;
   margin-bottom: 0.65rem;
+  /* Reserve 3 lines so the role tag always sits on the 4th line */
+  min-height: calc(3em * var(--lh-heading));
 }
 
 .speaker-country {
