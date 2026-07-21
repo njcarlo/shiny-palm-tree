@@ -82,44 +82,16 @@ button {
     );
 }
 
-.page-texture {
+.page-pattern {
   position: fixed;
   inset: 0;
-  background: url('/images/bg-texture.png') center / cover no-repeat;
-  opacity: 0.04;
-  pointer-events: none;
-  z-index: 0;
-  will-change: transform;
-}
-
-.page-glow {
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(80px);
+  background: url('/images/assets/pattern_immunoderm.png') center / 480px repeat;
+  opacity: 0.06;
   pointer-events: none;
   z-index: 0;
 }
 
-.page-glow--top {
-  width: 500px;
-  height: 500px;
-  top: -120px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(245, 208, 51, 0.12);
-  will-change: transform;
-}
-
-.page-glow--mid {
-  width: 400px;
-  height: 400px;
-  top: 45%;
-  right: -100px;
-  background: rgba(45, 122, 92, 0.2);
-  will-change: transform;
-}
-
-.page > *:not(.page-glow):not(.page-texture) {
+.page > *:not(.page-pattern) {
   position: relative;
   z-index: 1;
 }
@@ -146,12 +118,96 @@ button {
   transition-delay: 0.2s;
 }
 
+/* ——— Image placeholders ——— */
+.image-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  border: 2px dashed rgba(245, 208, 51, 0.45);
+  border-radius: var(--radius);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.image-slot__frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.image-slot__icon {
+  width: 2rem;
+  height: 2rem;
+  color: var(--yellow);
+  opacity: 0.85;
+}
+
+.image-slot__label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--white);
+}
+
+.image-slot__path {
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.5);
+  word-break: break-all;
+  max-width: 18ch;
+}
+
+.image-slot--hero {
+  min-height: 280px;
+  aspect-ratio: 4 / 5;
+}
+
+.image-slot--speaker {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  min-height: 0;
+}
+
+.image-slot--logo {
+  min-height: 88px;
+  border-radius: 12px;
+}
+
+.image-slot--flyer {
+  aspect-ratio: 4 / 5;
+  min-height: 320px;
+}
+
+.image-slot--sponsor,
+.image-slot--card {
+  min-height: 90px;
+}
+
 /* ——— Hero ——— */
 .hero {
   position: relative;
   text-align: center;
   padding-bottom: 3rem;
   overflow: hidden;
+}
+
+.hero-logos {
+  padding: 1.5rem var(--space) 0;
+}
+
+.hero-logo {
+  width: min(100%, 220px);
+  margin: 0 auto;
+}
+
+.hero-logo--main {
+  width: min(100%, 280px);
 }
 
 .hero-particles {
@@ -586,6 +642,79 @@ button {
   grid-template-columns: 1fr 1fr;
   gap: clamp(1.25rem, 4vw, 2rem);
   margin-bottom: 2.75rem;
+}
+
+.speakers--grid {
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  margin-bottom: 0;
+}
+
+.featured-speaker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.featured-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--yellow-soft);
+}
+
+.featured-role {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.session-card {
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+  border: 1px solid var(--glass-border);
+  border-radius: calc(var(--radius) + 4px);
+  backdrop-filter: blur(12px);
+}
+
+.session-mods {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 2rem;
+}
+
+.register-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.register-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.register-image {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.28);
+}
+
+.register-card figcaption {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--yellow);
+}
+
+.team-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .speaker-card {
@@ -1064,7 +1193,14 @@ button {
 
 /* ——— Mobile ——— */
 @media (max-width: 720px) {
-  .speakers {
+  .speakers,
+  .speakers--grid {
+    grid-template-columns: 1fr 1fr;
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  .register-grid {
     grid-template-columns: 1fr;
     max-width: 320px;
     margin-inline: auto;
@@ -1124,6 +1260,10 @@ button {
   .hero-particle,
   .btn-shine::after {
     animation: none;
+  }
+
+  .image-slot {
+    border-style: solid;
   }
 
   .hero-poster-wrap,
