@@ -125,19 +125,78 @@ button {
 .page {
   position: relative;
   min-height: 100vh;
-  /* Pattern tile + single flat dark overlay — no gradients, fully consistent */
+  /* Subtle layered background — deep green base matching poster palette */
   background:
-    rgba(3, 10, 6, 0.78),
-    url('/images/assets/pattern_immunoderm.webp') center / 420px repeat;
+    radial-gradient(ellipse 130% 55% at 50%  -5%, rgba(9, 218, 149, 0.10) 0%, transparent 52%),
+    radial-gradient(ellipse  65% 50% at 108% 22%, rgba(88, 218, 111, 0.07) 0%, transparent 62%),
+    radial-gradient(ellipse  55% 48% at  -6% 65%, rgba(0, 140,  80, 0.06) 0%, transparent 62%),
+    linear-gradient(180deg, #0d2213 0%, #081509 32%, #040d06 68%, #030906 100%);
 }
 
-/* Dot-grid hidden — pattern is the background */
-.page-dots   { display: none; }
-.page-pattern{ display: none; }
-.page-grain  { display: none; }
-.bg-orbs     { display: none; }
+/* Pattern tile — subtle texture over the gradient base */
+.page-pattern {
+  position: fixed;
+  inset: 0;
+  background: url('/images/assets/pattern_immunoderm.webp') center / 420px repeat;
+  opacity: 0.07;
+  pointer-events: none;
+  z-index: 0;
+}
 
-.page > *:not(.modal-backdrop) {
+/* Fine grain — material depth */
+.page-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.04;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 320px 320px;
+  mix-blend-mode: overlay;
+}
+
+/* Soft ambient orbs — subtle colour depth, not visible as distinct shapes */
+.bg-orbs {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(120px);
+}
+
+.bg-orb--1 {
+  width: clamp(350px, 50vmax, 700px);
+  height: clamp(350px, 50vmax, 700px);
+  top: -15%; left: -10%;
+  background: rgba(9, 218, 149, 0.10);
+}
+
+.bg-orb--2 {
+  width: clamp(280px, 40vmax, 600px);
+  height: clamp(280px, 40vmax, 600px);
+  top: 40%; right: -12%;
+  background: rgba(88, 218, 111, 0.08);
+}
+
+.bg-orb--3 {
+  width: clamp(300px, 45vmax, 650px);
+  height: clamp(200px, 32vmax, 480px);
+  bottom: 10%; left: 12%;
+  background: rgba(18, 66, 49, 0.20);
+}
+
+/* Dot-grid hidden — too busy with the pattern */
+.page-dots { display: none; }
+
+.page > *:not(.page-pattern):not(.page-grain):not(.bg-orbs):not(.modal-backdrop) {
   position: relative;
   z-index: 1;
 }
@@ -250,41 +309,10 @@ button {
 .hero {
   position: relative;
   text-align: center;
-  padding-bottom: 5rem;
+  padding-bottom: 2rem;
   overflow: hidden;
   content-visibility: visible;
-  /* Hero lets the poster background show through — no extra fill needed */
   background: none;
-}
-
-/* Diagonal light-ray sweep across hero */
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(
-      115deg,
-      transparent 35%,
-      rgba(0, 255, 170, 0.04) 48%,
-      rgba(160, 255, 50, 0.03) 52%,
-      transparent 65%
-    );
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Bottom fade — hero blends into first section */
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 120px;
-  background: linear-gradient(to bottom, transparent, rgba(0, 13, 36, 0.55));
-  pointer-events: none;
-  z-index: 0;
 }
 
 .hero-logos {
@@ -619,10 +647,6 @@ button {
   contain-intrinsic-size: auto 520px;
 }
 
-/* Subtle glowing top edge — separates sections visually */
-.section + .section {
-  border-top: 1px solid rgba(160, 255, 50, 0.07);
-}
 
 .panel {
   position: relative;
@@ -1691,7 +1715,7 @@ button {
   }
 
   .hero {
-    padding-bottom: 4rem;
+    padding-bottom: 1.5rem;
   }
 
   .hero-poster-wrap {
