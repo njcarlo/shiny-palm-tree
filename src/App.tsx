@@ -397,9 +397,6 @@ function HomePage() {
 
         <div className="team-buttons">
           <a className="btn btn-yellow btn-team" href="#team">
-            Photodermatology Subspecialty Core Group
-          </a>
-          <a className="btn btn-yellow btn-team" href="#team">
             Immunodermatology Subspecialty Core Group
           </a>
         </div>
