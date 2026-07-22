@@ -194,7 +194,6 @@ function HomePage() {
         </div>
 
         <section className="hero-register reveal reveal-delay-2" id="register" aria-label="Registration">
-          <div className="section-eyebrow">Registration</div>
           <h2 className="section-title">
             <span>Register now</span>
           </h2>
@@ -425,31 +424,7 @@ function HomePage() {
         </section>
       </div>
 
-      {/* 7. Event details */}
-      <section className="section panel reveal" id="details">
-        <p className="section-eyebrow">Event details</p>
-        <h2 className="section-title">
-          <span>{EVENT_META.name}</span>
-        </h2>
-        <p className="section-body">{EVENT_META.tagline}</p>
-
-        <div className="event-info">
-          <div className="event-info__block">
-            <p className="event-info__label">Time &amp; location</p>
-            <p className="event-info__value">{EVENT_META.datetime}</p>
-            <p className="event-info__value">{EVENT_META.venue}</p>
-            <p className="event-info__value">{EVENT_META.locationLine}</p>
-          </div>
-          <div className="event-info__block">
-            <p className="event-info__label">Share this event</p>
-            <p className="event-info__value event-info__value--muted">
-              Sharing links coming soon
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. Meet the team */}
+      {/* 7. Meet the team */}
       <section className="section team reveal" id="team">
         <h2 className="section-title">
           <span>Meet the team</span>

@@ -399,9 +399,10 @@ button {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
   align-items: center;
-  gap: clamp(0.75rem, 2.8vw, 1.75rem);
+  gap: 16px;
   width: min(100%, 920px);
   margin: 0 auto;
 }
@@ -1988,7 +1989,7 @@ button {
   }
 
   .org-band__inner {
-    gap: 0.55rem;
+    gap: 16px;
   }
 
   .org-band__logo,
