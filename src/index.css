@@ -389,64 +389,183 @@ button {
   background: none;
 }
 
-/* ——— Org banner (top of hero) ——— */
-.org-banner {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: clamp(0.75rem, 3vw, 1.75rem);
-  width: min(100% - 2 * var(--space), 980px);
-  margin: 1rem auto 0.85rem;
-  padding: clamp(0.9rem, 2.5vw, 1.35rem) clamp(1rem, 3vw, 1.85rem);
+/* ——— Org masthead (integrated top of hero) ——— */
+.org-masthead {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: clamp(1.1rem, 3vw, 1.75rem) var(--space);
+  overflow: hidden;
   background:
-    linear-gradient(180deg, rgba(0, 28, 68, 0.35), rgba(0, 16, 42, 0.5)),
-    url('/images/assets/pattern_immunoderm.webp') center / 240px repeat,
-    #002855;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 10px;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.28);
+    linear-gradient(180deg, rgba(3, 12, 28, 0.55), rgba(3, 12, 28, 0.82)),
+    url('/images/assets/pattern_immunoderm.webp') center / 280px repeat,
+    linear-gradient(135deg, #04122a 0%, #002855 45%, #061833 100%);
+  border-bottom: 1px solid rgba(61, 184, 255, 0.16);
 }
 
-.org-banner__logo,
-.org-banner .image-slot {
-  width: clamp(68px, 13vw, 96px);
-  height: clamp(68px, 13vw, 96px);
+.org-masthead__glow {
+  position: absolute;
+  inset: auto -10% -60% 20%;
+  height: 140%;
+  background:
+    radial-gradient(ellipse at center, rgba(160, 255, 50, 0.12), transparent 62%),
+    radial-gradient(ellipse at 20% 40%, rgba(61, 184, 255, 0.14), transparent 55%);
+  pointer-events: none;
+}
+
+.org-masthead__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(0.85rem, 3vw, 2rem);
+  width: min(100%, 980px);
+  margin: 0 auto;
+}
+
+.org-masthead__logo,
+.org-masthead .image-slot,
+.org-masthead .image-slot--logo {
+  width: clamp(72px, 12vw, 108px);
+  height: clamp(72px, 12vw, 108px);
+  min-height: 0;
   border-radius: 50%;
   object-fit: cover;
   background: #fff;
-  box-shadow: 0 0 0 3px #fff;
+  border: none;
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.92),
+    0 10px 28px rgba(0, 0, 0, 0.28);
   flex-shrink: 0;
 }
 
-.org-banner .image-slot__frame {
+.org-masthead .image-slot__frame {
   border-radius: 50%;
   min-height: 100%;
 }
 
-.org-banner__text {
+.org-masthead__identity {
   text-align: center;
   min-width: 0;
 }
 
-.org-banner__line {
-  margin: 0;
-  font-size: clamp(0.62rem, 1.8vw, 0.84rem);
+.org-masthead__kicker {
+  margin: 0 0 0.35rem;
+  font-size: clamp(0.62rem, 1.5vw, 0.78rem);
   font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-mint);
+  line-height: 1.35;
+}
+
+.org-masthead__title {
+  margin: 0;
+  font-size: clamp(1.15rem, 4.2vw, 2.15rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+.org-masthead__sub {
+  margin: 0.4rem 0 0;
+  font-size: clamp(0.72rem, 1.8vw, 0.95rem);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(200, 255, 200, 0.88);
+}
+
+/* ——— Event date lockup (reinvented from poster hierarchy) ——— */
+.event-lockup {
+  position: relative;
+  width: min(100% - 2 * var(--space), 920px);
+  margin: 1.75rem auto 0;
+  padding: clamp(1.5rem, 4vw, 2.4rem) clamp(1.25rem, 4vw, 2.5rem);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  align-items: end;
+  gap: clamp(1rem, 3vw, 2rem);
+  background:
+    linear-gradient(115deg, rgba(4, 14, 32, 0.92), rgba(0, 32, 72, 0.78)),
+    url('/images/assets/pattern_immunoderm.webp') center / 220px repeat,
+    #031225;
+  border: 1px solid rgba(61, 184, 255, 0.18);
+  border-radius: 4px;
+}
+
+.event-lockup::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 12% 80%, rgba(160, 255, 50, 0.1), transparent 45%),
+    radial-gradient(ellipse at 90% 10%, rgba(0, 255, 170, 0.08), transparent 40%);
+  pointer-events: none;
+}
+
+.event-lockup__date {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2em 0.28em;
+  font-size: clamp(1.85rem, 7.5vw, 4.1rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: var(--accent-lime);
+  text-shadow: 0 0 40px rgba(160, 255, 50, 0.18);
+}
+
+.event-lockup__month,
+.event-lockup__year {
+  font-weight: 800;
+}
+
+.event-lockup__day {
+  font-weight: 800;
+}
+
+.event-lockup__comma {
+  margin-left: -0.12em;
+}
+
+.event-lockup__meta {
+  position: relative;
+  z-index: 1;
+  text-align: right;
+  justify-self: end;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  max-width: 18rem;
+}
+
+.event-lockup__meta p {
+  margin: 0;
+  font-size: clamp(0.82rem, 2vw, 1.05rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  color: var(--accent-mint);
+  text-wrap: balance;
+}
+
+.event-lockup__meta p:first-child {
+  font-size: clamp(0.95rem, 2.3vw, 1.2rem);
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #fff;
-  line-height: 1.4;
-}
-
-.org-banner__line--title {
-  font-size: clamp(0.82rem, 2.5vw, 1.12rem);
-  font-weight: 800;
-  letter-spacing: 0.1em;
-}
-
-.org-banner__line--accent {
-  font-weight: 800;
-  color: #d1f2eb;
+  color: var(--accent-cyan);
 }
 
 .hero-logos {
@@ -589,13 +708,13 @@ button {
 .hero-details {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 3rem var(--space) 0;
+  padding: 1.75rem var(--space) 0;
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.75rem;
+  gap: 1.1rem;
 }
 
 .hero-register {
@@ -1333,7 +1452,8 @@ button {
   aspect-ratio: 1;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--green-dark);
+  display: block;
+  border: none;
 }
 
 .speaker-tag {
@@ -1375,108 +1495,6 @@ button {
   font-weight: 500;
   color: rgba(255, 255, 255, 0.6);
   margin-top: 0.25rem;
-}
-
-/* ——— Symposium ——— */
-.symposium {
-  padding-top: 1rem;
-}
-
-.symposium-grid {
-  display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
-  gap: clamp(2rem, 5vw, 3rem);
-  align-items: center;
-}
-
-.symposium-visual {
-  position: relative;
-  text-align: center;
-  will-change: transform;
-}
-
-.symposium-frame {
-  position: relative;
-  display: inline-block;
-  transform: perspective(800px) rotateY(-4deg);
-  transition: transform 0.5s var(--ease);
-}
-
-.symposium-visual:hover .symposium-frame {
-  transform: perspective(800px) rotateY(0deg) scale(1.02);
-}
-
-.symposium-flyer {
-  width: 100%;
-  max-width: 300px;
-  margin: 0 auto;
-  border-radius: 8px;
-  box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(255, 255, 255, 0.1);
-}
-
-.symposium-badge {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.4rem 1rem;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--yellow);
-  border: 1px solid rgba(61, 184, 255, 0.4);
-  border-radius: 999px;
-}
-
-.symposium-copy {
-  text-align: left;
-}
-
-.symposium-title {
-  font-size: clamp(1.15rem, 3vw, 1.5rem);
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  line-height: 1.35;
-  margin-bottom: 1rem;
-  background: linear-gradient(180deg, var(--yellow-soft), var(--yellow));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.panelists {
-  list-style: none;
-  margin: 1.25rem 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-}
-
-.panelists li {
-  font-size: 0.92rem;
-  font-weight: 600;
-  padding-left: 1rem;
-  border-left: 3px solid var(--yellow);
-  line-height: 1.4;
-}
-
-.panelists em {
-  display: block;
-  font-size: 0.78rem;
-  font-weight: 500;
-  font-style: normal;
-  color: rgba(255, 255, 255, 0.6);
-  margin-top: 0.15rem;
-}
-
-.symposium-closing {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-style: italic;
-  font-weight: 500;
-  color: var(--yellow-soft);
 }
 
 /* ——— Sponsors ——— */
@@ -1902,7 +1920,8 @@ button {
   aspect-ratio: 1;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--navy-dark);
+  display: block;
+  border: none;
 }
 
 .modal-badge {
@@ -2006,26 +2025,52 @@ button {
     width: min(100%, 72px);
   }
 
-  .org-banner {
+  .org-masthead {
+    padding: 0.95rem 0.85rem;
+  }
+
+  .org-masthead__inner {
+    gap: 0.65rem;
+  }
+
+  .org-masthead__logo,
+  .org-masthead .image-slot {
+    width: 58px;
+    height: 58px;
+  }
+
+  .org-masthead__kicker {
+    font-size: 0.52rem;
+    letter-spacing: 0.1em;
+  }
+
+  .org-masthead__title {
+    font-size: 0.95rem;
+  }
+
+  .org-masthead__sub {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+  }
+
+  .event-lockup {
     width: calc(100% - 1.5rem);
-    margin-top: 0.75rem;
-    margin-bottom: 0.5rem;
-    padding: 0.85rem 0.75rem;
-    gap: 0.55rem;
+    margin-top: 1.25rem;
+    padding: 1.25rem 1rem 1.35rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
-  .org-banner__logo {
-    width: 52px;
-    height: 52px;
+  .event-lockup__date {
+    font-size: clamp(1.7rem, 9vw, 2.4rem);
+    justify-content: center;
+    text-align: center;
   }
 
-  .org-banner__line {
-    font-size: 0.55rem;
-    letter-spacing: 0.05em;
-  }
-
-  .org-banner__line--title {
-    font-size: 0.68rem;
+  .event-lockup__meta {
+    text-align: center;
+    justify-self: center;
+    max-width: none;
   }
 
   .site-header {
@@ -2264,29 +2309,9 @@ button {
     padding-bottom: 5rem;
   }
 
-  .symposium-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .symposium-copy {
-    text-align: center;
-  }
-
   .section-eyebrow--left,
-  .section-body--left,
-  .panelists {
+  .section-body--left {
     text-align: center;
-  }
-
-  .panelists li {
-    border-left: none;
-    padding-left: 0;
-    border-top: 2px solid var(--yellow);
-    padding-top: 0.65rem;
-  }
-
-  .symposium-frame {
-    transform: none;
   }
 
   .tier-row-2,
@@ -2371,7 +2396,6 @@ button {
   .hero-details,
   .page-glow,
   .page-texture,
-  .symposium-visual,
   .hero-details-parallax,
   .hero-poster-parallax {
     transform: none !important;

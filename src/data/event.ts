@@ -6,6 +6,11 @@ export const EVENT_META = {
   name: 'Immunodermatology Masterclass 2026',
   tagline:
     'Precision immunology in dermatology — optimizing systemic treatments for better outcomes.',
+  dateDisplay: 'September 2, 2026',
+  dateMonth: 'September',
+  dateDay: '2',
+  dateYear: '2026',
+  timeDisplay: '1 PM – 8 PM',
   datetime: 'September 2, 2026 · 1:00 PM – 8:00 PM',
   venue: 'Seda Hotel, Bonifacio Global City',
   locationLine: 'Taguig City, Philippines',
@@ -66,20 +71,6 @@ export const ABSTRACTS_CTA = {
   body: 'Join us in advancing immunodermatology. Share your research, clinical insights, or innovative approaches. Abstract details coming soon.',
   deadline: 'Deadline — TBA',
   status: 'Submissions opening soon',
-} as const
-
-export const SYMPOSIUM = {
-  eyebrow: 'Industry symposium',
-  badge: 'Lunch symposium',
-  title: 'Symposium title to be announced',
-  body: 'A sponsored lunch symposium will be featured during the masterclass. Speakers, topic, and schedule will appear here once confirmed.',
-  panelists: [
-    { name: 'Speaker placeholder', role: 'Faculty — TBA' },
-    { name: 'Speaker placeholder', role: 'Faculty — TBA' },
-    { name: 'Guest placeholder', role: 'Special guest — TBA' },
-  ],
-  closing: 'See you there!',
-  flyerSrc: '/images/assets/symposium-flyer-placeholder.webp',
 } as const
 
 export type SponsorTier = {

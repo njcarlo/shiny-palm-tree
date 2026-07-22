@@ -7,7 +7,6 @@ import {
   EVENT_META,
   HIGHLIGHTS,
   SPONSOR_TIERS,
-  SYMPOSIUM,
 } from './data/event'
 import { ASSETS, speakerImage } from './data/images'
 import { CLOSING_SPEAKER, OPENING_SPEAKER, PROGRAM, type Speaker } from './data/program'
@@ -162,28 +161,29 @@ function HomePage() {
 
       {/* 1. Hero — event header */}
       <section className="hero" id="top">
-        <div className="org-banner reveal" aria-label="Organizing group">
-          <ImageSlot
-            src={ASSETS.logoPds}
-            alt="Philippine Dermatological Society"
-            placeholderLabel="PDS logo"
-            className="org-banner__logo"
-            variant="logo"
-          />
-          <div className="org-banner__text">
-            <p className="org-banner__line org-banner__line--title">Immunodermatology</p>
-            <p className="org-banner__line">Subspecialty Core Group of the</p>
-            <p className="org-banner__line org-banner__line--accent">
-              Philippine Dermatological Society
-            </p>
+        <div className="org-masthead reveal" aria-label="Organizing group">
+          <div className="org-masthead__glow" aria-hidden="true" />
+          <div className="org-masthead__inner">
+            <ImageSlot
+              src={ASSETS.logoPds}
+              alt="Philippine Dermatological Society"
+              placeholderLabel="PDS logo"
+              className="org-masthead__logo"
+              variant="logo"
+            />
+            <div className="org-masthead__identity">
+              <p className="org-masthead__kicker">Philippine Dermatological Society</p>
+              <p className="org-masthead__title">Immunodermatology</p>
+              <p className="org-masthead__sub">Subspecialty Core Group</p>
+            </div>
+            <ImageSlot
+              src={ASSETS.logoCombined}
+              alt="Immunodermatology Subspecialty Core Group"
+              placeholderLabel="Immunoderm logo"
+              className="org-masthead__logo"
+              variant="logo"
+            />
           </div>
-          <ImageSlot
-            src={ASSETS.logoCombined}
-            alt="Immunodermatology Subspecialty Core Group"
-            placeholderLabel="Immunoderm logo"
-            className="org-banner__logo"
-            variant="logo"
-          />
         </div>
 
         <div className="hero-poster-wrap reveal">
@@ -199,26 +199,26 @@ function HomePage() {
           />
         </div>
 
-        <div className="hero-details reveal reveal-delay-1">
-          <div className="hero-meta">
-            <span className="pill">{EVENT_META.name}</span>
-            <span className="pill pill--outline">Program & registration</span>
+        <div className="event-lockup reveal reveal-delay-1" aria-label="Event date and venue">
+          <h1 className="event-lockup__date">
+            <span className="event-lockup__month">{EVENT_META.dateMonth}</span>
+            <span className="event-lockup__day">{EVENT_META.dateDay}</span>
+            <span className="event-lockup__comma" aria-hidden="true">,</span>
+            <span className="event-lockup__year">{EVENT_META.dateYear}</span>
+          </h1>
+          <div className="event-lockup__meta">
+            <p>{EVENT_META.timeDisplay}</p>
+            <p>{EVENT_META.venue}</p>
+            <p>{EVENT_META.locationLine}</p>
           </div>
+        </div>
 
-          <p className="hero-detail-line">
-            {EVENT_META.datetime}
-            <br />
-            {EVENT_META.venue}
-            <br />
-            {EVENT_META.locationLine}
-          </p>
-
+        <div className="hero-details reveal reveal-delay-1">
           <div className="hero-meta hero-meta--credits">
             {EVENT_META.credits.map((credit) => (
               <span className="pill pill--outline" key={credit}>{credit}</span>
             ))}
           </div>
-
           <p className="hero-cta-note">{EVENT_META.ctaNote}</p>
         </div>
 
@@ -320,39 +320,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* 4. Symposium (placeholder) */}
-      <section className="section symposium reveal" id="symposium">
-        <p className="section-eyebrow">{SYMPOSIUM.eyebrow}</p>
-        <div className="symposium-grid">
-          <div className="symposium-visual">
-            <div className="symposium-frame">
-              <ImageSlot
-                src={SYMPOSIUM.flyerSrc}
-                alt="Symposium flyer placeholder"
-                placeholderLabel="Symposium flyer"
-                className="symposium-flyer"
-                variant="flyer"
-              />
-            </div>
-            <span className="symposium-badge">{SYMPOSIUM.badge}</span>
-          </div>
-          <div className="symposium-copy">
-            <h2 className="symposium-title">{SYMPOSIUM.title}</h2>
-            <p className="section-body section-body--left">{SYMPOSIUM.body}</p>
-            <ul className="panelists">
-              {SYMPOSIUM.panelists.map((p) => (
-                <li key={p.name + p.role}>
-                  {p.name}
-                  <em>{p.role}</em>
-                </li>
-              ))}
-            </ul>
-            <p className="symposium-closing">{SYMPOSIUM.closing}</p>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Sponsors (placeholders) */}
+      {/* 4. Sponsors (placeholders) */}
       <section className="section sponsors reveal" id="sponsors">
         <p className="section-eyebrow">Partners</p>
         <h2 className="section-title">
