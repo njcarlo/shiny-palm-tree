@@ -279,7 +279,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Sponsors (placeholders) */}
+      {/* Sponsors */}
       <section className="section sponsors reveal" id="sponsors">
         <p className="section-eyebrow">Partners</p>
         <h2 className="section-title">
@@ -294,7 +294,7 @@ function HomePage() {
             <p className="tier-label">{tier.label}</p>
             <div
               className={
-                tier.variant === 'platinum'
+                tier.variant === 'platinum' || tier.slots.length === 1
                   ? 'tier-row'
                   : tier.variant === 'silver'
                     ? 'tier-row tier-row-2'
@@ -306,14 +306,18 @@ function HomePage() {
               {tier.slots.map((slot) => (
                 <div
                   className={`tier-card${tier.variant === 'platinum' ? ' tier-card-wide tier-card--glow' : ''}${tier.variant === 'minor' ? ' tier-card-minor' : ''}`}
-                  key={slot.src}
+                  key={slot.name}
                 >
-                  <ImageSlot
-                    src={slot.src}
-                    alt={slot.label}
-                    placeholderLabel={slot.label}
-                    variant="sponsor"
-                  />
+                  {slot.src ? (
+                    <ImageSlot
+                      src={slot.src}
+                      alt={slot.name}
+                      placeholderLabel={slot.name}
+                      variant="sponsor"
+                    />
+                  ) : (
+                    <p className="sponsor-name">{slot.name}</p>
+                  )}
                 </div>
               ))}
             </div>

@@ -68,44 +68,36 @@ export type SponsorTier = {
   id: string
   label: string
   variant: 'platinum' | 'silver' | 'bronze' | 'minor'
-  slots: { src: string; label: string }[]
+  slots: { name: string; src?: string }[]
 }
 
-/** Sponsor tiers with logo placeholders (maps to Wix sponsor block). */
+/** Confirmed sponsor packages for Immunodermatology Masterclass 2026. */
 export const SPONSOR_TIERS: SponsorTier[] = [
   {
     id: 'platinum',
     label: 'Platinum sponsor',
     variant: 'platinum',
-    slots: [{ src: '/images/sponsors/platinum-1.png', label: 'Platinum sponsor logo' }],
-  },
-  {
-    id: 'silver',
-    label: 'Silver sponsors',
-    variant: 'silver',
-    slots: [
-      { src: '/images/sponsors/silver-1.png', label: 'Silver sponsor logo' },
-      { src: '/images/sponsors/silver-2.png', label: 'Silver sponsor logo' },
-    ],
+    slots: [{ name: 'Novartis Healthcare Philippines Inc.' }],
   },
   {
     id: 'bronze',
-    label: 'Bronze sponsors',
+    label: 'Bronze sponsor',
     variant: 'bronze',
-    slots: [
-      { src: '/images/sponsors/bronze-1.png', label: 'Bronze sponsor logo' },
-      { src: '/images/sponsors/bronze-2.png', label: 'Bronze sponsor logo' },
-      { src: '/images/sponsors/bronze-3.png', label: 'Bronze sponsor logo' },
-    ],
+    slots: [{ name: 'Galderma' }],
   },
   {
     id: 'minor',
     label: 'Minor sponsors',
     variant: 'minor',
     slots: [
-      { src: '/images/sponsors/minor-1.png', label: 'Minor sponsor logo' },
-      { src: '/images/sponsors/minor-2.png', label: 'Minor sponsor logo' },
-      { src: '/images/sponsors/minor-3.png', label: 'Minor sponsor logo' },
+      { name: 'Zuellig Pharma' },
+      { name: 'Glenmark Philippines Inc.' },
+      { name: 'AbbVie Philippines Inc.' },
+      { name: 'Pfizer Inc.' },
+      { name: 'Hyphens' },
+      { name: 'Sun Pharma' },
+      { name: 'Johnson & Johnson' },
+      { name: 'Dmark' },
     ],
   },
 ]
