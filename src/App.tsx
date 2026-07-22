@@ -410,10 +410,18 @@ function HomePage() {
         </p>
 
         <div className="team-buttons">
-          <a className="btn btn-yellow btn-team" href="#team">
+          <a
+            className="btn btn-yellow btn-team"
+            href="/files/immunodermatology-subspecialty-core-group.jpg"
+            download="Immunodermatology-Subspecialty-Core-Group.jpg"
+          >
             Immunodermatology Subspecialty Core Group
           </a>
-          <a className="btn btn-yellow btn-team" href="#team">
+          <a
+            className="btn btn-yellow btn-team"
+            href="/files/immunodermatology-2026-directory.jpg"
+            download="Immunodermatology-2026-Directory.jpg"
+          >
             Immunodermatology 2026 Directory
           </a>
         </div>
