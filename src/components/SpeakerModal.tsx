@@ -85,7 +85,6 @@ export function SpeakerModal({ speaker, sessionTitle, onClose }: Props) {
 
           {hasAffiliations && (
             <div className="modal-credentials-panel">
-              <p className="modal-credentials-label">Credentials</p>
               <ul className="modal-affiliations">
                 {speaker.affiliations!.map((item) => (
                   <li key={item}>{item}</li>

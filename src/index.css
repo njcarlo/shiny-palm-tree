@@ -1813,15 +1813,6 @@ button {
   padding: 0.25rem 0 0;
 }
 
-.modal-credentials-label {
-  margin: 0 0 0.85rem;
-  font-size: var(--step--1);
-  font-weight: 600;
-  letter-spacing: var(--ls-caps);
-  text-transform: uppercase;
-  color: var(--accent-mint);
-}
-
 .modal-footer {
   margin-top: 1.5rem;
   text-align: center;
@@ -2218,12 +2209,6 @@ button {
     flex: 0 1 calc((100% - 1rem) / 2);
     width: calc((100% - 1rem) / 2);
     max-width: calc((100% - 1rem) / 2);
-  }
-
-  .highlights-grid {
-    grid-template-columns: 1fr;
-    max-width: 320px;
-    margin-inline: auto;
   }
 
   .event-info {
