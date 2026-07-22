@@ -6,6 +6,11 @@ export const EVENT_META = {
   name: 'Immunodermatology Masterclass 2026',
   tagline:
     'Precision immunology in dermatology — optimizing systemic treatments for better outcomes.',
+  dateDisplay: 'September 2, 2026',
+  dateMonth: 'September',
+  dateDay: '2',
+  dateYear: '2026',
+  timeDisplay: '1 PM – 8 PM',
   datetime: 'September 2, 2026 · 1:00 PM – 8:00 PM',
   venue: 'Seda Hotel, Bonifacio Global City',
   locationLine: 'Taguig City, Philippines',
