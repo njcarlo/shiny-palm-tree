@@ -82,9 +82,7 @@
   --measure:        62ch;  /* standard paragraphs (spec: 45–75ch) */
   --measure-wide:   72ch;  /* body/section text */
 
-  /* Speaker card standard width + row gap (for centered leftover rows) */
-  --speaker-card-w: 180px;
-  --speaker-gap: 1.5rem;
+  --speaker-gap: clamp(1.25rem, 4vw, 2rem);
 }
 
 *,
@@ -998,29 +996,38 @@ button {
   margin-bottom: 2.75rem;
 }
 
-/* Flex wrap so leftover 1–2 cards sit centered under the row above
-   (not left-aligned like a table grid). */
-.speakers--grid,
+/* Original full-width card size (3-up), with leftover rows centered */
 .speakers--spk,
-.speakers--mods {
+.speakers--grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: stretch;
-  gap: var(--speaker-gap, clamp(1rem, 3vw, 1.5rem));
+  gap: var(--speaker-gap);
   margin-bottom: 0;
-  margin-inline: auto;
-  max-width: calc(
-    3 * var(--speaker-card-w) + 2 * var(--speaker-gap, 1.5rem)
-  );
 }
 
-.speakers--grid .speaker-card,
 .speakers--spk .speaker-card,
+.speakers--grid .speaker-card {
+  /* Match original 3-column 1fr width; 1–2 leftovers stay centered */
+  flex: 0 1 calc((100% - 2 * var(--speaker-gap)) / 3);
+  width: calc((100% - 2 * var(--speaker-gap)) / 3);
+  max-width: calc((100% - 2 * var(--speaker-gap)) / 3);
+  min-width: min(100%, 140px);
+}
+
+.speakers--mods {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--speaker-gap);
+  margin-bottom: 0;
+}
+
 .speakers--mods .speaker-card {
-  flex: 0 0 var(--speaker-card-w);
-  width: var(--speaker-card-w);
-  max-width: var(--speaker-card-w);
+  flex: 0 1 200px;
+  width: 200px;
+  max-width: 200px;
 }
 
 .featured-speaker {
@@ -2016,20 +2023,35 @@ button {
 
   .speakers,
   .speakers--grid,
-  .speakers--spk,
-  .speakers--mods {
+  .speakers--spk {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 1.25rem;
-    max-width: var(--speaker-card-w);
+    max-width: 300px;
     margin-inline: auto;
   }
 
   .speakers--grid .speaker-card,
-  .speakers--spk .speaker-card,
+  .speakers--spk .speaker-card {
+    flex: 0 1 100%;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .speakers--mods {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    max-width: none;
+  }
+
   .speakers--mods .speaker-card {
-    flex: 0 0 var(--speaker-card-w);
+    flex: 0 1 calc((100% - 1rem) / 2);
+    width: calc((100% - 1rem) / 2);
+    max-width: calc((100% - 1rem) / 2);
   }
 
   .highlights-grid {
@@ -2184,10 +2206,11 @@ button {
 }
 
 @media (min-width: 721px) and (max-width: 900px) {
-  .speakers--grid,
-  .speakers--spk,
-  .speakers--mods {
-    max-width: calc(2 * var(--speaker-card-w) + var(--speaker-gap, 1.25rem));
+  .speakers--grid .speaker-card,
+  .speakers--spk .speaker-card {
+    flex: 0 1 calc((100% - var(--speaker-gap)) / 2);
+    width: calc((100% - var(--speaker-gap)) / 2);
+    max-width: calc((100% - var(--speaker-gap)) / 2);
   }
 
   .highlights-grid {
