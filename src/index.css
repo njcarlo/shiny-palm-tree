@@ -598,6 +598,25 @@ button {
   gap: 1.75rem;
 }
 
+.hero-register {
+  max-width: var(--max);
+  width: 100%;
+  margin: 0 auto;
+  padding: 2.5rem var(--space) 3.5rem;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  scroll-margin-top: calc(var(--header-h) + 0.75rem);
+}
+
+.hero-register .section-title {
+  margin-inline: auto;
+}
+
+.hero-register .section-lede {
+  margin-inline: auto;
+}
+
 .hero-details-parallax {
   display: flex;
   flex-direction: column;
@@ -2459,7 +2478,7 @@ button {
 }
 
 @media (max-width: 720px) {
-  #register.section {
+  #register {
     padding-left: var(--space);
     padding-right: var(--space);
   }
