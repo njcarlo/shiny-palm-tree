@@ -1963,15 +1963,6 @@ button {
     padding: 0.35rem 0;
   }
 
-  .register-qr {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .register-qr__details {
-    text-align: center;
-  }
-
   .hero {
     padding-bottom: 1.5rem;
   }
@@ -2382,6 +2373,86 @@ button {
   font-weight: 700;
   color: var(--white);
   letter-spacing: 0.04em;
+  word-break: break-all;
+}
+
+@media (max-width: 720px) {
+  #register.section {
+    padding-left: var(--space);
+    padding-right: var(--space);
+  }
+
+  #register .section-lede {
+    max-width: none;
+    padding: 0 0.15rem;
+    font-size: 0.92rem;
+  }
+
+  .register-qr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1.25rem;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .register-qr__frame {
+    width: 100%;
+    max-width: 240px;
+  }
+
+  .register-qr__image {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+  }
+
+  .register-qr__details {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .register-qr__note {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .register-rates {
+    width: 100%;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .register-rates li {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.25rem;
+    padding: 0.75rem 0.85rem;
+    font-size: 0.82rem;
+    line-height: 1.4;
+  }
+
+  .register-rates li span {
+    text-wrap: balance;
+  }
+
+  .register-rates strong {
+    font-size: 1rem;
+  }
+
+  .register-bank {
+    width: 100%;
+    font-size: 0.85rem;
+    word-break: break-word;
+  }
+
+  .register-bank__number {
+    font-size: 0.95rem;
+  }
 }
 
 /* ——— Signup page ——— */
