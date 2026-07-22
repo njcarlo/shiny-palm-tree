@@ -1707,29 +1707,20 @@ button {
 }
 
 .team-logo-ring:hover {
-  transform: scale(1.08) rotate(3deg);
+  transform: scale(1.06);
 }
 
-.team-logo-ring--center {
-  padding: 6px;
-  transform: scale(1.12);
-}
-
-.team-logo-ring--center:hover {
-  transform: scale(1.18);
-}
-
-.team-logo-ring img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid var(--green-footer);
-}
-
-.team-logo-ring--center img {
+.team-logo-ring img,
+.team-logo-ring .image-slot,
+.team-logo-ring .team-logo {
   width: 92px;
   height: 92px;
+  min-height: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: none;
+  background: #fff;
 }
 
 /* ——— CTA banner ——— */
@@ -2247,14 +2238,6 @@ button {
 
   .team-logos {
     gap: 1.25rem;
-  }
-
-  .team-logo-ring--center {
-    transform: none;
-  }
-
-  .team-logo-ring--center:hover {
-    transform: scale(1.05);
   }
 
   .section-eyebrow--left,

@@ -471,7 +471,7 @@ function HomePage() {
         </div>
 
         <div className="team-logos">
-          <div className="team-logo-ring team-logo-ring--center">
+          <div className="team-logo-ring">
             <ImageSlot
               src={ASSETS.logoPds}
               alt="PDS logo"
