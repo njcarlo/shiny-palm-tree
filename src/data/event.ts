@@ -21,7 +21,7 @@ export const EVENT_META = {
   earlyRegistration: 'Early registration is until August 15, 2026 or until all slots are filled.',
   rates: [
     { label: 'Early — PDS Members', value: '₱1,000' },
-    { label: 'Early — PDS Residents', value: '₱800' },
+    { label: 'Early — PDS Residents', value: '₱500' },
     { label: 'Regular (Aug 16–26) — PDS Members', value: '₱1,200' },
     { label: 'Regular (Aug 16–26) — PDS Residents', value: '₱1,000' },
   ],
