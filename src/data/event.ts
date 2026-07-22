@@ -48,10 +48,9 @@ export const PROGRAM_INVITE = {
   body:
     'You are invited to join the Philippine Dermatological Society Immunodermatology Subspecialty Core Group for a full afternoon of plenary sessions, faculty discussions, and closing remarks.',
   downloadLabel: 'Download program',
-  downloadHint: 'PDF copy coming soon',
-  /** Drop the final PDF at this public path when ready. */
-  downloadHref: '/files/immunodermatology-masterclass-2026-program.pdf',
-  downloadReady: false,
+  downloadHint: 'PNG schedule image',
+  downloadHref: '/files/immunodermatology-masterclass-2026-program.png',
+  downloadReady: true,
 } as const
 
 export type SponsorTier = {

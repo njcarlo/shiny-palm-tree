@@ -311,10 +311,10 @@ function HomePage() {
               <a
                 className="btn btn-yellow btn-shine"
                 href={PROGRAM_INVITE.downloadHref}
-                download
+                download="immunodermatology-masterclass-2026-program.png"
               >
                 <span>{PROGRAM_INVITE.downloadLabel}</span>
-                <small>Save a PDF copy</small>
+                <small>{PROGRAM_INVITE.downloadHint}</small>
               </a>
             ) : (
               <span className="btn btn-yellow btn-shine" aria-disabled="true">
