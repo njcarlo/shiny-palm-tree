@@ -2,17 +2,17 @@
 
 Drop sponsor logo files here to replace placeholders on the site:
 
-| Tier | Company | Expected file |
-|------|---------|---------------|
-| Platinum | Novartis Healthcare Philippines Inc. | `novartis.png` |
-| Bronze | Galderma | `galderma.png` |
-| Minor | Zuellig Pharma | `zuellig-pharma.png` |
-| Minor | Glenmark Philippines Inc. | `glenmark.png` |
-| Minor | AbbVie Philippines Inc. | `abbvie.png` |
-| Minor | Pfizer Inc. | `pfizer.png` |
-| Minor | Hyphens | `hyphens.png` |
-| Minor | Sun Pharma | `sun-pharma.png` |
-| Minor | Johnson & Johnson | `johnson-and-johnson.png` |
-| Minor | Dmark | `dmark.png` |
+| Tier | Company | File | Status |
+|------|---------|------|--------|
+| Platinum | Novartis Healthcare Philippines Inc. | `novartis.webp` | Ready |
+| Bronze | Galderma | `galderma.png` | Placeholder |
+| Minor | Zuellig Pharma | `zuellig-pharma.png` | Placeholder |
+| Minor | Glenmark Philippines Inc. | `glenmark.png` | Placeholder |
+| Minor | AbbVie Philippines Inc. | `abbvie.webp` | Ready |
+| Minor | Pfizer Inc. | `pfizer.png` | Placeholder |
+| Minor | Hyphens | `hyphens.webp` | Ready |
+| Minor | Sun Pharma | `sun-pharma.webp` | Ready |
+| Minor | Johnson & Johnson | `johnson-and-johnson.png` | Placeholder |
+| Minor | Dmark | `dmark.png` | Placeholder |
 
-Until files exist, the site shows logo placeholders with the company name below.
+Source folder: https://drive.google.com/drive/folders/1jjfYDFxdt9YloSQK6LneYJgUDFXAC9uP

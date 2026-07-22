@@ -80,7 +80,7 @@ export const SPONSOR_TIERS: SponsorTier[] = [
     slots: [
       {
         name: 'Novartis Healthcare Philippines Inc.',
-        src: '/images/sponsors/novartis.png',
+        src: '/images/sponsors/novartis.webp',
       },
     ],
   },
@@ -102,10 +102,10 @@ export const SPONSOR_TIERS: SponsorTier[] = [
     slots: [
       { name: 'Zuellig Pharma', src: '/images/sponsors/zuellig-pharma.png' },
       { name: 'Glenmark Philippines Inc.', src: '/images/sponsors/glenmark.png' },
-      { name: 'AbbVie Philippines Inc.', src: '/images/sponsors/abbvie.png' },
+      { name: 'AbbVie Philippines Inc.', src: '/images/sponsors/abbvie.webp' },
       { name: 'Pfizer Inc.', src: '/images/sponsors/pfizer.png' },
-      { name: 'Hyphens', src: '/images/sponsors/hyphens.png' },
-      { name: 'Sun Pharma', src: '/images/sponsors/sun-pharma.png' },
+      { name: 'Hyphens', src: '/images/sponsors/hyphens.webp' },
+      { name: 'Sun Pharma', src: '/images/sponsors/sun-pharma.webp' },
       { name: 'Johnson & Johnson', src: '/images/sponsors/johnson-and-johnson.png' },
       { name: 'Dmark', src: '/images/sponsors/dmark.png' },
     ],

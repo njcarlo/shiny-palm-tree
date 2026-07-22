@@ -249,81 +249,6 @@ function HomePage() {
         </section>
       </section>
 
-      {/* Symposium */}
-      <section className="section symposium reveal" id="symposium">
-        <div className="symposium-grid">
-          <div className="symposium-visual">
-            <div className="symposium-frame">
-              <ImageSlot
-                src={SYMPOSIUM.flyerSrc}
-                alt={`${SYMPOSIUM.label} flyer`}
-                placeholderLabel="Symposium flyer"
-                className="symposium-flyer"
-                variant="flyer"
-              />
-            </div>
-          </div>
-          <div className="symposium-copy">
-            <p className="section-eyebrow section-eyebrow--left">{SYMPOSIUM.label}</p>
-            <h2 className="symposium-title">{SYMPOSIUM.title}</h2>
-            <ul className="panelists">
-              {SYMPOSIUM.panelists.map((p) => (
-                <li key={p.name + p.role}>
-                  <em>{p.role}</em>
-                  {p.name}
-                </li>
-              ))}
-            </ul>
-            <p className="symposium-closing">{SYMPOSIUM.closing}</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Sponsors */}
-      <section className="section sponsors reveal" id="sponsors">
-        <p className="section-eyebrow">Partners</p>
-        <h2 className="section-title">
-          <span>Thank you to our sponsors</span>
-        </h2>
-
-        {SPONSOR_TIERS.map((tier) => (
-          <div
-            className={`sponsor-tier${tier.variant === 'platinum' ? ' sponsor-tier--platinum' : ''}`}
-            key={tier.id}
-          >
-            <p className="tier-label">{tier.label}</p>
-            <div
-              className={
-                tier.variant === 'platinum' || tier.slots.length === 1
-                  ? 'tier-row'
-                  : tier.variant === 'silver'
-                    ? 'tier-row tier-row-2'
-                    : tier.variant === 'bronze'
-                      ? 'tier-row tier-row-3'
-                      : 'tier-grid-minor'
-              }
-            >
-              {tier.slots.map((slot) => (
-                <div
-                  className={`tier-card${tier.variant === 'platinum' ? ' tier-card-wide tier-card--glow' : ''}${tier.variant === 'minor' ? ' tier-card-minor' : ''}`}
-                  key={slot.src}
-                >
-                  <div className="tier-card__logo">
-                    <ImageSlot
-                      src={slot.src}
-                      alt={`${slot.name} logo`}
-                      placeholderLabel="Logo"
-                      variant="sponsor"
-                    />
-                  </div>
-                  <p className="sponsor-name">{slot.name}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </section>
-
       {/* 6. Event program — invite, opening, sessions, closing */}
       <div id="program">
         <section className="section reveal" id="program-invite" aria-label="Program invite">
@@ -445,6 +370,81 @@ function HomePage() {
           </div>
         </section>
       </div>
+
+      {/* Symposium */}
+      <section className="section symposium reveal" id="symposium">
+        <div className="symposium-grid">
+          <div className="symposium-visual">
+            <div className="symposium-frame">
+              <ImageSlot
+                src={SYMPOSIUM.flyerSrc}
+                alt={`${SYMPOSIUM.label} flyer`}
+                placeholderLabel="Symposium flyer"
+                className="symposium-flyer"
+                variant="flyer"
+              />
+            </div>
+          </div>
+          <div className="symposium-copy">
+            <p className="section-eyebrow section-eyebrow--left">{SYMPOSIUM.label}</p>
+            <h2 className="symposium-title">{SYMPOSIUM.title}</h2>
+            <ul className="panelists">
+              {SYMPOSIUM.panelists.map((p) => (
+                <li key={p.name + p.role}>
+                  <em>{p.role}</em>
+                  {p.name}
+                </li>
+              ))}
+            </ul>
+            <p className="symposium-closing">{SYMPOSIUM.closing}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Sponsors */}
+      <section className="section sponsors reveal" id="sponsors">
+        <p className="section-eyebrow">Partners</p>
+        <h2 className="section-title">
+          <span>Thank you to our sponsors</span>
+        </h2>
+
+        {SPONSOR_TIERS.map((tier) => (
+          <div
+            className={`sponsor-tier${tier.variant === 'platinum' ? ' sponsor-tier--platinum' : ''}`}
+            key={tier.id}
+          >
+            <p className="tier-label">{tier.label}</p>
+            <div
+              className={
+                tier.variant === 'platinum' || tier.slots.length === 1
+                  ? 'tier-row'
+                  : tier.variant === 'silver'
+                    ? 'tier-row tier-row-2'
+                    : tier.variant === 'bronze'
+                      ? 'tier-row tier-row-3'
+                      : 'tier-grid-minor'
+              }
+            >
+              {tier.slots.map((slot) => (
+                <div
+                  className={`tier-card${tier.variant === 'platinum' ? ' tier-card-wide tier-card--glow' : ''}${tier.variant === 'minor' ? ' tier-card-minor' : ''}`}
+                  key={slot.src}
+                >
+                  <div className="tier-card__logo">
+                    <ImageSlot
+                      src={slot.src}
+                      alt={`${slot.name} logo`}
+                      placeholderLabel="Logo"
+                      variant="sponsor"
+                    />
+                  </div>
+                  <p className="sponsor-name">{slot.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </section>
 
       {/* 7. Meet the team */}
       <section className="section team reveal" id="team">
