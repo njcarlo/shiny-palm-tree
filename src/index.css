@@ -110,11 +110,6 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
-  transition: padding-bottom 0.4s var(--ease);
-}
-
-body.has-sticky-bar {
-  padding-bottom: 5.5rem;
 }
 
 img {
@@ -1815,76 +1810,6 @@ button {
   color: var(--yellow-soft);
 }
 
-/* ——— Sticky register bar ——— */
-.sticky-register {
-  position: fixed;
-  inset: auto 0 0;
-  z-index: 200;
-  padding: 0.75rem var(--space) calc(0.75rem + env(safe-area-inset-bottom));
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgba(6, 26, 20, 0.92) 30%,
-    rgba(6, 26, 20, 0.98) 100%
-  );
-  backdrop-filter: blur(16px);
-  border-top: 1px solid rgba(61, 184, 255, 0.25);
-  transform: translateY(110%);
-  opacity: 0;
-  transition:
-    transform 0.45s var(--ease),
-    opacity 0.45s var(--ease);
-  pointer-events: none;
-}
-
-.sticky-register--visible {
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.sticky-register__inner {
-  max-width: var(--max);
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.sticky-register__copy {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  min-width: 0;
-}
-
-.sticky-register__copy strong {
-  font-size: 0.88rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--yellow);
-}
-
-.sticky-register__copy span {
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.7);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.sticky-register__btn {
-  flex-shrink: 0;
-  padding: 0.75rem 1.25rem;
-  font-size: 0.75rem;
-}
-
-.sticky-register__btn span {
-  display: none;
-}
-
 /* ——— Modal ——— */
 .modal-backdrop {
   position: fixed;
@@ -2332,24 +2257,6 @@ button {
     transform: scale(1.05);
   }
 
-  .sticky-register {
-    padding: 0.65rem var(--space) calc(0.65rem + env(safe-area-inset-bottom));
-  }
-
-  .sticky-register__inner {
-    gap: 0.75rem;
-  }
-
-  .sticky-register__btn {
-    padding: 0.7rem 1rem;
-    font-size: 0.7rem;
-    min-width: 7.5rem;
-  }
-
-  body.has-sticky-bar {
-    padding-bottom: 5rem;
-  }
-
   .section-eyebrow--left,
   .section-body--left {
     text-align: center;
@@ -2376,20 +2283,6 @@ button {
     text-align: center;
     white-space: normal;
     line-height: 1.45;
-  }
-
-  .sticky-register__inner {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .sticky-register__btn {
-    width: 100%;
-    max-width: none;
-  }
-
-  .sticky-register__copy span {
-    white-space: normal;
   }
 }
 
@@ -2448,10 +2341,6 @@ button {
   .tier-card:hover,
   .team-logo-ring:hover {
     transform: none;
-  }
-
-  .sticky-register {
-    transition: none;
   }
 }
 

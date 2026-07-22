@@ -38,34 +38,6 @@ function useReveal(): RefObject<HTMLDivElement | null> {
   return ref
 }
 
-function useStickyRegister() {
-  const [visible, setVisible] = useState(false)
-
-  useEffect(() => {
-    const registerEl = document.getElementById('register')
-
-    const update = () => {
-      const registerBottom = registerEl?.getBoundingClientRect().bottom ?? 0
-      setVisible(registerBottom < 0)
-    }
-
-    update()
-    window.addEventListener('scroll', update, { passive: true })
-    window.addEventListener('resize', update)
-    return () => {
-      window.removeEventListener('scroll', update)
-      window.removeEventListener('resize', update)
-    }
-  }, [])
-
-  useEffect(() => {
-    document.body.classList.toggle('has-sticky-bar', visible)
-    return () => document.body.classList.remove('has-sticky-bar')
-  }, [visible])
-
-  return visible
-}
-
 type ModalState = { speaker: Speaker; sessionTitle?: string } | null
 
 export default function App() {
@@ -117,7 +89,6 @@ function SpeakerCard({
 
 function HomePage() {
   const pageRef = useReveal()
-  const stickyVisible = useStickyRegister()
   const [modal, setModal] = useState<ModalState>(null)
 
   const openModal = useCallback((speaker: Speaker, sessionTitle?: string) => {
@@ -528,21 +499,6 @@ function HomePage() {
           Group
         </p>
       </footer>
-
-      <aside
-        className={`sticky-register${stickyVisible ? ' sticky-register--visible' : ''}`}
-        aria-label="Quick registration"
-      >
-        <div className="sticky-register__inner">
-          <div className="sticky-register__copy">
-            <strong>Masterclass 2026</strong>
-            <span>Scan QR to register &amp; pay</span>
-          </div>
-          <a href="#register" className="btn btn-yellow btn-shine sticky-register__btn">
-            View QR
-          </a>
-        </div>
-      </aside>
 
       {modal && (
         <SpeakerModal
