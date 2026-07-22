@@ -449,28 +449,38 @@ button {
 .org-band__identity {
   text-align: center;
   min-width: 0;
-  color: #fff;
-}
-
-.org-band__kicker,
-.org-band__sub {
-  margin: 0;
-  font-size: clamp(0.58rem, 1.45vw, 0.78rem);
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  line-height: 1.35;
-  color: rgba(255, 255, 255, 0.92);
+  color: rgba(236, 248, 255, 0.95);
 }
 
 .org-band__title {
-  margin: 0.2rem 0;
-  font-size: clamp(1.05rem, 3.8vw, 1.95rem);
+  margin: 0;
+  font-size: clamp(0.95rem, 3.4vw, 1.55rem);
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  line-height: 1.05;
-  color: #fff;
+  line-height: 1.15;
+  color: rgba(240, 250, 255, 0.98);
+  text-wrap: balance;
+}
+
+.org-band__mid {
+  margin: 0.28rem 0;
+  font-size: clamp(0.58rem, 1.55vw, 0.78rem);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.35;
+  color: rgba(220, 240, 255, 0.82);
+}
+
+.org-band__org {
+  margin: 0;
+  font-size: clamp(0.68rem, 1.9vw, 0.95rem);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.25;
+  color: rgba(240, 250, 255, 0.96);
   text-wrap: balance;
 }
 
@@ -2087,15 +2097,20 @@ button {
     height: 54px;
   }
 
-  .org-band__kicker,
-  .org-band__sub {
-    font-size: 0.5rem;
-    letter-spacing: 0.08em;
+  .org-band__title {
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
   }
 
-  .org-band__title {
-    font-size: 0.88rem;
-    letter-spacing: 0.04em;
+  .org-band__mid {
+    font-size: 0.48rem;
+    letter-spacing: 0.08em;
+    margin: 0.2rem 0;
+  }
+
+  .org-band__org {
+    font-size: 0.58rem;
+    letter-spacing: 0.06em;
   }
 
   .hero-titleblock {

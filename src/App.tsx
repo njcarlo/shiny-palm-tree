@@ -172,9 +172,9 @@ function HomePage() {
               variant="logo"
             />
             <div className="org-band__identity">
-              <p className="org-band__kicker">Philippine Dermatological Society</p>
               <p className="org-band__title">Immunodermatology</p>
-              <p className="org-band__sub">Subspecialty Core Group</p>
+              <p className="org-band__mid">Subspecialty Core Group of the</p>
+              <p className="org-band__org">Philippine Dermatological Society</p>
             </div>
             <ImageSlot
               src={ASSETS.logoCombined}
