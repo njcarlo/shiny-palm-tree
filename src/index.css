@@ -73,8 +73,9 @@
   --measure:        62ch;  /* standard paragraphs (spec: 45–75ch) */
   --measure-wide:   72ch;  /* body/section text */
 
-  /* Speaker card standard width */
+  /* Speaker card standard width + row gap (for centered leftover rows) */
   --speaker-card-w: 180px;
+  --speaker-gap: 1.5rem;
 }
 
 *,
@@ -988,27 +989,29 @@ button {
   margin-bottom: 2.75rem;
 }
 
+/* Flex wrap so leftover 1–2 cards sit centered under the row above
+   (not left-aligned like a table grid). */
 .speakers--grid,
-.speakers--spk {
-  grid-template-columns: repeat(3, var(--speaker-card-w));
-  justify-content: center;
-  justify-items: stretch;
-  margin-bottom: 0;
-  gap: clamp(1rem, 3vw, 1.5rem);
-}
-
+.speakers--spk,
 .speakers--mods {
-  grid-template-columns: repeat(2, var(--speaker-card-w));
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  align-items: stretch;
+  gap: var(--speaker-gap, clamp(1rem, 3vw, 1.5rem));
   margin-bottom: 0;
+  margin-inline: auto;
+  max-width: calc(
+    3 * var(--speaker-card-w) + 2 * var(--speaker-gap, 1.5rem)
+  );
 }
 
 .speakers--grid .speaker-card,
 .speakers--spk .speaker-card,
 .speakers--mods .speaker-card {
-  width: 100%;
+  flex: 0 0 var(--speaker-card-w);
+  width: var(--speaker-card-w);
   max-width: var(--speaker-card-w);
-  min-height: 100%;
 }
 
 .featured-speaker {
@@ -2005,12 +2008,18 @@ button {
   .speakers--grid,
   .speakers--spk,
   .speakers--mods {
-    grid-template-columns: var(--speaker-card-w);
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    justify-items: stretch;
     gap: 1.25rem;
-    max-width: none;
+    max-width: var(--speaker-card-w);
     margin-inline: auto;
+  }
+
+  .speakers--grid .speaker-card,
+  .speakers--spk .speaker-card,
+  .speakers--mods .speaker-card {
+    flex: 0 0 var(--speaker-card-w);
   }
 
   .highlights-grid {
@@ -2168,8 +2177,7 @@ button {
   .speakers--grid,
   .speakers--spk,
   .speakers--mods {
-    grid-template-columns: repeat(2, var(--speaker-card-w));
-    justify-content: center;
+    max-width: calc(2 * var(--speaker-card-w) + var(--speaker-gap, 1.25rem));
   }
 
   .highlights-grid {
