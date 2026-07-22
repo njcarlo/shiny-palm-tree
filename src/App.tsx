@@ -165,6 +165,16 @@ function HomePage() {
 
       {/* 1. Hero — event header */}
       <section className="hero" id="top">
+        <div className="hero-logos reveal">
+          <ImageSlot
+            src={ASSETS.logoCombined}
+            alt="PDS Immunodermatology"
+            placeholderLabel="PDS + Immunoderm logo"
+            className="hero-logo hero-logo--main"
+            variant="logo"
+          />
+        </div>
+
         <div className="hero-poster-wrap reveal">
           <ImageSlot
             src={ASSETS.hero}

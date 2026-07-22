@@ -380,16 +380,16 @@ button {
 }
 
 .hero-logos {
-  padding: 1.25rem var(--space) 0;
+  padding: 0.75rem var(--space) 0.35rem;
 }
 
 .hero-logo {
-  width: min(100%, 120px);
+  width: min(100%, 88px);
   margin: 0 auto;
 }
 
 .hero-logo--main {
-  width: min(100%, 132px);
+  width: min(100%, 96px);
 }
 
 .hero-particles {
@@ -1899,11 +1899,12 @@ button {
   }
 
   .hero-logos {
-    padding-top: 0.75rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.25rem;
   }
 
   .hero-logo--main {
-    width: min(100%, 96px);
+    width: min(100%, 72px);
   }
 
   .site-header {
