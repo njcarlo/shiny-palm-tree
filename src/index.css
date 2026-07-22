@@ -259,13 +259,13 @@ button {
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  max-width: min(42vw, 260px);
+  max-width: min(48vw, 320px);
 }
 
 .site-header__logo {
   width: 100%;
   height: auto;
-  max-height: 40px;
+  max-height: 48px;
   object-fit: contain;
   object-position: left center;
 }
@@ -2017,11 +2017,11 @@ button {
   }
 
   .site-header__brand {
-    max-width: min(38vw, 150px);
+    max-width: min(42vw, 180px);
   }
 
   .site-header__logo {
-    max-height: 28px;
+    max-height: 34px;
   }
 
   .site-header__nav {
