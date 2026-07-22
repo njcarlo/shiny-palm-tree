@@ -1,9 +1,9 @@
 # Speaker photos
 
-Add one image per speaker using the filename slug:
+Photos extracted from the Immunodermatology Masterclass 2026 slide deck.
 
-| File | Speaker |
-|------|---------|
+| File | Person |
+|------|--------|
 | `amanda-esquivel.jpg` | Dr. Amanda Christine Esquivel |
 | `kenneth-samala.jpg` | Dr. Kenneth Samala |
 | `danielle-senador.jpg` | Dr. Danielle Marlo Senador |
@@ -17,7 +17,16 @@ Add one image per speaker using the filename slug:
 | `clarisse-mendoza.jpg` | Dr. Clarisse Mendoza |
 | `marie-nicolas.jpg` | Dr. Marie Eleanore Nicolas |
 | `bryan-guevara.jpg` | Dr. Bryan Guevara |
+| `rogelio-balagat.jpg` | Dr. Rogelio Balagat (moderator) |
+| `johanna-lazo-dizon.jpg` | Dr. Johanna Pauline Lazo-Dizon (moderator) |
+| `kristine-legaspi.jpg` | Dr. Kristine Natalee Legaspi (moderator) |
 
-Recommended: square JPG or PNG, at least 400×400px.
+**Not in the slide deck (placeholders remain):**
 
-Until a file is added, the site shows a styled placeholder with the expected path.
+| File | Person |
+|------|--------|
+| `melanie-doria-ruiz.jpg` | Dr. Melanie Doria-Ruiz |
+| `cybill-uy.jpg` | Dr. Cybill Uy |
+| `josef-concha.jpg` | Dr. Josef Symon Concha |
+
+Recommended: square JPG, at least 400×400px.

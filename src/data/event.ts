@@ -1,0 +1,129 @@
+/** Event-page layout content aligned to the reference site structure.
+ *  Placeholder fields can be replaced as details are confirmed.
+ */
+
+export const EVENT_META = {
+  name: 'Immunodermatology Masterclass 2026',
+  tagline:
+    'Precision immunology in dermatology — optimizing systemic treatments for better outcomes.',
+  datetime: 'September 2, 2026 · 1:00 PM – 8:00 PM',
+  venue: 'Seda Hotel, Bonifacio Global City',
+  locationLine: 'Taguig City, Philippines',
+  credits: ['PRC CPD Units — TBA', 'PDS CME Units — TBA'],
+  ctaNote: 'Secure your spot now. Limited seats available!',
+  earlyRegistration: 'Early registration is until August 15, 2026 or until all slots are filled.',
+  rates: [
+    { label: 'Early — PDS Members', value: '₱1,000' },
+    { label: 'Early — PDS Residents', value: '₱800' },
+    { label: 'Regular (Aug 16–26) — PDS Members', value: '₱1,200' },
+    { label: 'Regular (Aug 16–26) — PDS Residents', value: '₱1,000' },
+  ],
+  paymentNote:
+    'Scan the QR code to register and pay. PDS Members and Residents need to upload proof of payment for a successful registration.',
+  bank: {
+    name: 'BDO',
+    accountName: 'Philippine Dermatological Society, Inc.',
+    accountNumber: '007640004168',
+  },
+} as const
+
+export type Highlight = {
+  id: string
+  title: string
+  subtitle: string
+  speakerName?: string
+  speakerSlug?: string
+}
+
+/** Featured program highlights (maps to Wix "HIGHLIGHTS"). */
+export const HIGHLIGHTS: Highlight[] = [
+  {
+    id: 'h1',
+    title: 'Mitigating Complications in Immunodermatology',
+    subtitle: 'Session 1',
+    speakerName: 'Featured faculty',
+    speakerSlug: 'amanda-esquivel',
+  },
+  {
+    id: 'h2',
+    title: 'New Insights in Urticaria',
+    subtitle: 'Session 2',
+    speakerName: 'Featured faculty',
+    speakerSlug: 'katrina-canlas-estrella',
+  },
+  {
+    id: 'h3',
+    title: 'Blistering Across Generations',
+    subtitle: 'Session 3',
+    speakerName: 'Featured faculty',
+    speakerSlug: 'jasmin-jamora',
+  },
+]
+
+export const ABSTRACTS_CTA = {
+  eyebrow: 'Call for abstracts',
+  title: 'Share your research with the community',
+  body: 'Join us in advancing immunodermatology. Share your research, clinical insights, or innovative approaches. Abstract details coming soon.',
+  deadline: 'Deadline — TBA',
+  status: 'Submissions opening soon',
+} as const
+
+export const SYMPOSIUM = {
+  eyebrow: 'Industry symposium',
+  badge: 'Lunch symposium',
+  title: 'Symposium title to be announced',
+  body: 'A sponsored lunch symposium will be featured during the masterclass. Speakers, topic, and schedule will appear here once confirmed.',
+  panelists: [
+    { name: 'Speaker placeholder', role: 'Faculty — TBA' },
+    { name: 'Speaker placeholder', role: 'Faculty — TBA' },
+    { name: 'Guest placeholder', role: 'Special guest — TBA' },
+  ],
+  closing: 'See you there!',
+  flyerSrc: '/images/assets/symposium-flyer-placeholder.webp',
+} as const
+
+export type SponsorTier = {
+  id: string
+  label: string
+  variant: 'platinum' | 'silver' | 'bronze' | 'minor'
+  slots: { src: string; label: string }[]
+}
+
+/** Sponsor tiers with logo placeholders (maps to Wix sponsor block). */
+export const SPONSOR_TIERS: SponsorTier[] = [
+  {
+    id: 'platinum',
+    label: 'Platinum sponsor',
+    variant: 'platinum',
+    slots: [{ src: '/images/sponsors/platinum-1.png', label: 'Platinum sponsor logo' }],
+  },
+  {
+    id: 'silver',
+    label: 'Silver sponsors',
+    variant: 'silver',
+    slots: [
+      { src: '/images/sponsors/silver-1.png', label: 'Silver sponsor logo' },
+      { src: '/images/sponsors/silver-2.png', label: 'Silver sponsor logo' },
+    ],
+  },
+  {
+    id: 'bronze',
+    label: 'Bronze sponsors',
+    variant: 'bronze',
+    slots: [
+      { src: '/images/sponsors/bronze-1.png', label: 'Bronze sponsor logo' },
+      { src: '/images/sponsors/bronze-2.png', label: 'Bronze sponsor logo' },
+      { src: '/images/sponsors/bronze-3.png', label: 'Bronze sponsor logo' },
+    ],
+  },
+  {
+    id: 'minor',
+    label: 'Minor sponsors',
+    variant: 'minor',
+    slots: [
+      { src: '/images/sponsors/minor-1.png', label: 'Minor sponsor logo' },
+      { src: '/images/sponsors/minor-2.png', label: 'Minor sponsor logo' },
+      { src: '/images/sponsors/minor-3.png', label: 'Minor sponsor logo' },
+    ],
+  },
+]
