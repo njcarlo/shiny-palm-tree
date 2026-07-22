@@ -306,18 +306,17 @@ function HomePage() {
               {tier.slots.map((slot) => (
                 <div
                   className={`tier-card${tier.variant === 'platinum' ? ' tier-card-wide tier-card--glow' : ''}${tier.variant === 'minor' ? ' tier-card-minor' : ''}`}
-                  key={slot.name}
+                  key={slot.src}
                 >
-                  {slot.src ? (
+                  <div className="tier-card__logo">
                     <ImageSlot
                       src={slot.src}
-                      alt={slot.name}
-                      placeholderLabel={slot.name}
+                      alt={`${slot.name} logo`}
+                      placeholderLabel="Logo"
                       variant="sponsor"
                     />
-                  ) : (
-                    <p className="sponsor-name">{slot.name}</p>
-                  )}
+                  </div>
+                  <p className="sponsor-name">{slot.name}</p>
                 </div>
               ))}
             </div>

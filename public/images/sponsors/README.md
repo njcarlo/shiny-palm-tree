@@ -2,11 +2,17 @@
 
 Drop sponsor logo files here to replace placeholders on the site:
 
-| Tier | Expected files |
-|------|----------------|
-| Platinum | `platinum-1.png` |
-| Silver | `silver-1.png`, `silver-2.png` |
-| Bronze | `bronze-1.png`, `bronze-2.png`, `bronze-3.png` |
-| Minor | `minor-1.png`, `minor-2.png`, `minor-3.png` |
+| Tier | Company | Expected file |
+|------|---------|---------------|
+| Platinum | Novartis Healthcare Philippines Inc. | `novartis.png` |
+| Bronze | Galderma | `galderma.png` |
+| Minor | Zuellig Pharma | `zuellig-pharma.png` |
+| Minor | Glenmark Philippines Inc. | `glenmark.png` |
+| Minor | AbbVie Philippines Inc. | `abbvie.png` |
+| Minor | Pfizer Inc. | `pfizer.png` |
+| Minor | Hyphens | `hyphens.png` |
+| Minor | Sun Pharma | `sun-pharma.png` |
+| Minor | Johnson & Johnson | `johnson-and-johnson.png` |
+| Minor | Dmark | `dmark.png` |
 
-Until files exist, the site shows styled placeholders.
+Until files exist, the site shows logo placeholders with the company name below.

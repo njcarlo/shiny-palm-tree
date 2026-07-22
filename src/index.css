@@ -1617,10 +1617,12 @@ button {
 .tier-card {
   background: linear-gradient(180deg, #ffffff 0%, #f5f5f0 100%);
   border-radius: 12px;
-  padding: 1.25rem 1.5rem;
+  padding: 1.25rem 1.25rem 1rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 0.85rem;
   min-height: 96px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   transition:
@@ -1637,6 +1639,29 @@ button {
   box-shadow:
     0 16px 40px rgba(0, 0, 0, 0.22),
     0 0 32px rgba(61, 184, 255, 0.2);
+}
+
+.tier-card__logo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tier-card__logo .image-slot,
+.tier-card__logo img {
+  width: 100%;
+  max-width: 220px;
+  min-height: 72px;
+  max-height: 88px;
+  object-fit: contain;
+}
+
+.tier-card-wide .tier-card__logo .image-slot,
+.tier-card-wide .tier-card__logo img {
+  max-width: 440px;
+  min-height: 96px;
+  max-height: 120px;
 }
 
 .tier-card img {
@@ -1671,8 +1696,16 @@ button {
 }
 
 .tier-card-minor {
-  min-height: 76px;
-  padding: 0.75rem;
+  min-height: 0;
+  padding: 0.85rem 0.75rem 0.7rem;
+  gap: 0.65rem;
+}
+
+.tier-card-minor .tier-card__logo .image-slot,
+.tier-card-minor .tier-card__logo img {
+  max-width: 100%;
+  min-height: 52px;
+  max-height: 64px;
 }
 
 .tier-card-minor img {
@@ -1683,7 +1716,7 @@ button {
 .sponsor-name {
   margin: 0;
   text-align: center;
-  font-size: clamp(0.78rem, 1.8vw, 0.95rem);
+  font-size: clamp(0.72rem, 1.6vw, 0.88rem);
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -1693,12 +1726,12 @@ button {
 }
 
 .tier-card-wide .sponsor-name {
-  font-size: clamp(1rem, 2.4vw, 1.35rem);
-  letter-spacing: 0.06em;
+  font-size: clamp(0.88rem, 2vw, 1.05rem);
+  letter-spacing: 0.05em;
 }
 
 .tier-card-minor .sponsor-name {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   letter-spacing: 0.03em;
 }
 
