@@ -403,7 +403,6 @@ function HomePage() {
 
       {/* Sponsors */}
       <section className="section sponsors reveal" id="sponsors">
-        <p className="section-eyebrow">Partners</p>
         <h2 className="section-title">
           <span>Thank you to our sponsors</span>
         </h2>
