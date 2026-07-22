@@ -48,12 +48,17 @@ export const PROGRAM_INVITE = {
 } as const
 
 export const SYMPOSIUM = {
-  title: 'Symposium title to be announced',
-  body: 'A sponsored sunset symposium will be featured during the masterclass. Speakers, topic, and schedule will appear here once confirmed.',
+  label: 'Sunset Symposium (NOVARTIS)',
+  title: 'The Fast & The Future: 10 Years of Excellence with Secukinumab',
   panelists: [
-    { name: 'Speaker placeholder', role: 'Faculty — TBA' },
-    { name: 'Speaker placeholder', role: 'Faculty — TBA' },
-    { name: 'Guest placeholder', role: 'Special guest — TBA' },
+    {
+      name: 'Maria Deanna S. Ramiscal, MD, FPDS',
+      role: 'Speaker',
+    },
+    {
+      name: 'Wilsie Salas-Walinsundin, MD, MSc, FPDS, FPDSP-PDS',
+      role: 'Moderator',
+    },
   ],
   closing: 'See you there!',
   flyerSrc: '/images/assets/symposium-flyer-placeholder.webp',

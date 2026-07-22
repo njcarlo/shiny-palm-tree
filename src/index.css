@@ -1575,11 +1575,13 @@ button {
 
 .panelists em {
   display: block;
-  font-size: 0.78rem;
-  font-weight: 500;
+  font-size: 0.72rem;
+  font-weight: 700;
   font-style: normal;
-  color: rgba(255, 255, 255, 0.6);
-  margin-top: 0.15rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-mint);
+  margin-bottom: 0.2rem;
 }
 
 .symposium-closing {

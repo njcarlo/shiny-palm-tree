@@ -256,7 +256,7 @@ function HomePage() {
             <div className="symposium-frame">
               <ImageSlot
                 src={SYMPOSIUM.flyerSrc}
-                alt="Symposium flyer placeholder"
+                alt={`${SYMPOSIUM.label} flyer`}
                 placeholderLabel="Symposium flyer"
                 className="symposium-flyer"
                 variant="flyer"
@@ -264,13 +264,13 @@ function HomePage() {
             </div>
           </div>
           <div className="symposium-copy">
+            <p className="section-eyebrow section-eyebrow--left">{SYMPOSIUM.label}</p>
             <h2 className="symposium-title">{SYMPOSIUM.title}</h2>
-            <p className="section-body section-body--left">{SYMPOSIUM.body}</p>
             <ul className="panelists">
               {SYMPOSIUM.panelists.map((p) => (
                 <li key={p.name + p.role}>
-                  {p.name}
                   <em>{p.role}</em>
+                  {p.name}
                 </li>
               ))}
             </ul>
