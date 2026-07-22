@@ -1167,6 +1167,16 @@ button {
   position: relative;
 }
 
+.program-invite__meta {
+  position: relative;
+  z-index: 1;
+  margin: 0 auto 1.75rem;
+  max-width: var(--measure-narrow);
+  font-size: var(--step-0);
+  line-height: var(--lh-body);
+  color: var(--accent-mint);
+}
+
 /* ——— Session groups ——— */
 .session-group {
   margin-top: 2.75rem;
