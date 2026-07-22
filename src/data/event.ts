@@ -22,10 +22,10 @@ export const EVENT_META = {
   ctaNote: 'Secure your spot now. Limited seats available!',
   earlyRegistration: 'Early registration is until August 15, 2026 or until all slots are filled.',
   rates: [
-    { label: 'Early — PDS Members', value: '₱1,000' },
-    { label: 'Early — PDS Residents', value: '₱500' },
+    { label: 'Early (until Aug 15) — PDS Members', value: '₱1,000' },
+    { label: 'Early (until Aug 15) — PDS Residents', value: '₱500' },
     { label: 'Regular (Aug 16–26) — PDS Members', value: '₱1,200' },
-    { label: 'Regular (Aug 16–26) — PDS Residents', value: '₱1,000' },
+    { label: 'Regular (Aug 16–26) — PDS Residents', value: '₱600' },
   ],
   paymentNote:
     'Scan the QR code to register and pay. PDS Members and Residents need to upload proof of payment for a successful registration.',
