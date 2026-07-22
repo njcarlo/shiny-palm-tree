@@ -2,6 +2,8 @@
  *  Placeholder fields can be replaced as details are confirmed.
  */
 
+import { PROGRAM_DOWNLOAD_HREF } from './images'
+
 export const EVENT_META = {
   name: 'Immunodermatology Masterclass 2026',
   tagline:
@@ -21,7 +23,7 @@ export const EVENT_META = {
   earlyRegistration: 'Early registration is until August 15, 2026 or until all slots are filled.',
   rates: [
     { label: 'Early — PDS Members', value: '₱1,000' },
-    { label: 'Early — PDS Residents', value: '₱800' },
+    { label: 'Early — PDS Residents', value: '₱500' },
     { label: 'Regular (Aug 16–26) — PDS Members', value: '₱1,200' },
     { label: 'Regular (Aug 16–26) — PDS Residents', value: '₱1,000' },
   ],
@@ -34,45 +36,15 @@ export const EVENT_META = {
   },
 } as const
 
-export type Highlight = {
-  id: string
-  title: string
-  subtitle: string
-  speakerName?: string
-  speakerSlug?: string
-}
-
-/** Featured program highlights (maps to Wix "HIGHLIGHTS"). */
-export const HIGHLIGHTS: Highlight[] = [
-  {
-    id: 'h1',
-    title: 'Mitigating Complications in Immunodermatology',
-    subtitle: 'Session 1',
-    speakerName: 'Featured faculty',
-    speakerSlug: 'amanda-esquivel',
-  },
-  {
-    id: 'h2',
-    title: 'New Insights in Urticaria',
-    subtitle: 'Session 2',
-    speakerName: 'Featured faculty',
-    speakerSlug: 'katrina-canlas-estrella',
-  },
-  {
-    id: 'h3',
-    title: 'Blistering Across Generations',
-    subtitle: 'Session 3',
-    speakerName: 'Featured faculty',
-    speakerSlug: 'jasmin-jamora',
-  },
-]
-
-export const ABSTRACTS_CTA = {
-  eyebrow: 'Call for abstracts',
-  title: 'Share your research with the community',
-  body: 'Join us in advancing immunodermatology. Share your research, clinical insights, or innovative approaches. Abstract details coming soon.',
-  deadline: 'Deadline — TBA',
-  status: 'Submissions opening soon',
+export const PROGRAM_INVITE = {
+  eyebrow: 'Program invite',
+  title: 'Immunodermatology Masterclass 2026',
+  body:
+    'You are invited to join the Philippine Dermatological Society Immunodermatology Subspecialty Core Group for a full afternoon of plenary sessions, faculty discussions, and closing remarks.',
+  downloadLabel: 'Download program',
+  downloadHint: 'PNG schedule image',
+  downloadHref: PROGRAM_DOWNLOAD_HREF,
+  downloadReady: true,
 } as const
 
 export type SponsorTier = {

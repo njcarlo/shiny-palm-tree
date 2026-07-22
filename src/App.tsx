@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useRef, useState, type RefObject } from 'react'
 import { Navigate, Routes, Route } from 'react-router-dom'
 import { ImageSlot } from './components/ImageSlot'
+import { DocumentModal, type TeamDocument } from './components/DocumentModal'
 import { SpeakerModal } from './components/SpeakerModal'
 import {
-  ABSTRACTS_CTA,
   EVENT_META,
-  HIGHLIGHTS,
+  PROGRAM_INVITE,
   SPONSOR_TIERS,
 } from './data/event'
-import { ASSETS, speakerImage } from './data/images'
+import { ASSETS, TEAM_DOC_ASSETS, speakerImage } from './data/images'
 import { CLOSING_SPEAKER, OPENING_SPEAKER, PROGRAM, type Speaker } from './data/program'
 
 function useReveal(): RefObject<HTMLDivElement | null> {
@@ -39,6 +39,17 @@ function useReveal(): RefObject<HTMLDivElement | null> {
 }
 
 type ModalState = { speaker: Speaker; sessionTitle?: string } | null
+
+const TEAM_DOCS = {
+  coreGroup: {
+    title: 'Immunodermatology Subspecialty Core Group',
+    src: TEAM_DOC_ASSETS.coreGroup,
+  },
+  directory: {
+    title: 'Immunodermatology 2026 Directory',
+    src: TEAM_DOC_ASSETS.directory,
+  },
+} as const satisfies Record<string, TeamDocument>
 
 export default function App() {
   return (
@@ -90,12 +101,14 @@ function SpeakerCard({
 function HomePage() {
   const pageRef = useReveal()
   const [modal, setModal] = useState<ModalState>(null)
+  const [docModal, setDocModal] = useState<TeamDocument | null>(null)
 
   const openModal = useCallback((speaker: Speaker, sessionTitle?: string) => {
     setModal({ speaker, sessionTitle })
   }, [])
 
   const closeModal = useCallback(() => setModal(null), [])
+  const closeDocModal = useCallback(() => setDocModal(null), [])
 
   return (
     <div className="page" ref={pageRef}>
@@ -122,10 +135,9 @@ function HomePage() {
           />
         </a>
         <nav className="site-header__nav" aria-label="Primary">
-          <a href="#highlights">Highlights</a>
+          <a href="#register">Register</a>
           <a href="#program">Program</a>
           <a href="#sponsors">Sponsors</a>
-          <a href="#register">Register</a>
           <a href="#team">Team</a>
         </nav>
       </header>
@@ -190,7 +202,6 @@ function HomePage() {
               <span className="pill pill--outline" key={credit}>{credit}</span>
             ))}
           </div>
-          <p className="hero-cta-note">{EVENT_META.ctaNote}</p>
         </div>
 
         <section className="hero-register reveal reveal-delay-2" id="register" aria-label="Registration">
@@ -231,66 +242,12 @@ function HomePage() {
               </div>
             </div>
           </div>
+
+          <p className="hero-cta-note hero-cta-note--register">{EVENT_META.ctaNote}</p>
         </section>
       </section>
 
-      {/* 2. Highlights */}
-      <section className="section reveal" id="highlights">
-        <p className="section-eyebrow">Highlights</p>
-        <h2 className="section-title">
-          <span>Program highlights</span>
-        </h2>
-        <p className="section-lede">
-          Plenary sessions spanning complications, urticaria, and blistering disease.
-        </p>
-
-        <div className="highlights-grid">
-          {HIGHLIGHTS.map((item) => (
-            <article className="highlight-card" key={item.id}>
-              {item.speakerSlug && (
-                <div className="speaker-ring highlight-card__photo">
-                  <ImageSlot
-                    src={speakerImage(item.speakerSlug)}
-                    alt={item.speakerName ?? item.title}
-                    placeholderLabel={item.speakerName ?? item.title}
-                    className="speaker-photo"
-                    variant="speaker"
-                  />
-                </div>
-              )}
-              <p className="highlight-card__subtitle">{item.subtitle}</p>
-              <h3 className="highlight-card__title">{item.title}</h3>
-              {item.speakerName && (
-                <p className="highlight-card__speaker">{item.speakerName}</p>
-              )}
-            </article>
-          ))}
-        </div>
-
-        <a className="btn btn-yellow btn-shine" href="#program">
-          <span>View event program</span>
-          <small>Opening, sessions & closing</small>
-        </a>
-      </section>
-
-      {/* 3. Abstracts CTA (placeholder) */}
-      <section className="section reveal" id="abstracts">
-        <div className="feature-card">
-          <div className="feature-card__glow" aria-hidden="true" />
-          <p className="section-eyebrow">{ABSTRACTS_CTA.eyebrow}</p>
-          <h2 className="section-title">
-            <span>{ABSTRACTS_CTA.title}</span>
-          </h2>
-          <p className="section-body">{ABSTRACTS_CTA.body}</p>
-          <p className="deadline">{ABSTRACTS_CTA.deadline}</p>
-          <span className="btn btn-yellow btn-shine" aria-disabled="true">
-            <span>{ABSTRACTS_CTA.status}</span>
-            <small>Placeholder — details coming soon</small>
-          </span>
-        </div>
-      </section>
-
-      {/* 4. Sponsors (placeholders) */}
+      {/* Sponsors (placeholders) */}
       <section className="section sponsors reveal" id="sponsors">
         <p className="section-eyebrow">Partners</p>
         <h2 className="section-title">
@@ -332,8 +289,38 @@ function HomePage() {
         ))}
       </section>
 
-      {/* 6. Event program — opening, sessions, closing */}
+      {/* 6. Event program — invite, opening, sessions, closing */}
       <div id="program">
+        <section className="section reveal" id="program-invite" aria-label="Program invite">
+          <div className="feature-card program-invite">
+            <div className="feature-card__glow" aria-hidden="true" />
+            <h2 className="section-title">
+              <span>{PROGRAM_INVITE.title}</span>
+            </h2>
+            <p className="section-body">{PROGRAM_INVITE.body}</p>
+            <p className="program-invite__meta">
+              {EVENT_META.datetime}
+              <br />
+              {EVENT_META.venue} · {EVENT_META.locationLine}
+            </p>
+            {PROGRAM_INVITE.downloadReady ? (
+              <a
+                className="btn btn-yellow btn-shine"
+                href={PROGRAM_INVITE.downloadHref}
+                download="immunodermatology-masterclass-2026-program.png"
+              >
+                <span>{PROGRAM_INVITE.downloadLabel}</span>
+                <small>{PROGRAM_INVITE.downloadHint}</small>
+              </a>
+            ) : (
+              <span className="btn btn-yellow btn-shine" aria-disabled="true">
+                <span>{PROGRAM_INVITE.downloadLabel}</span>
+                <small>{PROGRAM_INVITE.downloadHint}</small>
+              </span>
+            )}
+          </div>
+        </section>
+
         <section className="section panel reveal" id="opening">
           <div className="section-eyebrow">Opening remarks</div>
           <div
@@ -437,12 +424,20 @@ function HomePage() {
         </p>
 
         <div className="team-buttons">
-          <a className="btn btn-yellow btn-team" href="#team">
-            Photodermatology Subspecialty Core Group
-          </a>
-          <a className="btn btn-yellow btn-team" href="#team">
+          <button
+            type="button"
+            className="btn btn-yellow btn-team"
+            onClick={() => setDocModal(TEAM_DOCS.coreGroup)}
+          >
             Immunodermatology Subspecialty Core Group
-          </a>
+          </button>
+          <button
+            type="button"
+            className="btn btn-yellow btn-team"
+            onClick={() => setDocModal(TEAM_DOCS.directory)}
+          >
+            Immunodermatology 2026 Directory
+          </button>
         </div>
 
         <div className="team-logos">
@@ -480,6 +475,13 @@ function HomePage() {
           speaker={modal.speaker}
           sessionTitle={modal.sessionTitle}
           onClose={closeModal}
+        />
+      )}
+
+      {docModal && (
+        <DocumentModal
+          doc={docModal}
+          onClose={closeDocModal}
         />
       )}
     </div>
