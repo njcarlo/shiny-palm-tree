@@ -151,7 +151,7 @@ button {
   position: fixed;
   inset: 0;
   background: url('/images/assets/pattern_immunoderm.webp') center / 420px repeat;
-  opacity: 0.06;
+  opacity: 0.22;
   pointer-events: none;
   z-index: 0;
 }
