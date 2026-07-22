@@ -395,12 +395,6 @@ function HomePage() {
           outcomes.
         </p>
 
-        <div className="team-buttons">
-          <a className="btn btn-yellow btn-team" href="#team">
-            Immunodermatology Subspecialty Core Group
-          </a>
-        </div>
-
         <div className="team-logos">
           <div className="team-logo-ring">
             <ImageSlot
