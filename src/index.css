@@ -2371,7 +2371,8 @@ button {
   border: 1px solid rgba(61, 184, 255, 0.25);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
   display: block;
-  background: #c8f5d8;
+  background: #002046;
+  object-fit: contain;
 }
 
 .register-qr__caption {
