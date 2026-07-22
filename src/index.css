@@ -1433,23 +1433,33 @@ button {
   pointer-events: none;
 }
 
-.team-body {
-  margin-bottom: 2.75rem;
-  line-height: 1.8;
-}
-
 .team-buttons {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 2.75rem;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
 }
 
 .btn-team {
   width: min(100%, 540px);
   font-size: clamp(0.7rem, 2vw, 0.82rem);
   padding: 1.1rem 1.5rem;
+  text-align: center;
+}
+
+.team-body {
+  margin-bottom: 2.75rem;
+  line-height: 1.8;
+  position: relative;
+  z-index: 1;
+}
+
+.team .section-title {
+  position: relative;
+  z-index: 1;
 }
 
 .team-logos {
@@ -1459,6 +1469,8 @@ button {
   gap: 2.5rem;
   flex-wrap: wrap;
   margin-top: 1rem;
+  position: relative;
+  z-index: 1;
 }
 
 .team-logo-ring {

@@ -469,14 +469,24 @@ function HomePage() {
 
       {/* 9. Meet the team */}
       <section className="section team reveal" id="team">
-        <div className="section-eyebrow">Meet the team</div>
         <h2 className="section-title">
-          <span>Immunodermatology Subspecialty Core Group</span>
+          <span>Meet the team</span>
         </h2>
-        <p className="section-lede">
+        <p className="section-body team-body">
           Our team of dedicated dermatologists brings together expertise,
-          compassion, and a commitment to excellence in skin health.
+          compassion, and a commitment to excellence in skin health. United by
+          a shared mission to advance dermatologic science and improve patient
+          outcomes.
         </p>
+
+        <div className="team-buttons">
+          <a className="btn btn-yellow btn-team" href="#team">
+            Photodermatology Subspecialty Core Group
+          </a>
+          <a className="btn btn-yellow btn-team" href="#team">
+            Immunodermatology Subspecialty Core Group
+          </a>
+        </div>
 
         <div className="team-logos">
           <div className="team-logo-ring team-logo-ring--center">
