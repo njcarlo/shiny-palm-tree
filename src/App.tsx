@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type RefObject } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Navigate, Routes, Route } from 'react-router-dom'
 import { ImageSlot } from './components/ImageSlot'
 import { SpeakerModal } from './components/SpeakerModal'
 import {
@@ -11,7 +11,6 @@ import {
 } from './data/event'
 import { ASSETS, speakerImage } from './data/images'
 import { CLOSING_SPEAKER, OPENING_SPEAKER, PROGRAM, type Speaker } from './data/program'
-import SignupPage from './pages/SignupPage'
 
 function useReveal(): RefObject<HTMLDivElement | null> {
   const ref = useRef<HTMLDivElement | null>(null)
@@ -45,12 +44,10 @@ function useStickyRegister() {
 
   useEffect(() => {
     const registerEl = document.getElementById('register')
-    const heroEl = document.getElementById('top')
 
     const update = () => {
-      const heroBottom = heroEl?.getBoundingClientRect().bottom ?? 0
-      const registerTop = registerEl?.getBoundingClientRect().top ?? Infinity
-      setVisible(heroBottom < 0 && registerTop > window.innerHeight * 0.5)
+      const registerBottom = registerEl?.getBoundingClientRect().bottom ?? 0
+      setVisible(registerBottom < 0)
     }
 
     update()
@@ -76,7 +73,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/signup" element={<SignupPage />} />
+      <Route path="/signup" element={<Navigate to="/#register" replace />} />
     </Routes>
   )
 }
@@ -223,12 +220,48 @@ function HomePage() {
           </div>
 
           <p className="hero-cta-note">{EVENT_META.ctaNote}</p>
-
-          <a className="btn btn-yellow btn-shine" href="#register">
-            <span>Register now</span>
-            <small>Scan QR to sign up &amp; pay</small>
-          </a>
         </div>
+
+        <section className="hero-register reveal reveal-delay-2" id="register" aria-label="Registration">
+          <div className="section-eyebrow">Registration</div>
+          <h2 className="section-title">
+            <span>Register now</span>
+          </h2>
+          <p className="section-lede">{EVENT_META.earlyRegistration}</p>
+
+          <div className="register-qr">
+            <figure className="register-qr__frame">
+              <ImageSlot
+                src={ASSETS.registerQr}
+                alt="Scan to register and pay for Immunodermatology Masterclass 2026"
+                placeholderLabel="Registration QR code"
+                className="register-qr__image"
+                variant="card"
+              />
+              <figcaption className="register-qr__caption">
+                Scan to register &amp; pay
+              </figcaption>
+            </figure>
+
+            <div className="register-qr__details">
+              <p className="register-qr__note">{EVENT_META.paymentNote}</p>
+              <ul className="register-rates">
+                {EVENT_META.rates.map((rate) => (
+                  <li key={rate.label}>
+                    <span>{rate.label}</span>
+                    <strong>{rate.value}</strong>
+                  </li>
+                ))}
+              </ul>
+              <div className="register-bank">
+                <p className="register-bank__label">Bank transfer</p>
+                <p>{EVENT_META.bank.name}</p>
+                <p>{EVENT_META.bank.accountName}</p>
+                <p className="register-bank__number">{EVENT_META.bank.accountNumber}</p>
+              </div>
+            </div>
+          </div>
+        </section>
       </section>
 
       {/* 2. Highlights */}
@@ -477,49 +510,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* 8. Registration — QR signup & payment */}
-      <section className="section reveal" id="register">
-        <div className="section-eyebrow">Registration</div>
-        <h2 className="section-title">
-          <span>Register now</span>
-        </h2>
-        <p className="section-lede">{EVENT_META.earlyRegistration}</p>
-
-        <div className="register-qr">
-          <figure className="register-qr__frame">
-            <ImageSlot
-              src={ASSETS.registerQr}
-              alt="Scan to register and pay for Immunodermatology Masterclass 2026"
-              placeholderLabel="Registration QR code"
-              className="register-qr__image"
-              variant="card"
-            />
-            <figcaption className="register-qr__caption">
-              Scan to sign up &amp; pay
-            </figcaption>
-          </figure>
-
-          <div className="register-qr__details">
-            <p className="register-qr__note">{EVENT_META.paymentNote}</p>
-            <ul className="register-rates">
-              {EVENT_META.rates.map((rate) => (
-                <li key={rate.label}>
-                  <span>{rate.label}</span>
-                  <strong>{rate.value}</strong>
-                </li>
-              ))}
-            </ul>
-            <div className="register-bank">
-              <p className="register-bank__label">Bank transfer</p>
-              <p>{EVENT_META.bank.name}</p>
-              <p>{EVENT_META.bank.accountName}</p>
-              <p className="register-bank__number">{EVENT_META.bank.accountNumber}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 9. Meet the team */}
+      {/* 8. Meet the team */}
       <section className="section team reveal" id="team">
         <h2 className="section-title">
           <span>Meet the team</span>
