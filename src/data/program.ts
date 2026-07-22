@@ -1,7 +1,7 @@
 export type Speaker = {
   slug: string
   name: string
-  /** Post-nominals / credential letters, e.g. MD, FPDS */
+  /** Post-nominals / credential letters, e.g. FPDS (MD omitted — names already use Dr.) */
   credentials?: string
   /** Specialty or short title line from the slides */
   designation?: string
@@ -24,7 +24,7 @@ const SPEAKERS: Record<string, Speaker> = {
   'amanda-esquivel': {
     slug: 'amanda-esquivel',
     name: 'Dr. Amanda Christine Esquivel',
-    credentials: 'MD, FPDS',
+    credentials: 'FPDS',
     designation: 'Dermatology — Immunodermatology and Supportive Oncodermatology',
     affiliations: [
       'Clinical Associate Professor, Department of Dermatology, University of the Philippines College of Medicine — Philippine General Hospital',
@@ -37,7 +37,7 @@ const SPEAKERS: Record<string, Speaker> = {
   'kenneth-samala': {
     slug: 'kenneth-samala',
     name: 'Dr. Kenneth Samala',
-    credentials: 'MD, MCMMO, FPCP, FPSMO, FPSO',
+    credentials: 'MCMMO, FPCP, FPSMO, FPSO',
     designation: 'Internal Medicine — Medical Oncology — Thoracic Oncology',
     affiliations: [
       'Internal Medicine Residency, University of the Philippines–Philippine General Hospital',
@@ -56,7 +56,7 @@ const SPEAKERS: Record<string, Speaker> = {
   'danielle-senador': {
     slug: 'danielle-senador',
     name: 'Dr. Danielle Marlo Senador',
-    credentials: 'MD, DPDS',
+    credentials: 'DPDS',
     designation: 'Dermatology — Immunodermatology, Molecular Dermatology',
     affiliations: [
       'Active Consultant, Research Institute for Tropical Medicine',
@@ -67,7 +67,7 @@ const SPEAKERS: Record<string, Speaker> = {
   'janus-ong': {
     slug: 'janus-ong',
     name: 'Dr. Janus Ong',
-    credentials: 'MD, MPH',
+    credentials: 'MPH',
     designation: 'Gastroenterology & Hepatology',
     affiliations: [
       'Assistant to the Vice Chancellor for Research, University of the Philippines Manila',
@@ -88,7 +88,7 @@ const SPEAKERS: Record<string, Speaker> = {
   'jamaine-cruz-regalado': {
     slug: 'jamaine-cruz-regalado',
     name: 'Dr. Jamaine Cruz-Regalado',
-    credentials: 'MD, FPDS',
+    credentials: 'FPDS',
     designation: 'Dermatology — Immunodermatology',
     affiliations: [
       'Active Consultant and Training Committee Member, St. Luke’s Medical Center',
@@ -101,7 +101,7 @@ const SPEAKERS: Record<string, Speaker> = {
   'arthur-roman': {
     slug: 'arthur-roman',
     name: 'Dr. Arthur Dessi Roman',
-    credentials: 'MD, MTM, FPCP, FPSMID',
+    credentials: 'MTM, FPCP, FPSMID',
     designation: 'Internist, Infectious Diseases and Tropical Medicine Specialist',
     affiliations: [
       'Head and Medical Specialist IV, Medical Department, Research Institute for Tropical Medicine',
@@ -115,7 +115,7 @@ const SPEAKERS: Record<string, Speaker> = {
   'jayv-barit': {
     slug: 'jayv-barit',
     name: 'Dr. Jayv James Barit',
-    credentials: 'MD, FPDS, FAADV, DDSP',
+    credentials: 'FPDS, FAADV, DDSP',
     designation: 'Dermatology — Immunodermatology, Dermatopathology',
     affiliations: [
       'Attending Physician, Department of Dermatology, University of the Philippines — Philippine General Hospital',
@@ -135,7 +135,7 @@ const SPEAKERS: Record<string, Speaker> = {
   'jasmin-jamora': {
     slug: 'jasmin-jamora',
     name: 'Dr. Maria Jasmin Jamora',
-    credentials: 'MD, FPDS, FDSP-PDS',
+    credentials: 'FPDS, FDSP-PDS',
     designation: 'Dermatology — Dermatopathology, Immunodermatology, Integrative Dermatology',
     affiliations: [
       'President, Philippine Dermatological Society',
@@ -148,7 +148,7 @@ const SPEAKERS: Record<string, Speaker> = {
   'clarisse-mendoza': {
     slug: 'clarisse-mendoza',
     name: 'Dr. Clarisse Mendoza',
-    credentials: 'MD, FPDS, FPACS',
+    credentials: 'FPDS, FPACS',
     designation: 'Dermatology — Immunodermatology',
     affiliations: [
       'Residency Training Officer and Immunodermatology Unit Head, Research Institute for Tropical Medicine',
@@ -162,7 +162,7 @@ const SPEAKERS: Record<string, Speaker> = {
   'marie-nicolas': {
     slug: 'marie-nicolas',
     name: 'Dr. Marie Eleanore Nicolas',
-    credentials: 'MD, FPDS, FPDSP',
+    credentials: 'FPDS, FPDSP',
     designation: 'Dermatology — Pediatric Dermatology & Immunodermatology',
     affiliations: [
       'Active Consultant, Asian Hospital & Medical Center',
