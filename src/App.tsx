@@ -2,6 +2,13 @@ import { useCallback, useEffect, useRef, useState, type RefObject } from 'react'
 import { Link, Routes, Route } from 'react-router-dom'
 import { ImageSlot } from './components/ImageSlot'
 import { SpeakerModal } from './components/SpeakerModal'
+import {
+  ABSTRACTS_CTA,
+  EVENT_META,
+  HIGHLIGHTS,
+  SPONSOR_TIERS,
+  SYMPOSIUM,
+} from './data/event'
 import { ASSETS, speakerImage } from './data/images'
 import { CLOSING_SPEAKER, OPENING_SPEAKER, PROGRAM, type Speaker } from './data/program'
 import SignupPage from './pages/SignupPage'
@@ -136,6 +143,7 @@ function HomePage() {
       <div className="page-pattern" aria-hidden="true" />
       <div className="page-grain"   aria-hidden="true" />
 
+      {/* 1. Hero — event header */}
       <section className="hero" id="top">
         <div className="hero-logos reveal">
           <ImageSlot
@@ -162,15 +170,25 @@ function HomePage() {
 
         <div className="hero-details reveal reveal-delay-1">
           <div className="hero-meta">
-            <span className="pill">Immunodermatology Masterclass 2026</span>
+            <span className="pill">{EVENT_META.name}</span>
             <span className="pill pill--outline">Program & registration</span>
           </div>
 
           <p className="hero-detail-line">
-            Philippine Dermatological Society
+            {EVENT_META.datetime}
             <br />
-            Immunodermatology Subspecialty Core Group
+            {EVENT_META.venue}
+            <br />
+            {EVENT_META.locationLine}
           </p>
+
+          <div className="hero-meta hero-meta--credits">
+            {EVENT_META.credits.map((credit) => (
+              <span className="pill pill--outline" key={credit}>{credit}</span>
+            ))}
+          </div>
+
+          <p className="hero-cta-note">{EVENT_META.ctaNote}</p>
 
           <a className="btn btn-yellow btn-shine" href="#register">
             <span>Register now</span>
@@ -179,95 +197,253 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="section panel reveal" id="opening">
-        <div className="section-eyebrow">Opening remarks</div>
-        <div
-          className="featured-speaker featured-speaker--clickable"
-          onClick={() => openModal(OPENING_SPEAKER)}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') openModal(OPENING_SPEAKER) }}
-          aria-label={`View ${OPENING_SPEAKER.name} details`}
-        >
-          <div className="speaker-ring">
-            <ImageSlot
-              src={speakerImage(OPENING_SPEAKER.slug)}
-              alt={OPENING_SPEAKER.name}
-              placeholderLabel={OPENING_SPEAKER.name}
-              className="speaker-photo"
-              variant="speaker"
-            />
-          </div>
-          <h2 className="featured-name">{OPENING_SPEAKER.name}</h2>
-          <p className="featured-role">{OPENING_SPEAKER.designation}</p>
+      {/* 2. Highlights */}
+      <section className="section reveal" id="highlights">
+        <p className="section-eyebrow">Highlights</p>
+        <h2 className="section-title">
+          <span>Program highlights</span>
+        </h2>
+        <p className="section-lede">
+          Plenary sessions spanning complications, urticaria, and blistering disease.
+        </p>
+
+        <div className="highlights-grid">
+          {HIGHLIGHTS.map((item) => (
+            <article className="highlight-card" key={item.id}>
+              {item.speakerSlug && (
+                <div className="speaker-ring highlight-card__photo">
+                  <ImageSlot
+                    src={speakerImage(item.speakerSlug)}
+                    alt={item.speakerName ?? item.title}
+                    placeholderLabel={item.speakerName ?? item.title}
+                    className="speaker-photo"
+                    variant="speaker"
+                  />
+                </div>
+              )}
+              <p className="highlight-card__subtitle">{item.subtitle}</p>
+              <h3 className="highlight-card__title">{item.title}</h3>
+              {item.speakerName && (
+                <p className="highlight-card__speaker">{item.speakerName}</p>
+              )}
+            </article>
+          ))}
+        </div>
+
+        <a className="btn btn-yellow btn-shine" href="#program">
+          <span>View event program</span>
+          <small>Opening, sessions & closing</small>
+        </a>
+      </section>
+
+      {/* 3. Abstracts CTA (placeholder) */}
+      <section className="section reveal" id="abstracts">
+        <div className="feature-card">
+          <div className="feature-card__glow" aria-hidden="true" />
+          <p className="section-eyebrow">{ABSTRACTS_CTA.eyebrow}</p>
+          <h2 className="section-title">
+            <span>{ABSTRACTS_CTA.title}</span>
+          </h2>
+          <p className="section-body">{ABSTRACTS_CTA.body}</p>
+          <p className="deadline">{ABSTRACTS_CTA.deadline}</p>
+          <span className="btn btn-yellow btn-shine" aria-disabled="true">
+            <span>{ABSTRACTS_CTA.status}</span>
+            <small>Placeholder — details coming soon</small>
+          </span>
         </div>
       </section>
 
-      {PROGRAM.map((session, index) => (
-        <section className="section reveal" id={session.id} key={session.id}>
-          <div className="session-card">
-            <p className="section-eyebrow">Session {index + 1}</p>
-            <h2 className="section-title section-title-long">
-              <span>{session.title}</span>
-            </h2>
-
-            <div className="session-group">
-              <p className="session-group-label">Speakers</p>
-              <div className="speakers speakers--spk">
-                {session.speakers.map((speaker) => (
-                  <SpeakerCard
-                    key={speaker.slug}
-                    speaker={speaker}
-                    sessionTitle={session.title}
-                    onSelect={openModal}
-                  />
-                ))}
-              </div>
+      {/* 4. Symposium (placeholder) */}
+      <section className="section symposium reveal" id="symposium">
+        <p className="section-eyebrow">{SYMPOSIUM.eyebrow}</p>
+        <div className="symposium-grid">
+          <div className="symposium-visual">
+            <div className="symposium-frame">
+              <ImageSlot
+                src={SYMPOSIUM.flyerSrc}
+                alt="Symposium flyer placeholder"
+                placeholderLabel="Symposium flyer"
+                className="symposium-flyer"
+                variant="flyer"
+              />
             </div>
+            <span className="symposium-badge">{SYMPOSIUM.badge}</span>
+          </div>
+          <div className="symposium-copy">
+            <h2 className="symposium-title">{SYMPOSIUM.title}</h2>
+            <p className="section-body section-body--left">{SYMPOSIUM.body}</p>
+            <ul className="panelists">
+              {SYMPOSIUM.panelists.map((p) => (
+                <li key={p.name + p.role}>
+                  {p.name}
+                  <em>{p.role}</em>
+                </li>
+              ))}
+            </ul>
+            <p className="symposium-closing">{SYMPOSIUM.closing}</p>
+          </div>
+        </div>
+      </section>
 
-            <div className="session-group">
-              <p className="session-group-label">Moderators</p>
-              <div className="speakers speakers--grid">
-                {session.moderators.map((mod) => (
-                  <SpeakerCard
-                    key={mod.slug}
-                    speaker={mod}
-                    sessionTitle={session.title}
-                    onSelect={openModal}
+      {/* 5. Sponsors (placeholders) */}
+      <section className="section sponsors reveal" id="sponsors">
+        <p className="section-eyebrow">Partners</p>
+        <h2 className="section-title">
+          <span>Thank you to our sponsors</span>
+        </h2>
+
+        {SPONSOR_TIERS.map((tier) => (
+          <div
+            className={`sponsor-tier${tier.variant === 'platinum' ? ' sponsor-tier--platinum' : ''}`}
+            key={tier.id}
+          >
+            <p className="tier-label">{tier.label}</p>
+            <div
+              className={
+                tier.variant === 'platinum'
+                  ? 'tier-row'
+                  : tier.variant === 'silver'
+                    ? 'tier-row tier-row-2'
+                    : tier.variant === 'bronze'
+                      ? 'tier-row tier-row-3'
+                      : 'tier-grid-minor'
+              }
+            >
+              {tier.slots.map((slot) => (
+                <div
+                  className={`tier-card${tier.variant === 'platinum' ? ' tier-card-wide tier-card--glow' : ''}${tier.variant === 'minor' ? ' tier-card-minor' : ''}`}
+                  key={slot.src}
+                >
+                  <ImageSlot
+                    src={slot.src}
+                    alt={slot.label}
+                    placeholderLabel={slot.label}
+                    variant="sponsor"
                   />
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
+          </div>
+        ))}
+      </section>
+
+      {/* 6. Event program — opening, sessions, closing */}
+      <div id="program">
+        <section className="section panel reveal" id="opening">
+          <div className="section-eyebrow">Opening remarks</div>
+          <div
+            className="featured-speaker featured-speaker--clickable"
+            onClick={() => openModal(OPENING_SPEAKER)}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') openModal(OPENING_SPEAKER) }}
+            aria-label={`View ${OPENING_SPEAKER.name} details`}
+          >
+            <div className="speaker-ring">
+              <ImageSlot
+                src={speakerImage(OPENING_SPEAKER.slug)}
+                alt={OPENING_SPEAKER.name}
+                placeholderLabel={OPENING_SPEAKER.name}
+                className="speaker-photo"
+                variant="speaker"
+              />
+            </div>
+            <h2 className="featured-name">{OPENING_SPEAKER.name}</h2>
+            <p className="featured-role">{OPENING_SPEAKER.designation}</p>
           </div>
         </section>
-      ))}
 
-      <section className="section reveal" id="closing">
-        <div className="section-eyebrow">Closing remarks</div>
-        <div
-          className="featured-speaker featured-speaker--clickable"
-          onClick={() => openModal(CLOSING_SPEAKER)}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') openModal(CLOSING_SPEAKER) }}
-          aria-label={`View ${CLOSING_SPEAKER.name} details`}
-        >
-          <div className="speaker-ring">
-            <ImageSlot
-              src={speakerImage(CLOSING_SPEAKER.slug)}
-              alt={CLOSING_SPEAKER.name}
-              placeholderLabel={CLOSING_SPEAKER.name}
-              className="speaker-photo"
-              variant="speaker"
-            />
+        {PROGRAM.map((session, index) => (
+          <section className="section reveal" id={session.id} key={session.id}>
+            <div className="session-card">
+              <p className="section-eyebrow">Session {index + 1}</p>
+              <h2 className="section-title section-title-long">
+                <span>{session.title}</span>
+              </h2>
+
+              <div className="session-group">
+                <p className="session-group-label">Speakers</p>
+                <div className="speakers speakers--spk">
+                  {session.speakers.map((speaker) => (
+                    <SpeakerCard
+                      key={speaker.slug}
+                      speaker={speaker}
+                      sessionTitle={session.title}
+                      onSelect={openModal}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div className="session-group">
+                <p className="session-group-label">Moderators</p>
+                <div className="speakers speakers--grid">
+                  {session.moderators.map((mod) => (
+                    <SpeakerCard
+                      key={mod.slug}
+                      speaker={mod}
+                      sessionTitle={session.title}
+                      onSelect={openModal}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        ))}
+
+        <section className="section reveal" id="closing">
+          <div className="section-eyebrow">Closing remarks</div>
+          <div
+            className="featured-speaker featured-speaker--clickable"
+            onClick={() => openModal(CLOSING_SPEAKER)}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') openModal(CLOSING_SPEAKER) }}
+            aria-label={`View ${CLOSING_SPEAKER.name} details`}
+          >
+            <div className="speaker-ring">
+              <ImageSlot
+                src={speakerImage(CLOSING_SPEAKER.slug)}
+                alt={CLOSING_SPEAKER.name}
+                placeholderLabel={CLOSING_SPEAKER.name}
+                className="speaker-photo"
+                variant="speaker"
+              />
+            </div>
+            <h2 className="featured-name">{CLOSING_SPEAKER.name}</h2>
+            {CLOSING_SPEAKER.role && (
+              <p className="featured-role">{CLOSING_SPEAKER.role}</p>
+            )}
           </div>
-          <h2 className="featured-name">{CLOSING_SPEAKER.name}</h2>
-          {CLOSING_SPEAKER.role && (
-            <p className="featured-role">{CLOSING_SPEAKER.role}</p>
-          )}
+        </section>
+      </div>
+
+      {/* 7. Event details */}
+      <section className="section panel reveal" id="details">
+        <p className="section-eyebrow">Event details</p>
+        <h2 className="section-title">
+          <span>{EVENT_META.name}</span>
+        </h2>
+        <p className="section-body">{EVENT_META.tagline}</p>
+
+        <div className="event-info">
+          <div className="event-info__block">
+            <p className="event-info__label">Time &amp; location</p>
+            <p className="event-info__value">{EVENT_META.datetime}</p>
+            <p className="event-info__value">{EVENT_META.venue}</p>
+            <p className="event-info__value">{EVENT_META.locationLine}</p>
+          </div>
+          <div className="event-info__block">
+            <p className="event-info__label">Share this event</p>
+            <p className="event-info__value event-info__value--muted">
+              Sharing links coming soon
+            </p>
+          </div>
         </div>
       </section>
 
+      {/* 8. Registration */}
       <section className="section reveal" id="register">
         <div className="section-eyebrow">Registration</div>
         <h2 className="section-title">
@@ -291,11 +467,16 @@ function HomePage() {
         </div>
       </section>
 
+      {/* 9. Meet the team */}
       <section className="section team reveal" id="team">
-        <div className="section-eyebrow">Organized by</div>
+        <div className="section-eyebrow">Meet the team</div>
         <h2 className="section-title">
           <span>Immunodermatology Subspecialty Core Group</span>
         </h2>
+        <p className="section-lede">
+          Our team of dedicated dermatologists brings together expertise,
+          compassion, and a commitment to excellence in skin health.
+        </p>
 
         <div className="team-logos">
           <div className="team-logo-ring team-logo-ring--center">
