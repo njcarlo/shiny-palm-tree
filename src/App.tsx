@@ -121,9 +121,9 @@ function HomePage() {
           />
         </a>
         <nav className="site-header__nav" aria-label="Primary">
+          <a href="#register">Register</a>
           <a href="#program">Program</a>
           <a href="#sponsors">Sponsors</a>
-          <a href="#register">Register</a>
           <a href="#team">Team</a>
         </nav>
       </header>
