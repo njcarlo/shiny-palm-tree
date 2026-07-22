@@ -42,6 +42,18 @@ export const ABSTRACTS_CTA = {
   status: 'Submissions opening soon',
 } as const
 
+export const PROGRAM_INVITE = {
+  eyebrow: 'Program invite',
+  title: 'Immunodermatology Masterclass 2026',
+  body:
+    'You are invited to join the Philippine Dermatological Society Immunodermatology Subspecialty Core Group for a full afternoon of plenary sessions, faculty discussions, and closing remarks.',
+  downloadLabel: 'Download program',
+  downloadHint: 'PDF copy coming soon',
+  /** Drop the final PDF at this public path when ready. */
+  downloadHref: '/files/immunodermatology-masterclass-2026-program.pdf',
+  downloadReady: false,
+} as const
+
 export type SponsorTier = {
   id: string
   label: string

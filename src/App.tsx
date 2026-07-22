@@ -5,6 +5,7 @@ import { SpeakerModal } from './components/SpeakerModal'
 import {
   ABSTRACTS_CTA,
   EVENT_META,
+  PROGRAM_INVITE,
   SPONSOR_TIERS,
 } from './data/event'
 import { ASSETS, speakerImage } from './data/images'
@@ -291,8 +292,39 @@ function HomePage() {
         ))}
       </section>
 
-      {/* 6. Event program — opening, sessions, closing */}
+      {/* 6. Event program — invite, opening, sessions, closing */}
       <div id="program">
+        <section className="section reveal" id="program-invite" aria-label="Program invite">
+          <div className="feature-card program-invite">
+            <div className="feature-card__glow" aria-hidden="true" />
+            <p className="section-eyebrow">{PROGRAM_INVITE.eyebrow}</p>
+            <h2 className="section-title">
+              <span>{PROGRAM_INVITE.title}</span>
+            </h2>
+            <p className="section-body">{PROGRAM_INVITE.body}</p>
+            <p className="program-invite__meta">
+              {EVENT_META.datetime}
+              <br />
+              {EVENT_META.venue} · {EVENT_META.locationLine}
+            </p>
+            {PROGRAM_INVITE.downloadReady ? (
+              <a
+                className="btn btn-yellow btn-shine"
+                href={PROGRAM_INVITE.downloadHref}
+                download
+              >
+                <span>{PROGRAM_INVITE.downloadLabel}</span>
+                <small>Save a PDF copy</small>
+              </a>
+            ) : (
+              <span className="btn btn-yellow btn-shine" aria-disabled="true">
+                <span>{PROGRAM_INVITE.downloadLabel}</span>
+                <small>{PROGRAM_INVITE.downloadHint}</small>
+              </span>
+            )}
+          </div>
+        </section>
+
         <section className="section panel reveal" id="opening">
           <div className="section-eyebrow">Opening remarks</div>
           <div
