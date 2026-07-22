@@ -273,6 +273,7 @@ export const PROGRAM: Session[] = [
 
 export const OPENING_SPEAKER: Speaker = speaker('jasmin-jamora', {
   role: 'Opening Remarks',
+  designation: 'President, Philippine Dermatological Society',
 })
 
 export const CLOSING_SPEAKER: Speaker = speaker('bryan-guevara', {
