@@ -606,6 +606,7 @@ button {
   position: relative;
   z-index: 1;
   text-align: center;
+  scroll-margin-top: calc(var(--header-h) + 0.75rem);
 }
 
 .hero-register .section-title {
