@@ -38,34 +38,6 @@ function useReveal(): RefObject<HTMLDivElement | null> {
   return ref
 }
 
-function useStickyRegister() {
-  const [visible, setVisible] = useState(false)
-
-  useEffect(() => {
-    const registerEl = document.getElementById('register')
-
-    const update = () => {
-      const registerBottom = registerEl?.getBoundingClientRect().bottom ?? 0
-      setVisible(registerBottom < 0)
-    }
-
-    update()
-    window.addEventListener('scroll', update, { passive: true })
-    window.addEventListener('resize', update)
-    return () => {
-      window.removeEventListener('scroll', update)
-      window.removeEventListener('resize', update)
-    }
-  }, [])
-
-  useEffect(() => {
-    document.body.classList.toggle('has-sticky-bar', visible)
-    return () => document.body.classList.remove('has-sticky-bar')
-  }, [visible])
-
-  return visible
-}
-
 type ModalState = { speaker: Speaker; sessionTitle?: string } | null
 
 export default function App() {
@@ -117,7 +89,6 @@ function SpeakerCard({
 
 function HomePage() {
   const pageRef = useReveal()
-  const stickyVisible = useStickyRegister()
   const [modal, setModal] = useState<ModalState>(null)
 
   const openModal = useCallback((speaker: Speaker, sessionTitle?: string) => {
@@ -161,56 +132,56 @@ function HomePage() {
 
       {/* 1. Hero — event header */}
       <section className="hero" id="top">
-        <div className="org-masthead reveal" aria-label="Organizing group">
-          <div className="org-masthead__glow" aria-hidden="true" />
-          <div className="org-masthead__inner">
+        <div className="org-band reveal" aria-label="Organizing group">
+          <div className="org-band__inner">
             <ImageSlot
               src={ASSETS.logoPds}
               alt="Philippine Dermatological Society"
               placeholderLabel="PDS logo"
-              className="org-masthead__logo"
+              className="org-band__logo"
               variant="logo"
             />
-            <div className="org-masthead__identity">
-              <p className="org-masthead__kicker">Philippine Dermatological Society</p>
-              <p className="org-masthead__title">Immunodermatology</p>
-              <p className="org-masthead__sub">Subspecialty Core Group</p>
+            <div className="org-band__identity">
+              <p className="org-band__title">Immunodermatology</p>
+              <p className="org-band__mid">Subspecialty Core Group of the</p>
+              <p className="org-band__org">Philippine Dermatological Society</p>
             </div>
             <ImageSlot
               src={ASSETS.logoCombined}
               alt="Immunodermatology Subspecialty Core Group"
               placeholderLabel="Immunoderm logo"
-              className="org-masthead__logo"
+              className="org-band__logo"
               variant="logo"
             />
           </div>
         </div>
 
-        <div className="hero-poster-wrap reveal">
-          <ImageSlot
-            src={ASSETS.hero}
-            alt="Immunodermatology Masterclass 2026"
-            placeholderLabel="Hero artwork (full color)"
-            className="hero-poster"
-            variant="hero"
-            width={1520}
-            height={469}
-            priority
-          />
+        <div className="hero-titleblock reveal">
+          <h1 className="hero-titleblock__heading">
+            <span className="hero-titleblock__brand">Immunodermatology</span>
+            <span className="hero-titleblock__row">
+              <span className="hero-titleblock__master">Masterclass</span>
+              <span className="hero-titleblock__year">2026</span>
+            </span>
+          </h1>
+          <div className="hero-titleblock__rule" aria-hidden="true" />
+          <p className="hero-titleblock__tagline">
+            <strong>{EVENT_META.taglineLead}</strong>{' '}
+            <span>{EVENT_META.taglineBody}</span>
+          </p>
         </div>
 
-        <div className="event-lockup reveal reveal-delay-1" aria-label="Event date and venue">
-          <h1 className="event-lockup__date">
-            <span className="event-lockup__month">{EVENT_META.dateMonth}</span>
-            <span className="event-lockup__day">{EVENT_META.dateDay}</span>
-            <span className="event-lockup__comma" aria-hidden="true">,</span>
-            <span className="event-lockup__year">{EVENT_META.dateYear}</span>
-          </h1>
-          <div className="event-lockup__meta">
-            <p>{EVENT_META.timeDisplay}</p>
-            <p>{EVENT_META.venue}</p>
-            <p>{EVENT_META.locationLine}</p>
-          </div>
+        <div className="event-meta reveal reveal-delay-1" aria-label="Event date and venue">
+          <p className="event-meta__primary">
+            <span>{EVENT_META.dateDisplay}</span>
+            <span className="event-meta__dot" aria-hidden="true" />
+            <span>{EVENT_META.timeDisplay}</span>
+          </p>
+          <p className="event-meta__secondary">
+            {EVENT_META.venue}
+            <span className="event-meta__dot" aria-hidden="true" />
+            {EVENT_META.locationLine}
+          </p>
         </div>
 
         <div className="hero-details reveal reveal-delay-1">
@@ -223,7 +194,6 @@ function HomePage() {
         </div>
 
         <section className="hero-register reveal reveal-delay-2" id="register" aria-label="Registration">
-          <div className="section-eyebrow">Registration</div>
           <h2 className="section-title">
             <span>Register now</span>
           </h2>
@@ -454,31 +424,7 @@ function HomePage() {
         </section>
       </div>
 
-      {/* 7. Event details */}
-      <section className="section panel reveal" id="details">
-        <p className="section-eyebrow">Event details</p>
-        <h2 className="section-title">
-          <span>{EVENT_META.name}</span>
-        </h2>
-        <p className="section-body">{EVENT_META.tagline}</p>
-
-        <div className="event-info">
-          <div className="event-info__block">
-            <p className="event-info__label">Time &amp; location</p>
-            <p className="event-info__value">{EVENT_META.datetime}</p>
-            <p className="event-info__value">{EVENT_META.venue}</p>
-            <p className="event-info__value">{EVENT_META.locationLine}</p>
-          </div>
-          <div className="event-info__block">
-            <p className="event-info__label">Share this event</p>
-            <p className="event-info__value event-info__value--muted">
-              Sharing links coming soon
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. Meet the team */}
+      {/* 7. Meet the team */}
       <section className="section team reveal" id="team">
         <h2 className="section-title">
           <span>Meet the team</span>
@@ -500,7 +446,7 @@ function HomePage() {
         </div>
 
         <div className="team-logos">
-          <div className="team-logo-ring team-logo-ring--center">
+          <div className="team-logo-ring">
             <ImageSlot
               src={ASSETS.logoPds}
               alt="PDS logo"
@@ -528,21 +474,6 @@ function HomePage() {
           Group
         </p>
       </footer>
-
-      <aside
-        className={`sticky-register${stickyVisible ? ' sticky-register--visible' : ''}`}
-        aria-label="Quick registration"
-      >
-        <div className="sticky-register__inner">
-          <div className="sticky-register__copy">
-            <strong>Masterclass 2026</strong>
-            <span>Scan QR to register &amp; pay</span>
-          </div>
-          <a href="#register" className="btn btn-yellow btn-shine sticky-register__btn">
-            View QR
-          </a>
-        </div>
-      </aside>
 
       {modal && (
         <SpeakerModal

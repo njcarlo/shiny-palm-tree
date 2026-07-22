@@ -6,6 +6,8 @@ export const EVENT_META = {
   name: 'Immunodermatology Masterclass 2026',
   tagline:
     'Precision immunology in dermatology — optimizing systemic treatments for better outcomes.',
+  taglineLead: 'Precision immunology in dermatology:',
+  taglineBody: 'Optimizing Systemic Treatments for Better Outcomes',
   dateDisplay: 'September 2, 2026',
   dateMonth: 'September',
   dateDay: '2',
