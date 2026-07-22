@@ -143,6 +143,17 @@ function HomePage() {
       <div className="page-pattern" aria-hidden="true" />
       <div className="page-grain"   aria-hidden="true" />
 
+      <header className="site-header">
+        <a className="site-header__brand" href="#top">Immunodermatology</a>
+        <nav className="site-header__nav" aria-label="Primary">
+          <a href="#highlights">Highlights</a>
+          <a href="#program">Program</a>
+          <a href="#sponsors">Sponsors</a>
+          <a href="#register">Register</a>
+          <a href="#team">Team</a>
+        </nav>
+      </header>
+
       {/* 1. Hero — event header */}
       <section className="hero" id="top">
         <div className="hero-logos reveal">
@@ -154,6 +165,9 @@ function HomePage() {
             variant="logo"
           />
         </div>
+
+        <h1 className="hero-brand-title reveal">Immunodermatology</h1>
+        <p className="hero-brand-sub reveal">Masterclass 2026</p>
 
         <div className="hero-poster-wrap reveal">
           <ImageSlot
