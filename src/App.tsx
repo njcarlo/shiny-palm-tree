@@ -44,12 +44,10 @@ const TEAM_DOCS = {
   coreGroup: {
     title: 'Immunodermatology Subspecialty Core Group',
     src: '/files/immunodermatology-subspecialty-core-group.jpg',
-    downloadName: 'Immunodermatology-Subspecialty-Core-Group.jpg',
   },
   directory: {
     title: 'Immunodermatology 2026 Directory',
     src: '/files/immunodermatology-2026-directory.jpg',
-    downloadName: 'Immunodermatology-2026-Directory.jpg',
   },
 } as const satisfies Record<string, TeamDocument>
 

@@ -1907,10 +1907,6 @@ button {
   image-rendering: auto;
 }
 
-.document-modal__download {
-  flex-shrink: 0;
-}
-
 .modal-photo-wrap {
   margin-bottom: 1.25rem;
 }

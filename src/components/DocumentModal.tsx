@@ -4,7 +4,6 @@ import { createPortal } from 'react-dom'
 export type TeamDocument = {
   title: string
   src: string
-  downloadName: string
 }
 
 type Props = {
@@ -53,15 +52,6 @@ export function DocumentModal({ doc, onClose }: Props) {
             decoding="async"
           />
         </div>
-
-        <a
-          className="btn btn-yellow btn-shine document-modal__download"
-          href={doc.src}
-          download={doc.downloadName}
-        >
-          <span>Download</span>
-          <small>Save a high-quality copy</small>
-        </a>
       </div>
     </div>
   )
