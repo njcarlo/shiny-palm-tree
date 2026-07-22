@@ -262,7 +262,6 @@ function HomePage() {
                 variant="flyer"
               />
             </div>
-            <span className="symposium-badge">{SYMPOSIUM.badge}</span>
           </div>
           <div className="symposium-copy">
             <h2 className="symposium-title">{SYMPOSIUM.title}</h2>

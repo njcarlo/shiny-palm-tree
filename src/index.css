@@ -1540,19 +1540,6 @@ button {
     0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
-.symposium-badge {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.4rem 1rem;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--yellow);
-  border: 1px solid rgba(61, 184, 255, 0.4);
-  border-radius: 999px;
-}
-
 .symposium-copy {
   text-align: left;
 }

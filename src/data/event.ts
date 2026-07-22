@@ -48,9 +48,8 @@ export const PROGRAM_INVITE = {
 } as const
 
 export const SYMPOSIUM = {
-  badge: 'Lunch symposium',
   title: 'Symposium title to be announced',
-  body: 'A sponsored lunch symposium will be featured during the masterclass. Speakers, topic, and schedule will appear here once confirmed.',
+  body: 'A sponsored sunset symposium will be featured during the masterclass. Speakers, topic, and schedule will appear here once confirmed.',
   panelists: [
     { name: 'Speaker placeholder', role: 'Faculty — TBA' },
     { name: 'Speaker placeholder', role: 'Faculty — TBA' },
