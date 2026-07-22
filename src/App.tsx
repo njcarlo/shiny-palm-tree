@@ -409,24 +409,24 @@ function HomePage() {
 
         {SPONSOR_TIERS.map((tier) => (
           <div
-            className={`sponsor-tier${tier.variant === 'platinum' ? ' sponsor-tier--platinum' : ''}`}
+            className={`sponsor-tier sponsor-tier--${tier.variant}${tier.variant === 'platinum' ? ' sponsor-tier--platinum' : ''}`}
             key={tier.id}
           >
             <p className="tier-label">{tier.label}</p>
             <div
               className={
-                tier.variant === 'platinum' || tier.slots.length === 1
+                tier.variant === 'platinum'
                   ? 'tier-row'
-                  : tier.variant === 'silver'
-                    ? 'tier-row tier-row-2'
-                    : tier.variant === 'bronze'
-                      ? 'tier-row tier-row-3'
+                  : tier.variant === 'bronze'
+                    ? 'tier-row tier-row--bronze'
+                    : tier.variant === 'silver'
+                      ? 'tier-row tier-row-2'
                       : 'tier-grid-minor'
               }
             >
               {tier.slots.map((slot) => (
                 <div
-                  className={`tier-card${tier.variant === 'platinum' ? ' tier-card-wide tier-card--glow' : ''}${tier.variant === 'minor' ? ' tier-card-minor' : ''}`}
+                  className={`tier-card${tier.variant === 'platinum' ? ' tier-card-wide tier-card--glow' : ''}${tier.variant === 'bronze' ? ' tier-card--bronze' : ''}${tier.variant === 'minor' ? ' tier-card-minor' : ''}`}
                   key={slot.src}
                 >
                   <div className="tier-card__logo">
