@@ -280,7 +280,6 @@ function HomePage() {
         <section className="section reveal" id="program-invite" aria-label="Program invite">
           <div className="feature-card program-invite">
             <div className="feature-card__glow" aria-hidden="true" />
-            <p className="section-eyebrow">{PROGRAM_INVITE.eyebrow}</p>
             <h2 className="section-title">
               <span>{PROGRAM_INVITE.title}</span>
             </h2>
