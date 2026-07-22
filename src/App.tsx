@@ -3,7 +3,6 @@ import { Navigate, Routes, Route } from 'react-router-dom'
 import { ImageSlot } from './components/ImageSlot'
 import { SpeakerModal } from './components/SpeakerModal'
 import {
-  ABSTRACTS_CTA,
   EVENT_META,
   PROGRAM_INVITE,
   SPONSOR_TIERS,
@@ -233,24 +232,7 @@ function HomePage() {
         </section>
       </section>
 
-      {/* 2. Abstracts CTA (placeholder) */}
-      <section className="section reveal" id="abstracts">
-        <div className="feature-card">
-          <div className="feature-card__glow" aria-hidden="true" />
-          <p className="section-eyebrow">{ABSTRACTS_CTA.eyebrow}</p>
-          <h2 className="section-title">
-            <span>{ABSTRACTS_CTA.title}</span>
-          </h2>
-          <p className="section-body">{ABSTRACTS_CTA.body}</p>
-          <p className="deadline">{ABSTRACTS_CTA.deadline}</p>
-          <span className="btn btn-yellow btn-shine" aria-disabled="true">
-            <span>{ABSTRACTS_CTA.status}</span>
-            <small>Placeholder — details coming soon</small>
-          </span>
-        </div>
-      </section>
-
-      {/* 4. Sponsors (placeholders) */}
+      {/* Sponsors (placeholders) */}
       <section className="section sponsors reveal" id="sponsors">
         <p className="section-eyebrow">Partners</p>
         <h2 className="section-title">

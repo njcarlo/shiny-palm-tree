@@ -34,14 +34,6 @@ export const EVENT_META = {
   },
 } as const
 
-export const ABSTRACTS_CTA = {
-  eyebrow: 'Call for abstracts',
-  title: 'Share your research with the community',
-  body: 'Join us in advancing immunodermatology. Share your research, clinical insights, or innovative approaches. Abstract details coming soon.',
-  deadline: 'Deadline — TBA',
-  status: 'Submissions opening soon',
-} as const
-
 export const PROGRAM_INVITE = {
   eyebrow: 'Program invite',
   title: 'Immunodermatology Masterclass 2026',
