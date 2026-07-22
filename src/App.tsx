@@ -165,12 +165,26 @@ function HomePage() {
 
       {/* 1. Hero — event header */}
       <section className="hero" id="top">
-        <div className="hero-logos reveal">
+        <div className="org-banner reveal" aria-label="Organizing group">
+          <ImageSlot
+            src={ASSETS.logoPds}
+            alt="Philippine Dermatological Society"
+            placeholderLabel="PDS logo"
+            className="org-banner__logo"
+            variant="logo"
+          />
+          <div className="org-banner__text">
+            <p className="org-banner__line org-banner__line--title">Immunodermatology</p>
+            <p className="org-banner__line">Subspecialty Core Group of the</p>
+            <p className="org-banner__line org-banner__line--accent">
+              Philippine Dermatological Society
+            </p>
+          </div>
           <ImageSlot
             src={ASSETS.logoCombined}
-            alt="PDS Immunodermatology"
-            placeholderLabel="PDS + Immunoderm logo"
-            className="hero-logo hero-logo--main"
+            alt="Immunodermatology Subspecialty Core Group"
+            placeholderLabel="Immunoderm logo"
+            className="org-banner__logo"
             variant="logo"
           />
         </div>
