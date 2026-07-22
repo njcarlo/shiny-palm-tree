@@ -69,8 +69,16 @@ export function SpeakerModal({ speaker, sessionTitle, onClose }: Props) {
             <p className="modal-credentials">{speaker.credentials}</p>
           )}
 
-          {speaker.designation && !speaker.isModerator && (
+          {speaker.designation && (
             <p className="modal-designation">{speaker.designation}</p>
+          )}
+
+          {speaker.affiliations && speaker.affiliations.length > 0 && (
+            <ul className="modal-affiliations">
+              {speaker.affiliations.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
           )}
 
           {sessionTitle && (

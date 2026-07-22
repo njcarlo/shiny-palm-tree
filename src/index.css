@@ -1824,7 +1824,9 @@ button {
 .modal-panel {
   position: relative;
   width: 100%;
-  max-width: 420px;
+  max-width: 480px;
+  max-height: min(88vh, 820px);
+  overflow-y: auto;
   padding: 3rem 2.25rem 2.75rem;
   background: linear-gradient(160deg, rgba(0, 30, 70, 0.98), rgba(0, 10, 36, 0.98));
   border: 1px solid rgba(61, 184, 255, 0.25);
@@ -1935,6 +1937,37 @@ button {
   line-height: var(--lh-body);       /* 1.6 */
   max-width: var(--measure-narrow);
   margin: 0 auto 0.75rem;
+}
+
+.modal-affiliations {
+  list-style: none;
+  margin: 1rem auto 0;
+  padding: 0;
+  max-width: 36rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.modal-affiliations li {
+  position: relative;
+  padding-left: 0.9rem;
+  font-size: var(--step--1);
+  line-height: var(--lh-body);
+  color: rgba(220, 240, 255, 0.78);
+}
+
+.modal-affiliations li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-lime);
+  opacity: 0.85;
 }
 
 .modal-session {
