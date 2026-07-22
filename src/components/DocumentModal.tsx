@@ -50,6 +50,7 @@ export function DocumentModal({ doc, onClose }: Props) {
             alt={doc.title}
             loading="eager"
             decoding="async"
+            referrerPolicy="no-referrer"
           />
         </div>
       </div>

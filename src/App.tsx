@@ -8,7 +8,7 @@ import {
   PROGRAM_INVITE,
   SPONSOR_TIERS,
 } from './data/event'
-import { ASSETS, speakerImage } from './data/images'
+import { ASSETS, TEAM_DOC_ASSETS, speakerImage } from './data/images'
 import { CLOSING_SPEAKER, OPENING_SPEAKER, PROGRAM, type Speaker } from './data/program'
 
 function useReveal(): RefObject<HTMLDivElement | null> {
@@ -43,11 +43,11 @@ type ModalState = { speaker: Speaker; sessionTitle?: string } | null
 const TEAM_DOCS = {
   coreGroup: {
     title: 'Immunodermatology Subspecialty Core Group',
-    src: '/files/immunodermatology-subspecialty-core-group.jpg',
+    src: TEAM_DOC_ASSETS.coreGroup,
   },
   directory: {
     title: 'Immunodermatology 2026 Directory',
-    src: '/files/immunodermatology-2026-directory.jpg',
+    src: TEAM_DOC_ASSETS.directory,
   },
 } as const satisfies Record<string, TeamDocument>
 

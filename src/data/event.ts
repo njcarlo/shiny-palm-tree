@@ -2,6 +2,8 @@
  *  Placeholder fields can be replaced as details are confirmed.
  */
 
+import { PROGRAM_DOWNLOAD_HREF } from './images'
+
 export const EVENT_META = {
   name: 'Immunodermatology Masterclass 2026',
   tagline:
@@ -41,7 +43,7 @@ export const PROGRAM_INVITE = {
     'You are invited to join the Philippine Dermatological Society Immunodermatology Subspecialty Core Group for a full afternoon of plenary sessions, faculty discussions, and closing remarks.',
   downloadLabel: 'Download program',
   downloadHint: 'PNG schedule image',
-  downloadHref: '/files/immunodermatology-masterclass-2026-program.png',
+  downloadHref: PROGRAM_DOWNLOAD_HREF,
   downloadReady: true,
 } as const
 

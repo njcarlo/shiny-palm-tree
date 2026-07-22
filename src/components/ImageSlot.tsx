@@ -23,9 +23,9 @@ export function ImageSlot({
   variant = 'card',
   priority = false,
 }: ImageSlotProps) {
-  const [missing, setMissing] = useState(false)
+  const [missing, setMissing] = useState(!src)
 
-  if (missing) {
+  if (missing || !src) {
     return (
       <div
         className={`image-slot image-slot--${variant} ${className}`.trim()}
@@ -77,7 +77,8 @@ export function ImageSlot({
       height={height}
       loading={priority ? 'eager' : 'lazy'}
       fetchPriority={priority ? 'high' : 'auto'}
-      decoding={priority ? 'sync' : 'async'}
+      decoding="async"
+      referrerPolicy="no-referrer"
       onError={() => setMissing(true)}
     />
   )
