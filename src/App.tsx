@@ -7,7 +7,6 @@ import {
   EVENT_META,
   HIGHLIGHTS,
   SPONSOR_TIERS,
-  SYMPOSIUM,
 } from './data/event'
 import { ASSETS, speakerImage } from './data/images'
 import { CLOSING_SPEAKER, OPENING_SPEAKER, PROGRAM, type Speaker } from './data/program'
@@ -321,39 +320,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* 4. Symposium (placeholder) */}
-      <section className="section symposium reveal" id="symposium">
-        <p className="section-eyebrow">{SYMPOSIUM.eyebrow}</p>
-        <div className="symposium-grid">
-          <div className="symposium-visual">
-            <div className="symposium-frame">
-              <ImageSlot
-                src={SYMPOSIUM.flyerSrc}
-                alt="Symposium flyer placeholder"
-                placeholderLabel="Symposium flyer"
-                className="symposium-flyer"
-                variant="flyer"
-              />
-            </div>
-            <span className="symposium-badge">{SYMPOSIUM.badge}</span>
-          </div>
-          <div className="symposium-copy">
-            <h2 className="symposium-title">{SYMPOSIUM.title}</h2>
-            <p className="section-body section-body--left">{SYMPOSIUM.body}</p>
-            <ul className="panelists">
-              {SYMPOSIUM.panelists.map((p) => (
-                <li key={p.name + p.role}>
-                  {p.name}
-                  <em>{p.role}</em>
-                </li>
-              ))}
-            </ul>
-            <p className="symposium-closing">{SYMPOSIUM.closing}</p>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Sponsors (placeholders) */}
+      {/* 4. Sponsors (placeholders) */}
       <section className="section sponsors reveal" id="sponsors">
         <p className="section-eyebrow">Partners</p>
         <h2 className="section-title">

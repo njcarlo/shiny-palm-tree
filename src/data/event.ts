@@ -73,20 +73,6 @@ export const ABSTRACTS_CTA = {
   status: 'Submissions opening soon',
 } as const
 
-export const SYMPOSIUM = {
-  eyebrow: 'Industry symposium',
-  badge: 'Lunch symposium',
-  title: 'Symposium title to be announced',
-  body: 'A sponsored lunch symposium will be featured during the masterclass. Speakers, topic, and schedule will appear here once confirmed.',
-  panelists: [
-    { name: 'Speaker placeholder', role: 'Faculty — TBA' },
-    { name: 'Speaker placeholder', role: 'Faculty — TBA' },
-    { name: 'Guest placeholder', role: 'Special guest — TBA' },
-  ],
-  closing: 'See you there!',
-  flyerSrc: '/images/assets/symposium-flyer-placeholder.webp',
-} as const
-
 export type SponsorTier = {
   id: string
   label: string
