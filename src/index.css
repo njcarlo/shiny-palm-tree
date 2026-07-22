@@ -1865,6 +1865,52 @@ button {
   color: var(--white);
 }
 
+.modal-panel--document {
+  max-width: min(960px, 100%);
+  max-height: min(92vh, 980px);
+  padding: 2.5rem 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.15rem;
+  text-align: center;
+}
+
+.document-modal__title {
+  margin: 0;
+  max-width: 36rem;
+  font-size: clamp(var(--step-1), 2.8vw, var(--step-2));
+  font-weight: 800;
+  line-height: var(--lh-heading);
+  color: var(--white);
+  text-wrap: balance;
+}
+
+.document-modal__frame {
+  width: 100%;
+  max-height: min(68vh, 720px);
+  overflow: auto;
+  border-radius: 10px;
+  border: 1px solid rgba(61, 184, 255, 0.2);
+  background: rgba(0, 10, 28, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.document-modal__image {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  object-fit: contain;
+  image-rendering: auto;
+}
+
+.document-modal__download {
+  flex-shrink: 0;
+}
+
 .modal-photo-wrap {
   margin-bottom: 1.25rem;
 }

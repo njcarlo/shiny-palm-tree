@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState, type RefObject } from 'react'
 import { Navigate, Routes, Route } from 'react-router-dom'
 import { ImageSlot } from './components/ImageSlot'
+import { DocumentModal, type TeamDocument } from './components/DocumentModal'
 import { SpeakerModal } from './components/SpeakerModal'
 import {
   EVENT_META,
@@ -38,6 +39,19 @@ function useReveal(): RefObject<HTMLDivElement | null> {
 }
 
 type ModalState = { speaker: Speaker; sessionTitle?: string } | null
+
+const TEAM_DOCS = {
+  coreGroup: {
+    title: 'Immunodermatology Subspecialty Core Group',
+    src: '/files/immunodermatology-subspecialty-core-group.jpg',
+    downloadName: 'Immunodermatology-Subspecialty-Core-Group.jpg',
+  },
+  directory: {
+    title: 'Immunodermatology 2026 Directory',
+    src: '/files/immunodermatology-2026-directory.jpg',
+    downloadName: 'Immunodermatology-2026-Directory.jpg',
+  },
+} as const satisfies Record<string, TeamDocument>
 
 export default function App() {
   return (
@@ -89,12 +103,14 @@ function SpeakerCard({
 function HomePage() {
   const pageRef = useReveal()
   const [modal, setModal] = useState<ModalState>(null)
+  const [docModal, setDocModal] = useState<TeamDocument | null>(null)
 
   const openModal = useCallback((speaker: Speaker, sessionTitle?: string) => {
     setModal({ speaker, sessionTitle })
   }, [])
 
   const closeModal = useCallback(() => setModal(null), [])
+  const closeDocModal = useCallback(() => setDocModal(null), [])
 
   return (
     <div className="page" ref={pageRef}>
@@ -410,20 +426,20 @@ function HomePage() {
         </p>
 
         <div className="team-buttons">
-          <a
+          <button
+            type="button"
             className="btn btn-yellow btn-team"
-            href="/files/immunodermatology-subspecialty-core-group.jpg"
-            download="Immunodermatology-Subspecialty-Core-Group.jpg"
+            onClick={() => setDocModal(TEAM_DOCS.coreGroup)}
           >
             Immunodermatology Subspecialty Core Group
-          </a>
-          <a
+          </button>
+          <button
+            type="button"
             className="btn btn-yellow btn-team"
-            href="/files/immunodermatology-2026-directory.jpg"
-            download="Immunodermatology-2026-Directory.jpg"
+            onClick={() => setDocModal(TEAM_DOCS.directory)}
           >
             Immunodermatology 2026 Directory
-          </a>
+          </button>
         </div>
 
         <div className="team-logos">
@@ -461,6 +477,13 @@ function HomePage() {
           speaker={modal.speaker}
           sessionTitle={modal.sessionTitle}
           onClose={closeModal}
+        />
+      )}
+
+      {docModal && (
+        <DocumentModal
+          doc={docModal}
+          onClose={closeDocModal}
         />
       )}
     </div>
