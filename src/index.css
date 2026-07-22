@@ -2363,34 +2363,26 @@ button {
 
 /* ——— Registration QR ——— */
 .register-qr {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(0, 240px) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 2.75rem);
   align-items: center;
-  gap: clamp(1.5rem, 4vw, 2.25rem);
   margin-top: 1.5rem;
-  width: 100%;
 }
 
 .register-qr__frame {
   margin: 0 auto;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 240px;
 }
 
 .register-qr__image {
-  width: 220px;
-  height: 220px;
+  width: min(100%, 220px);
   margin: 0 auto;
-  object-fit: contain;
-  object-position: center;
   border-radius: 12px;
   border: 1px solid rgba(61, 184, 255, 0.25);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
   display: block;
+  background: #c8f5d8;
 }
 
 .register-qr__caption {
@@ -2400,13 +2392,10 @@ button {
   letter-spacing: var(--ls-caps);
   text-transform: uppercase;
   color: var(--accent-mint);
-  text-align: center;
 }
 
 .register-qr__details {
-  text-align: center;
-  width: min(100%, 520px);
-  margin: 0 auto;
+  text-align: left;
 }
 
 .register-qr__note {
@@ -2486,13 +2475,12 @@ button {
   .register-qr__frame {
     width: 100%;
     max-width: 240px;
-    align-items: center;
   }
 
   .register-qr__image {
-    width: 200px;
-    height: 200px;
-    max-width: 200px;
+    width: 100%;
+    max-width: 220px;
+    height: auto;
   }
 
   .register-qr__details {
