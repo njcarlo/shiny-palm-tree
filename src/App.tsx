@@ -249,9 +249,8 @@ function HomePage() {
         </section>
       </section>
 
-      {/* Industry symposium */}
+      {/* Symposium */}
       <section className="section symposium reveal" id="symposium">
-        <p className="section-eyebrow">{SYMPOSIUM.eyebrow}</p>
         <div className="symposium-grid">
           <div className="symposium-visual">
             <div className="symposium-frame">
