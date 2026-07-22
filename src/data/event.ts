@@ -34,39 +34,6 @@ export const EVENT_META = {
   },
 } as const
 
-export type Highlight = {
-  id: string
-  title: string
-  subtitle: string
-  speakerName?: string
-  speakerSlug?: string
-}
-
-/** Featured program highlights (maps to Wix "HIGHLIGHTS"). */
-export const HIGHLIGHTS: Highlight[] = [
-  {
-    id: 'h1',
-    title: 'Mitigating Complications in Immunodermatology',
-    subtitle: 'Session 1',
-    speakerName: 'Featured faculty',
-    speakerSlug: 'amanda-esquivel',
-  },
-  {
-    id: 'h2',
-    title: 'New Insights in Urticaria',
-    subtitle: 'Session 2',
-    speakerName: 'Featured faculty',
-    speakerSlug: 'katrina-canlas-estrella',
-  },
-  {
-    id: 'h3',
-    title: 'Blistering Across Generations',
-    subtitle: 'Session 3',
-    speakerName: 'Featured faculty',
-    speakerSlug: 'jasmin-jamora',
-  },
-]
-
 export const ABSTRACTS_CTA = {
   eyebrow: 'Call for abstracts',
   title: 'Share your research with the community',

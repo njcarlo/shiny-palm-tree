@@ -5,7 +5,6 @@ import { SpeakerModal } from './components/SpeakerModal'
 import {
   ABSTRACTS_CTA,
   EVENT_META,
-  HIGHLIGHTS,
   SPONSOR_TIERS,
 } from './data/event'
 import { ASSETS, speakerImage } from './data/images'
@@ -122,7 +121,6 @@ function HomePage() {
           />
         </a>
         <nav className="site-header__nav" aria-label="Primary">
-          <a href="#highlights">Highlights</a>
           <a href="#program">Program</a>
           <a href="#sponsors">Sponsors</a>
           <a href="#register">Register</a>
@@ -234,46 +232,7 @@ function HomePage() {
         </section>
       </section>
 
-      {/* 2. Highlights */}
-      <section className="section reveal" id="highlights">
-        <p className="section-eyebrow">Highlights</p>
-        <h2 className="section-title">
-          <span>Program highlights</span>
-        </h2>
-        <p className="section-lede">
-          Plenary sessions spanning complications, urticaria, and blistering disease.
-        </p>
-
-        <div className="highlights-grid">
-          {HIGHLIGHTS.map((item) => (
-            <article className="highlight-card" key={item.id}>
-              {item.speakerSlug && (
-                <div className="speaker-ring highlight-card__photo">
-                  <ImageSlot
-                    src={speakerImage(item.speakerSlug)}
-                    alt={item.speakerName ?? item.title}
-                    placeholderLabel={item.speakerName ?? item.title}
-                    className="speaker-photo"
-                    variant="speaker"
-                  />
-                </div>
-              )}
-              <p className="highlight-card__subtitle">{item.subtitle}</p>
-              <h3 className="highlight-card__title">{item.title}</h3>
-              {item.speakerName && (
-                <p className="highlight-card__speaker">{item.speakerName}</p>
-              )}
-            </article>
-          ))}
-        </div>
-
-        <a className="btn btn-yellow btn-shine" href="#program">
-          <span>View event program</span>
-          <small>Opening, sessions & closing</small>
-        </a>
-      </section>
-
-      {/* 3. Abstracts CTA (placeholder) */}
+      {/* 2. Abstracts CTA (placeholder) */}
       <section className="section reveal" id="abstracts">
         <div className="feature-card">
           <div className="feature-card__glow" aria-hidden="true" />

@@ -1094,58 +1094,6 @@ button {
   border-radius: 6px;
 }
 
-/* ——— Highlights (reference-site layout block) ——— */
-.highlights-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(1.25rem, 3vw, 1.75rem);
-  margin: 2rem 0 2.5rem;
-}
-
-.highlight-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 1.75rem 1.25rem 1.5rem;
-  background:
-    linear-gradient(160deg,
-      rgba(0, 45, 100, 0.35) 0%,
-      rgba(0, 20, 55, 0.25)  100%
-    );
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: var(--radius);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-
-.highlight-card__photo {
-  width: min(100%, 120px);
-  margin-bottom: 1rem;
-}
-
-.highlight-card__subtitle {
-  font-size: var(--step--1);
-  font-weight: 400;
-  letter-spacing: var(--ls-caps);
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
-  margin-bottom: 0.5rem;
-}
-
-.highlight-card__title {
-  font-size: var(--step-0);
-  font-weight: 700;
-  color: var(--accent-mint);
-  line-height: var(--lh-heading);
-  text-wrap: balance;
-  margin-bottom: 0.5rem;
-}
-
-.highlight-card__speaker {
-  font-size: var(--step--1);
-  color: rgba(255, 255, 255, 0.6);
-}
-
 .hero-cta-note {
   font-size: var(--step--1);
   color: rgba(255, 255, 255, 0.7);
@@ -2369,10 +2317,6 @@ button {
     flex: 0 1 calc((100% - var(--speaker-gap)) / 2);
     width: calc((100% - var(--speaker-gap)) / 2);
     max-width: calc((100% - var(--speaker-gap)) / 2);
-  }
-
-  .highlights-grid {
-    grid-template-columns: 1fr;
   }
 
   .tier-row-3,
