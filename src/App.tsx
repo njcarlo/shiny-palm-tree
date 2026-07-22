@@ -188,7 +188,6 @@ function HomePage() {
               <span className="pill pill--outline" key={credit}>{credit}</span>
             ))}
           </div>
-          <p className="hero-cta-note">{EVENT_META.ctaNote}</p>
         </div>
 
         <section className="hero-register reveal reveal-delay-2" id="register" aria-label="Registration">
@@ -229,6 +228,8 @@ function HomePage() {
               </div>
             </div>
           </div>
+
+          <p className="hero-cta-note hero-cta-note--register">{EVENT_META.ctaNote}</p>
         </section>
       </section>
 

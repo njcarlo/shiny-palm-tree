@@ -1100,6 +1100,14 @@ button {
   margin: 0.75rem 0 1.25rem;
 }
 
+.hero-cta-note--register {
+  margin: 2rem auto 0;
+  max-width: 36rem;
+  text-align: center;
+  font-size: var(--step-0);
+  color: var(--accent-mint);
+}
+
 .hero-meta--credits {
   margin-top: 0.85rem;
 }
