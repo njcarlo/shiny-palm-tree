@@ -162,7 +162,6 @@ function HomePage() {
       {/* 1. Hero — event header */}
       <section className="hero" id="top">
         <div className="org-band reveal" aria-label="Organizing group">
-          <div className="org-band__texture" aria-hidden="true" />
           <div className="org-band__inner">
             <ImageSlot
               src={ASSETS.logoPds}
