@@ -395,24 +395,32 @@ button {
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: clamp(0.75rem, 3vw, 1.75rem);
-  width: min(100% - 2 * var(--space), 920px);
-  margin: 1rem auto 0.75rem;
-  padding: clamp(0.85rem, 2.5vw, 1.25rem) clamp(1rem, 3vw, 1.75rem);
+  width: min(100% - 2 * var(--space), 980px);
+  margin: 1rem auto 0.85rem;
+  padding: clamp(0.9rem, 2.5vw, 1.35rem) clamp(1rem, 3vw, 1.85rem);
   background:
-    linear-gradient(180deg, rgba(0, 30, 70, 0.55), rgba(0, 18, 45, 0.7)),
-    url('/images/assets/pattern_immunoderm.webp') center / 280px repeat;
-  border: 1px solid rgba(61, 184, 255, 0.22);
-  border-radius: calc(var(--radius) + 4px);
+    linear-gradient(180deg, rgba(0, 28, 68, 0.35), rgba(0, 16, 42, 0.5)),
+    url('/images/assets/pattern_immunoderm.webp') center / 240px repeat,
+    #002855;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.28);
 }
 
-.org-banner__logo {
-  width: clamp(64px, 12vw, 92px);
-  height: clamp(64px, 12vw, 92px);
+.org-banner__logo,
+.org-banner .image-slot {
+  width: clamp(68px, 13vw, 96px);
+  height: clamp(68px, 13vw, 96px);
   border-radius: 50%;
   object-fit: cover;
   background: #fff;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 0 3px #fff;
+  flex-shrink: 0;
+}
+
+.org-banner .image-slot__frame {
+  border-radius: 50%;
+  min-height: 100%;
 }
 
 .org-banner__text {
@@ -422,23 +430,23 @@ button {
 
 .org-banner__line {
   margin: 0;
-  font-size: clamp(0.62rem, 1.8vw, 0.82rem);
+  font-size: clamp(0.62rem, 1.8vw, 0.84rem);
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--white);
-  line-height: 1.35;
+  color: #fff;
+  line-height: 1.4;
 }
 
 .org-banner__line--title {
-  font-size: clamp(0.78rem, 2.4vw, 1.05rem);
+  font-size: clamp(0.82rem, 2.5vw, 1.12rem);
   font-weight: 800;
   letter-spacing: 0.1em;
 }
 
 .org-banner__line--accent {
   font-weight: 800;
-  color: var(--accent-mint);
+  color: #d1f2eb;
 }
 
 .hero-logos {
