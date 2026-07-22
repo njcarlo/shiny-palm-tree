@@ -1,22 +1,30 @@
 :root {
-  /* ── Brand palette — blue-forward ── */
+  /* ── Brand palette — blue surfaces, green text/accents ── */
   --navy-950:   #030812;   /* near-black blue */
   --navy-dark:  #071428;   /* deep navy */
   --navy-mid:   #0c2240;   /* mid navy */
   --navy-light: #143560;   /* lighter navy */
   --navy-footer:#02060f;   /* deepest navy */
-  --accent-lime:     #3db8ff;   /* primary blue accent (was lime) */
-  --accent-lime-soft:#7dd3ff;
-  --accent-lime-deep:#1a8fd9;
-  --accent-cyan: #5ce1ff;
-  --accent-mint: #c8e8ff;
-  --accent-glow: rgba(61, 184, 255, 0.4);
 
-  /* Poster-extracted tones — remapped toward blue */
-  --poster-bright: #3db8ff;
-  --poster-mid:    #2a8fd4;
-  --poster-forest: #12355a;
-  --poster-sage:   #a5c0d8;
+  /* Text & UI accents — restored original greens */
+  --accent-lime:     #a0ff32;
+  --accent-lime-soft:#b8ff5c;
+  --accent-lime-deep:#7ecc28;
+  --accent-cyan: #00ffaa;
+  --accent-mint: #c8ffc8;
+  --accent-glow: rgba(160, 255, 50, 0.4);
+
+  /* Blue atmosphere tokens (backgrounds / glows) */
+  --blue-bright: #3db8ff;
+  --blue-mid:    #2a8fd4;
+  --blue-deep:   #12355a;
+  --blue-glow:   rgba(61, 184, 255, 0.4);
+
+  /* Poster-extracted tones */
+  --poster-bright: var(--accent-cyan);
+  --poster-mid:    var(--accent-lime-deep);
+  --poster-forest: var(--blue-deep);
+  --poster-sage:   #a5c5a5;
   --poster-olive:  #1a2f4a;
 
   /* Legacy aliases (keep existing code working) */
@@ -31,9 +39,10 @@
   --yellow-deep: var(--accent-lime-deep);
   --yellow-glow: var(--accent-glow);
 
-  /* Off-white body text — cool tint on blue */
-  --white:      #f0f7ff;
-  --text-muted: rgba(192, 220, 248, 0.82);
+  /* Off-white body text — green-tinted on blue surfaces */
+  --white:      #f0faff;
+  --text-muted: rgba(192, 248, 220, 0.82);
+  /* Blue glass keeps the blue design; accents stay green */
   --glass:      rgba(61, 184, 255, 0.06);
   --glass-border: rgba(61, 184, 255, 0.22);
 
