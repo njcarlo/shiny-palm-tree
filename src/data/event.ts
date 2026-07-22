@@ -5,12 +5,26 @@
 export const EVENT_META = {
   name: 'Immunodermatology Masterclass 2026',
   tagline:
-    'Join leading minds in dermatology as we advance immunodermatology care through research, clinical insight, and collaborative learning.',
-  datetime: 'Date & time to be announced',
-  venue: 'Venue to be announced',
-  locationLine: 'Metro Manila, Philippines',
+    'Precision immunology in dermatology — optimizing systemic treatments for better outcomes.',
+  datetime: 'September 2, 2026 · 1:00 PM – 8:00 PM',
+  venue: 'Seda Hotel, Bonifacio Global City',
+  locationLine: 'Taguig City, Philippines',
   credits: ['PRC CPD Units — TBA', 'PDS CME Units — TBA'],
   ctaNote: 'Secure your spot now. Limited seats available!',
+  earlyRegistration: 'Early registration is until August 15, 2026 or until all slots are filled.',
+  rates: [
+    { label: 'Early — PDS Members', value: '₱1,000' },
+    { label: 'Early — PDS Residents', value: '₱800' },
+    { label: 'Regular (Aug 16–26) — PDS Members', value: '₱1,200' },
+    { label: 'Regular (Aug 16–26) — PDS Residents', value: '₱1,000' },
+  ],
+  paymentNote:
+    'Scan the QR code to register and pay. PDS Members and Residents need to upload proof of payment for a successful registration.',
+  bank: {
+    name: 'BDO',
+    accountName: 'Philippine Dermatological Society, Inc.',
+    accountNumber: '007640004168',
+  },
 } as const
 
 export type Highlight = {

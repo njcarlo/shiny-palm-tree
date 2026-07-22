@@ -3,7 +3,9 @@ export const ASSETS = {
   pattern: '/images/assets/pattern_immunoderm.webp',
   logoCombined: '/images/assets/pds-immunoderm-logo.webp',
   logoPds: '/images/assets/pds-logo.webp',
+  logoHeader: '/images/assets/immunoderm-header-logo.webp',
   registerRegular: '/images/assets/registerpost-regular-01.webp',
+  registerQr: '/images/assets/register-qr.webp',
 } as const
 
 export function speakerImage(slug: string) {

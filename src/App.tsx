@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type RefObject } from 'react'
-import { Link, Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import { ImageSlot } from './components/ImageSlot'
 import { SpeakerModal } from './components/SpeakerModal'
 import {
@@ -144,7 +144,16 @@ function HomePage() {
       <div className="page-grain"   aria-hidden="true" />
 
       <header className="site-header">
-        <a className="site-header__brand" href="#top">Immunodermatology</a>
+        <a className="site-header__brand" href="#top" aria-label="Immunodermatology Masterclass 2026">
+          <ImageSlot
+            src={ASSETS.logoHeader}
+            alt="Immunodermatology Masterclass 2026"
+            placeholderLabel="Header logo"
+            className="site-header__logo"
+            variant="logo"
+            priority
+          />
+        </a>
         <nav className="site-header__nav" aria-label="Primary">
           <a href="#highlights">Highlights</a>
           <a href="#program">Program</a>
@@ -156,19 +165,6 @@ function HomePage() {
 
       {/* 1. Hero — event header */}
       <section className="hero" id="top">
-        <div className="hero-logos reveal">
-          <ImageSlot
-            src={ASSETS.logoCombined}
-            alt="PDS Immunodermatology Masterclass 2026"
-            placeholderLabel="PDS + Immunoderm logo"
-            className="hero-logo hero-logo--main"
-            variant="logo"
-          />
-        </div>
-
-        <h1 className="hero-brand-title reveal">Immunodermatology</h1>
-        <p className="hero-brand-sub reveal">Masterclass 2026</p>
-
         <div className="hero-poster-wrap reveal">
           <ImageSlot
             src={ASSETS.hero}
@@ -206,7 +202,7 @@ function HomePage() {
 
           <a className="btn btn-yellow btn-shine" href="#register">
             <span>Register now</span>
-            <small>Regular registration open</small>
+            <small>Scan QR to sign up &amp; pay</small>
           </a>
         </div>
       </section>
@@ -457,27 +453,45 @@ function HomePage() {
         </div>
       </section>
 
-      {/* 8. Registration */}
+      {/* 8. Registration — QR signup & payment */}
       <section className="section reveal" id="register">
         <div className="section-eyebrow">Registration</div>
         <h2 className="section-title">
-          <span>Regular Registration</span>
+          <span>Register now</span>
         </h2>
+        <p className="section-lede">{EVENT_META.earlyRegistration}</p>
 
-        <div className="register-single">
-          <figure className="register-card">
+        <div className="register-qr">
+          <figure className="register-qr__frame">
             <ImageSlot
-              src={ASSETS.registerRegular}
-              alt="Regular registration"
-              placeholderLabel="registerpost-regular-01.png"
-              className="register-image"
-              variant="flyer"
+              src={ASSETS.registerQr}
+              alt="Scan to register and pay for Immunodermatology Masterclass 2026"
+              placeholderLabel="Registration QR code"
+              className="register-qr__image"
+              variant="card"
             />
+            <figcaption className="register-qr__caption">
+              Scan to sign up &amp; pay
+            </figcaption>
           </figure>
-          <Link to="/signup" className="btn btn-yellow btn-shine">
-            <span>Register now</span>
-            <small>Secure your slot today</small>
-          </Link>
+
+          <div className="register-qr__details">
+            <p className="register-qr__note">{EVENT_META.paymentNote}</p>
+            <ul className="register-rates">
+              {EVENT_META.rates.map((rate) => (
+                <li key={rate.label}>
+                  <span>{rate.label}</span>
+                  <strong>{rate.value}</strong>
+                </li>
+              ))}
+            </ul>
+            <div className="register-bank">
+              <p className="register-bank__label">Bank transfer</p>
+              <p>{EVENT_META.bank.name}</p>
+              <p>{EVENT_META.bank.accountName}</p>
+              <p className="register-bank__number">{EVENT_META.bank.accountNumber}</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -539,11 +553,11 @@ function HomePage() {
         <div className="sticky-register__inner">
           <div className="sticky-register__copy">
             <strong>Masterclass 2026</strong>
-            <span>Register today</span>
+            <span>Scan QR to register &amp; pay</span>
           </div>
-          <Link to="/signup" className="btn btn-yellow btn-shine sticky-register__btn">
-            Register now
-          </Link>
+          <a href="#register" className="btn btn-yellow btn-shine sticky-register__btn">
+            View QR
+          </a>
         </div>
       </aside>
 
