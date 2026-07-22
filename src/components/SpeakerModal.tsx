@@ -27,6 +27,42 @@ export function SpeakerModal({ speaker, sessionTitle, onClose }: Props) {
     return () => window.removeEventListener('keydown', onKey)
   }, [onClose])
 
+  const hasAffiliations = Boolean(speaker.affiliations && speaker.affiliations.length > 0)
+
+  const identity = (
+    <>
+      <div className="modal-photo-wrap">
+        <div className="modal-ring">
+          <ImageSlot
+            src={speakerImage(speaker.slug)}
+            alt={speaker.name}
+            placeholderLabel={speaker.name}
+            className="modal-photo"
+            variant="speaker"
+          />
+        </div>
+      </div>
+
+      {speaker.isModerator ? (
+        <span className="modal-badge modal-badge--mod">Moderator</span>
+      ) : speaker.role ? (
+        <span className="modal-badge modal-badge--role">{speaker.role}</span>
+      ) : (
+        <span className="modal-badge modal-badge--spk">Speaker</span>
+      )}
+
+      <h2 className="modal-name">{speaker.name}</h2>
+
+      {speaker.credentials && (
+        <p className="modal-credentials">{speaker.credentials}</p>
+      )}
+
+      {speaker.designation && (
+        <p className="modal-designation">{speaker.designation}</p>
+      )}
+    </>
+  )
+
   const content = (
     <div
       className="modal-backdrop"
@@ -35,63 +71,43 @@ export function SpeakerModal({ speaker, sessionTitle, onClose }: Props) {
       aria-label={speaker.name}
       onClick={(e) => { if (e.target === e.currentTarget) onClose() }}
     >
-      <div className="modal-panel">
+      <div className={`modal-panel${hasAffiliations ? ' modal-panel--split' : ''}`}>
         <button className="modal-close" onClick={onClose} aria-label="Close">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
           </svg>
         </button>
 
-        <div className="modal-photo-wrap">
-          <div className="modal-ring">
-            <ImageSlot
-              src={speakerImage(speaker.slug)}
-              alt={speaker.name}
-              placeholderLabel={speaker.name}
-              className="modal-photo"
-              variant="speaker"
-            />
+        <div className="modal-layout">
+          <div className="modal-identity">
+            {identity}
           </div>
-        </div>
 
-        <div className="modal-body">
-          {speaker.isModerator ? (
-            <span className="modal-badge modal-badge--mod">Moderator</span>
-          ) : speaker.role ? (
-            <span className="modal-badge modal-badge--role">{speaker.role}</span>
-          ) : (
-            <span className="modal-badge modal-badge--spk">Speaker</span>
-          )}
-
-          <h2 className="modal-name">{speaker.name}</h2>
-
-          {speaker.credentials && (
-            <p className="modal-credentials">{speaker.credentials}</p>
-          )}
-
-          {speaker.designation && (
-            <p className="modal-designation">{speaker.designation}</p>
-          )}
-
-          {speaker.affiliations && speaker.affiliations.length > 0 && (
-            <ul className="modal-affiliations">
-              {speaker.affiliations.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          )}
-
-          {sessionTitle && (
-            <p className="modal-session">
-              <span className="modal-session-label">Session</span>
-              {sessionTitle}
-            </p>
-          )}
-
-          {speaker.country && (
-            <p className="modal-country">{speaker.country}</p>
+          {hasAffiliations && (
+            <div className="modal-credentials-panel">
+              <p className="modal-credentials-label">Credentials</p>
+              <ul className="modal-affiliations">
+                {speaker.affiliations!.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
           )}
         </div>
+
+        {(sessionTitle || speaker.country) && (
+          <div className="modal-footer">
+            {sessionTitle && (
+              <p className="modal-session">
+                <span className="modal-session-label">Session</span>
+                {sessionTitle}
+              </p>
+            )}
+            {speaker.country && (
+              <p className="modal-country">{speaker.country}</p>
+            )}
+          </div>
+        )}
       </div>
     </div>
   )
