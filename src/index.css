@@ -133,7 +133,7 @@ button {
 .page {
   position: relative;
   min-height: 100vh;
-  padding-top: var(--header-h);
+  padding-top: calc(var(--header-h) + env(safe-area-inset-top, 0px));
   /* Subtle layered background — deep blue base */
   background:
     radial-gradient(ellipse 130% 55% at 50%  -5%, rgba(61, 184, 255, 0.12) 0%, transparent 52%),
@@ -245,10 +245,10 @@ button {
   gap: 1rem;
   min-height: var(--header-h);
   padding: 0.65rem var(--space);
-  background: rgba(3, 8, 18, 0.92);
+  padding-top: max(0.65rem, env(safe-area-inset-top, 0px));
+  background: #030812;
   border-bottom: 1px solid rgba(61, 184, 255, 0.18);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 .site-header__brand {
@@ -2050,7 +2050,7 @@ button {
 @media (max-width: 720px) {
   :root {
     --space: 1.1rem;
-    --header-h: 5.35rem;
+    --header-h: 3.4rem;
   }
 
   .modal-panel--split {
@@ -2175,31 +2175,33 @@ button {
 
   .site-header {
     min-height: var(--header-h);
-    padding: 0.5rem 0.75rem 0.55rem;
-    gap: 0.45rem 0.75rem;
-    flex-wrap: wrap;
+    padding: 0.4rem 0.7rem;
+    padding-top: max(0.4rem, env(safe-area-inset-top, 0px));
+    gap: 0.55rem;
+    flex-wrap: nowrap;
     align-items: center;
   }
 
   .site-header__brand {
-    flex: 1 1 auto;
-    max-width: min(62vw, 220px);
+    flex: 0 1 auto;
+    max-width: min(42vw, 148px);
     min-width: 0;
   }
 
   .site-header__logo {
-    max-height: 30px;
+    max-height: 26px;
     width: auto;
     max-width: 100%;
   }
 
   .site-header__nav {
-    flex: 1 1 100%;
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    justify-content: stretch;
+    flex: 1 1 auto;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
     align-items: center;
-    gap: 0.15rem;
+    gap: 0.55rem;
+    min-width: 0;
     overflow: visible;
     mask-image: none;
     -webkit-mask-image: none;
@@ -2210,11 +2212,11 @@ button {
   }
 
   .site-header__nav a {
-    font-size: 0.58rem;
-    letter-spacing: 0.05em;
-    padding: 0.4rem 0.15rem;
+    font-size: 0.56rem;
+    letter-spacing: 0.04em;
+    padding: 0.3rem 0;
     text-align: center;
-    min-width: 0;
+    white-space: nowrap;
   }
 
   .hero {
@@ -2414,17 +2416,21 @@ button {
   }
 
   .site-header__brand {
-    max-width: min(70vw, 200px);
+    max-width: min(38vw, 132px);
   }
 
   .site-header__logo {
-    max-height: 26px;
+    max-height: 22px;
+  }
+
+  .site-header__nav {
+    gap: 0.4rem;
   }
 
   .site-header__nav a {
-    font-size: 0.52rem;
-    letter-spacing: 0.04em;
-    padding: 0.35rem 0.1rem;
+    font-size: 0.5rem;
+    letter-spacing: 0.03em;
+    padding: 0.25rem 0;
   }
 }
 
