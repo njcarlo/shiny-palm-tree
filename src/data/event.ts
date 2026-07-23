@@ -52,11 +52,11 @@ export const SYMPOSIUM = {
   title: 'The Fast & The Future: 10 Years of Excellence with Secukinumab',
   panelists: [
     {
-      name: 'Maria Deanna S. Ramiscal, MD, FPDS',
+      name: 'Maria Deanna S. Ramiscal, FPDS',
       role: 'Speaker',
     },
     {
-      name: 'Wilsie Salas-Walinsundin, MD, MSc, FPDS, FPDSP-PDS',
+      name: 'Wilsie Salas-Walinsundin, MSc, FPDS, FPDSP-PDS',
       role: 'Moderator',
     },
   ],
