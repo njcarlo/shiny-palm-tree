@@ -4,7 +4,7 @@
 |------|---------|------|--------|
 | Platinum | Novartis Healthcare Philippines Inc. | `novartis.webp` | Ready |
 | Bronze | Galderma | `galderma.png` | Placeholder |
-| Minor | Zuellig Pharma | `zuellig-pharma.png` | Placeholder |
+| Minor | Zuellig Pharma | `zuellig-pharma.webp` | Ready |
 | Minor | Johnson & Johnson | `johnson-and-johnson.webp` | Ready |
 | Minor | Glenmark Philippines Inc. | `glenmark.png` | Placeholder |
 | Minor | AbbVie Philippines Inc. | `abbvie.webp` | Ready |

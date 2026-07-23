@@ -100,7 +100,7 @@ export const SPONSOR_TIERS: SponsorTier[] = [
     label: 'Minor sponsors',
     variant: 'minor',
     slots: [
-      { name: 'Zuellig Pharma', src: '/images/sponsors/zuellig-pharma.png' },
+      { name: 'Zuellig Pharma', src: '/images/sponsors/zuellig-pharma.webp' },
       { name: 'Johnson & Johnson', src: '/images/sponsors/johnson-and-johnson.webp' },
       { name: 'Glenmark Philippines Inc.', src: '/images/sponsors/glenmark.png' },
       { name: 'AbbVie Philippines Inc.', src: '/images/sponsors/abbvie.webp' },
