@@ -105,10 +105,10 @@ export const SPONSOR_TIERS: SponsorTier[] = [
     slots: [
       { name: 'Zuellig Pharma', src: '/images/sponsors/zuellig-pharma.webp' },
       { name: 'Johnson & Johnson', src: '/images/sponsors/johnson-and-johnson.webp' },
-      { name: 'Glenmark Philippines Inc.', src: '/images/sponsors/glenmark.png' },
+      { name: 'Glenmark Philippines Inc.', src: '/images/sponsors/glenmark.webp' },
       { name: 'AbbVie Philippines Inc.', src: '/images/sponsors/abbvie.webp' },
       { name: 'Dmark', src: '/images/sponsors/dmark.png' },
-      { name: 'Pfizer Inc.', src: '/images/sponsors/pfizer.png' },
+      { name: 'Pfizer Inc.', src: '/images/sponsors/pfizer.webp' },
       { name: 'Hyphens', src: '/images/sponsors/hyphens.webp' },
       { name: 'Sun Pharma', src: '/images/sponsors/sun-pharma.webp' },
     ],

@@ -6,10 +6,10 @@
 | Bronze | Galderma | `galderma.png` | Placeholder |
 | Minor | Zuellig Pharma | `zuellig-pharma.webp` | Ready |
 | Minor | Johnson & Johnson | `johnson-and-johnson.webp` | Ready |
-| Minor | Glenmark Philippines Inc. | `glenmark.png` | Placeholder |
+| Minor | Glenmark Philippines Inc. | `glenmark.webp` | Ready |
 | Minor | AbbVie Philippines Inc. | `abbvie.webp` | Ready |
 | Minor | Dmark | `dmark.png` | Placeholder |
-| Minor | Pfizer Inc. | `pfizer.png` | Placeholder |
+| Minor | Pfizer Inc. | `pfizer.webp` | Ready |
 | Minor | Hyphens | `hyphens.webp` | Ready |
 | Minor | Sun Pharma | `sun-pharma.webp` | Ready |
 
