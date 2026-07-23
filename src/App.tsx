@@ -199,9 +199,12 @@ function HomePage() {
         </div>
 
         <div className="hero-details reveal reveal-delay-1">
-          <div className="hero-meta hero-meta--credits">
+          <div className="credit-cards" aria-label="Accreditation units">
             {EVENT_META.credits.map((credit) => (
-              <span className="pill pill--outline" key={credit}>{credit}</span>
+              <div className="credit-card" key={credit.label}>
+                <p className="credit-card__value">{credit.value}</p>
+                <p className="credit-card__label">{credit.label}</p>
+              </div>
             ))}
           </div>
         </div>

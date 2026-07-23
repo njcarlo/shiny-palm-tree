@@ -18,7 +18,10 @@ export const EVENT_META = {
   datetime: 'September 2, 2026 · 1:00 PM – 8:00 PM',
   venue: 'Seda Hotel, Bonifacio Global City',
   locationLine: 'Taguig City, Philippines',
-  credits: ['PDS CME Units — 30', 'PRC CPD Units — 2.50'],
+  credits: [
+    { value: '2.50', label: 'PRC CPD Units' },
+    { value: '30', label: 'PDS CME Units' },
+  ],
   ctaNote: 'Secure your spot now. Limited seats available!',
   earlyRegistration: 'Early registration is until August 15, 2026 or until all slots are filled.',
   rates: [
