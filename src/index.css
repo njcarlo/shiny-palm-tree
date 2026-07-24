@@ -1444,6 +1444,7 @@ button {
 .bio-modal__header {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1.25rem;
   margin-bottom: 1.15rem;
   padding-bottom: 1.15rem;
@@ -2020,12 +2021,6 @@ button {
   -webkit-overflow-scrolling: touch;
 }
 
-.modal-backdrop:has(.bio-modal-panel) {
-  align-items: flex-start;
-  padding-top: max(1.25rem, 3vh);
-  padding-bottom: max(1.25rem, 3vh);
-}
-
 @keyframes fade-in {
   from { opacity: 0; }
   to   { opacity: 1; }
@@ -2055,7 +2050,8 @@ button {
   max-height: none;
   height: auto;
   overflow: visible;
-  text-align: left;
+  text-align: center;
+  margin: auto;
   padding: clamp(1.6rem, 3vw, 2.35rem) clamp(1.6rem, 3.5vw, 2.75rem) clamp(1.5rem, 3vw, 2.1rem);
 }
 
