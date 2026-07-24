@@ -94,7 +94,7 @@ export const SPONSOR_TIERS: SponsorTier[] = [
     slots: [
       {
         name: 'Galderma',
-        src: '/images/sponsors/galderma.png',
+        src: '/images/sponsors/galderma.webp',
       },
     ],
   },

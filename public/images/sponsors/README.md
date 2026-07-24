@@ -3,7 +3,7 @@
 | Tier | Company | File | Status |
 |------|---------|------|--------|
 | Platinum | Novartis Healthcare Philippines Inc. | `novartis.webp` | Ready |
-| Bronze | Galderma | `galderma.png` | Placeholder |
+| Bronze | Galderma | `galderma.webp` | Ready |
 | Minor | Zuellig Pharma | `zuellig-pharma.webp` | Ready |
 | Minor | Johnson & Johnson | `johnson-and-johnson.webp` | Ready |
 | Minor | Glenmark Philippines Inc. | `glenmark.webp` | Ready |
