@@ -323,8 +323,7 @@ function HomePage() {
               className="btn btn-yellow btn-shine intl-speaker__bio-btn"
               onClick={openBio}
             >
-              <span>View biography</span>
-              <small>Biography sketch</small>
+              View biography
             </button>
           </div>
 
@@ -362,13 +361,11 @@ function HomePage() {
                 href={PROGRAM_INVITE.downloadHref}
                 download="immunodermatology-masterclass-2026-program.png"
               >
-                <span>{PROGRAM_INVITE.downloadLabel}</span>
-                <small>{PROGRAM_INVITE.downloadHint}</small>
+                {PROGRAM_INVITE.downloadLabel}
               </a>
             ) : (
               <span className="btn btn-yellow btn-shine" aria-disabled="true">
-                <span>{PROGRAM_INVITE.downloadLabel}</span>
-                <small>{PROGRAM_INVITE.downloadHint}</small>
+                {PROGRAM_INVITE.downloadLabel}
               </span>
             )}
           </div>
