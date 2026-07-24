@@ -335,7 +335,7 @@ function HomePage() {
                 alt={INTERNATIONAL_SPEAKER.name}
                 placeholderLabel={INTERNATIONAL_SPEAKER.name}
                 className="intl-speaker__photo"
-                variant="speaker"
+                variant="card"
               />
             </div>
           </div>

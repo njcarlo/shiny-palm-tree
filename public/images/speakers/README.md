@@ -20,7 +20,6 @@ Photos extracted from the Immunodermatology Masterclass 2026 slide deck.
 | `rogelio-balagat.jpg` | Dr. Rogelio Balagat (moderator) |
 | `johanna-lazo-dizon.jpg` | Dr. Johanna Pauline Lazo-Dizon (moderator) |
 | `kristine-legaspi.jpg` | Dr. Kristine Natalee Legaspi (moderator) |
-| `kok-wai-leong.jpg` | Dr. Kok Wai Leong (international speaker) |
 
 **Not in the slide deck (placeholders remain):**
 
@@ -29,5 +28,6 @@ Photos extracted from the Immunodermatology Masterclass 2026 slide deck.
 | `melanie-doria-ruiz.jpg` | Dr. Melanie Doria-Ruiz |
 | `cybill-uy.jpg` | Dr. Cybill Uy |
 | `josef-concha.jpg` | Dr. Josef Symon Concha |
+| `kok-wai-leong.jpg` | Dr. Kok Wai Leong (international speaker) |
 
 Recommended: square JPG, at least 400×400px.
