@@ -48,33 +48,35 @@ export function InternationalSpeakerBioModal({ speaker, onClose }: Props) {
           </svg>
         </button>
 
-        <div className="bio-modal__header">
-          <div className="bio-modal__photo-wrap">
-            <ImageSlot
-              src={speakerImage(speaker.slug)}
-              alt={speaker.name}
-              placeholderLabel={speaker.name}
-              className="bio-modal__photo"
-              variant="speaker"
-            />
+        <div className="bio-modal__layout">
+          <div className="bio-modal__header">
+            <div className="bio-modal__photo-wrap">
+              <ImageSlot
+                src={speakerImage(speaker.slug)}
+                alt={speaker.name}
+                placeholderLabel={speaker.name}
+                className="bio-modal__photo"
+                variant="speaker"
+              />
+            </div>
+            <div className="bio-modal__identity">
+              <p className="bio-modal__eyebrow">Biography sketch</p>
+              <h2 id="intl-bio-title" className="bio-modal__name">
+                {speaker.name}
+              </h2>
+              <p className="bio-modal__meta">
+                {speaker.title}
+                <span aria-hidden="true"> · </span>
+                {speaker.location}
+              </p>
+            </div>
           </div>
-          <div className="bio-modal__identity">
-            <p className="bio-modal__eyebrow">Biography sketch</p>
-            <h2 id="intl-bio-title" className="bio-modal__name">
-              {speaker.name}
-            </h2>
-            <p className="bio-modal__meta">
-              {speaker.title}
-              <span aria-hidden="true"> · </span>
-              {speaker.location}
-            </p>
-          </div>
-        </div>
 
-        <div className="bio-modal__body">
-          {speaker.biography.map((paragraph) => (
-            <p key={paragraph.slice(0, 48)}>{paragraph}</p>
-          ))}
+          <div className="bio-modal__body">
+            {speaker.biography.map((paragraph) => (
+              <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+            ))}
+          </div>
         </div>
       </div>
     </div>
