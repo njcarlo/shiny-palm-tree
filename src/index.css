@@ -1483,52 +1483,31 @@ button {
 }
 
 .bio-modal__ring {
-  position: relative;
   width: 112px;
   margin: 0;
-  padding: 0;
-  aspect-ratio: 1;
+  padding: 4px;
   border-radius: 50%;
-  background: #ececec;
+  /* Same green circle highlight treatment as other doctor portraits */
+  background: linear-gradient(135deg, var(--accent-mint), var(--accent-lime), var(--accent-lime-deep));
   box-shadow:
-    0 8px 28px rgba(0, 0, 0, 0.35),
-    0 0 16px rgba(160, 255, 50, 0.15);
+    0 0 18px rgba(160, 255, 50, 0.35),
+    0 8px 28px rgba(0, 0, 0, 0.3);
   overflow: hidden;
 }
 
-/* Lime crescent only in the bio popup portrait */
-.bio-modal__ring::before {
-  content: '';
-  position: absolute;
-  top: -6%;
-  left: -12%;
-  right: -12%;
-  height: 52%;
-  z-index: 1;
-  pointer-events: none;
-  background: linear-gradient(180deg, var(--accent-lime-soft) 0%, var(--accent-lime) 55%, var(--accent-lime-deep) 100%);
-  border-radius: 0 0 50% 50%;
-  clip-path: ellipse(70% 100% at 50% 0%);
-}
-
 .bio-modal__photo {
-  position: relative;
-  z-index: 2;
   width: 100%;
   aspect-ratio: 1;
   height: auto;
   object-fit: cover;
-  object-position: center 8%;
+  object-position: center 12%;
   border-radius: 50%;
   display: block;
   border: none;
-  transform: translateY(10%);
   background: #ececec;
 }
 
 .bio-modal__ring .image-slot {
-  position: relative;
-  z-index: 2;
   width: 100%;
   aspect-ratio: 1;
   border-radius: 50%;
