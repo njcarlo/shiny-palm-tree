@@ -45,7 +45,7 @@ export const PROGRAM_INVITE = {
   body:
     'You are invited to join the Philippine Dermatological Society Immunodermatology Subspecialty Core Group for a full afternoon of plenary sessions, faculty discussions, and closing remarks.',
   downloadLabel: 'Download program',
-  downloadHint: 'PNG schedule image',
+  downloadHint: 'Program schedule image',
   downloadHref: PROGRAM_DOWNLOAD_HREF,
   downloadReady: true,
 } as const

@@ -322,7 +322,7 @@ function HomePage() {
               <a
                 className="btn btn-yellow btn-shine"
                 href={PROGRAM_INVITE.downloadHref}
-                download="immunodermatology-masterclass-2026-program.png"
+                download="immunodermatology-masterclass-2026-program.jpg"
               >
                 {PROGRAM_INVITE.downloadLabel}
               </a>
