@@ -67,6 +67,33 @@ export const SYMPOSIUM = {
   flyerSrc: '/images/assets/symposium-flyer-placeholder.webp',
 } as const
 
+export type InternationalSpeaker = {
+  slug: string
+  name: string
+  title: string
+  location: string
+  talks: string[]
+  biography: string[]
+}
+
+/** Featured international faculty — separate from session speaker cards/modals. */
+export const INTERNATIONAL_SPEAKER: InternationalSpeaker = {
+  slug: 'kok-wai-leong',
+  name: 'Dr. Kok Wai Leong',
+  title: 'Dermatologist',
+  location: 'Singapore',
+  talks: [
+    'Artificial Intelligence vs Dermatologists: Challenges and Opportunities',
+    'Practical Applications of AI in Immune-Mediated Skin Diseases',
+  ],
+  biography: [
+    'Dr Kok Wai Leong is an accredited dermatologist whose areas of specialty include eczema, psoriasis and skin cancers. His broad range of expertise includes managing general dermatological conditions in adult and children, including acne, skin allergies and hives. He also performs skin surgery, aesthetic and laser procedures. His treatment philosophy is personalized and holistic patient care. He strongly believes that effective treatment can only be achieved by understanding the individual needs of every patient.',
+    'Prior to joining private practice, Dr Kok was a dermatologist at Khoo Teck Puat Hospital and at the National Skin Centre. He also practised as a dermatologist and chairman of the dermatology medical board in the Military Medicine Institute of the Singapore Armed Force. He was a visiting consultant with Singapore General Hospital Department of Dermatology and the National Skin Centre.',
+    'Dr Kok has a keen interest in research and his work has been presented in regional and international meetings. He has published widely in distinguished peer-reviewed journals. He was a clinical tutor with the Yong Loo Lin School of Medicine, National University Singapore and Lee Kong Chian School of Medicine and has received an award in teaching in recognition of his efforts in education. He has also accrued accolades in service excellence and clinical quality, which is testament to his commitment to building strong doctor-patient relationships.',
+    'Dr Kok is currently serving as a Board member of the Chapter of Dermatologists, College of Physicians (Singapore), and the Executive Committee of the Dermatology Society of Singapore. He is a member of the Dermatological Society of Singapore, the Chapter of Dermatologists, College of Physicians (Singapore), Asian Society of Paediatric Dermatology, American Academy of Dermatology, Singapore Medical Association and is a Fellow of the Academy of Medicine, Singapore (Dermatology).',
+  ],
+}
+
 export type SponsorTier = {
   id: string
   label: string

@@ -2,9 +2,11 @@ import { useCallback, useEffect, useRef, useState, type RefObject } from 'react'
 import { Navigate, Routes, Route } from 'react-router-dom'
 import { ImageSlot } from './components/ImageSlot'
 import { DocumentModal, type TeamDocument } from './components/DocumentModal'
+import { InternationalSpeakerBioModal } from './components/InternationalSpeakerBioModal'
 import { SpeakerModal } from './components/SpeakerModal'
 import {
   EVENT_META,
+  INTERNATIONAL_SPEAKER,
   PROGRAM_INVITE,
   SPONSOR_TIERS,
   SYMPOSIUM,
@@ -103,6 +105,7 @@ function HomePage() {
   const pageRef = useReveal()
   const [modal, setModal] = useState<ModalState>(null)
   const [docModal, setDocModal] = useState<TeamDocument | null>(null)
+  const [bioOpen, setBioOpen] = useState(false)
 
   const openModal = useCallback((speaker: Speaker, sessionTitle?: string) => {
     setModal({ speaker, sessionTitle })
@@ -110,6 +113,8 @@ function HomePage() {
 
   const closeModal = useCallback(() => setModal(null), [])
   const closeDocModal = useCallback(() => setDocModal(null), [])
+  const openBio = useCallback(() => setBioOpen(true), [])
+  const closeBio = useCallback(() => setBioOpen(false), [])
 
   return (
     <div className="page" ref={pageRef}>
@@ -137,6 +142,7 @@ function HomePage() {
         </a>
         <nav className="site-header__nav" aria-label="Primary">
           <a href="#register">Register</a>
+          <a href="#highlights">Highlights</a>
           <a href="#program">Program</a>
           <a href="#symposium">Symposium</a>
           <a href="#sponsors">Sponsors</a>
@@ -252,6 +258,52 @@ function HomePage() {
         </section>
       </section>
 
+      {/* Featured international speaker highlight */}
+      <section className="section highlights reveal" id="highlights" aria-label="Featured sessions highlights">
+        <p className="section-eyebrow">Featured sessions</p>
+        <h2 className="section-title">
+          <span>Highlights</span>
+        </h2>
+        <p className="section-lede highlights__lede">
+          Free Communication, Great Debate in immune-mediated skin disease, and plenary
+          lectures from world-renowned experts.
+        </p>
+
+        <article className="intl-speaker">
+          <div className="intl-speaker__copy">
+            <p className="intl-speaker__label">International speaker</p>
+            <h3 className="intl-speaker__name">{INTERNATIONAL_SPEAKER.name}</h3>
+            <p className="intl-speaker__role">
+              {INTERNATIONAL_SPEAKER.title}, {INTERNATIONAL_SPEAKER.location}
+            </p>
+            <ul className="intl-speaker__talks">
+              {INTERNATIONAL_SPEAKER.talks.map((talk) => (
+                <li key={talk}>{talk}</li>
+              ))}
+            </ul>
+            <button
+              type="button"
+              className="btn btn-yellow btn-shine intl-speaker__bio-btn"
+              onClick={openBio}
+            >
+              View biography
+            </button>
+          </div>
+
+          <div className="intl-speaker__visual">
+            <div className="intl-speaker__frame">
+              <ImageSlot
+                src={speakerImage(INTERNATIONAL_SPEAKER.slug)}
+                alt={INTERNATIONAL_SPEAKER.name}
+                placeholderLabel={INTERNATIONAL_SPEAKER.name}
+                className="intl-speaker__photo"
+                variant="card"
+              />
+            </div>
+          </div>
+        </article>
+      </section>
+
       {/* 6. Event program — invite, opening, sessions, closing */}
       <div id="program">
         <section className="section reveal" id="program-invite" aria-label="Program invite">
@@ -272,13 +324,11 @@ function HomePage() {
                 href={PROGRAM_INVITE.downloadHref}
                 download="immunodermatology-masterclass-2026-program.png"
               >
-                <span>{PROGRAM_INVITE.downloadLabel}</span>
-                <small>{PROGRAM_INVITE.downloadHint}</small>
+                {PROGRAM_INVITE.downloadLabel}
               </a>
             ) : (
               <span className="btn btn-yellow btn-shine" aria-disabled="true">
-                <span>{PROGRAM_INVITE.downloadLabel}</span>
-                <small>{PROGRAM_INVITE.downloadHint}</small>
+                {PROGRAM_INVITE.downloadLabel}
               </span>
             )}
           </div>
@@ -519,6 +569,13 @@ function HomePage() {
         <DocumentModal
           doc={docModal}
           onClose={closeDocModal}
+        />
+      )}
+
+      {bioOpen && (
+        <InternationalSpeakerBioModal
+          speaker={INTERNATIONAL_SPEAKER}
+          onClose={closeBio}
         />
       )}
     </div>
