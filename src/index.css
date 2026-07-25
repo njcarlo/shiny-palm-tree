@@ -1590,6 +1590,17 @@ button {
   flex: 1 1 auto;
 }
 
+.session-card--remarks {
+  min-height: 0;
+  justify-content: center;
+  padding-top: clamp(2.25rem, 5vw, 3.25rem);
+  padding-bottom: clamp(2.25rem, 5vw, 3.25rem);
+}
+
+.session-card--remarks .featured-speaker {
+  margin-top: 1.25rem;
+}
+
 /* Lime→cyan top accent line */
 .session-card::before {
   content: '';
