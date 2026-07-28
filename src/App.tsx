@@ -142,7 +142,7 @@ function HomePage() {
         </a>
         <nav className="site-header__nav" aria-label="Primary">
           <a href="#register">Register</a>
-          <a href="#highlights">Highlights</a>
+          <a href="#highlights">Highlight</a>
           <a href="#program">Program</a>
           <a href="#symposium">Symposium</a>
           <a href="#sponsors">Sponsors</a>
