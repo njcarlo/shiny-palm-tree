@@ -30,6 +30,16 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Verify Firebase credentials are present
+        env:
+          SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          if [ -z "$SA" ]; then
+            echo "::error::FIREBASE_SERVICE_ACCOUNT repository secret is missing or empty. Add it under Settings > Secrets and variables > Actions > Repository secrets (exact name, full JSON)."
+            exit 1
+          fi
+          echo "FIREBASE_SERVICE_ACCOUNT is present (length: ${#SA} characters)."
+
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
