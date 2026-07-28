@@ -1486,12 +1486,8 @@ button {
   width: 72px;
   margin: 0;
   padding: 3px;
-  border-radius: 50%;
-  /* Same green circle highlight treatment as other doctor portraits */
-  background: linear-gradient(135deg, var(--accent-mint), var(--accent-lime), var(--accent-lime-deep));
-  box-shadow:
-    0 0 14px rgba(160, 255, 50, 0.3),
-    0 6px 18px rgba(0, 0, 0, 0.28);
+  background: linear-gradient(135deg, var(--accent-mint), var(--accent-lime-deep), var(--accent-cyan));
+  box-shadow: 0 0 18px rgba(160, 255, 50, 0.25);
   overflow: hidden;
 }
 
@@ -1500,11 +1496,11 @@ button {
   aspect-ratio: 1;
   height: auto;
   object-fit: cover;
-  object-position: center 12%;
+  object-position: center top;
   border-radius: 50%;
-  display: block;
-  border: none;
-  background: #ececec;
+  /* Source headshot is tight at the top — shift down for headroom */
+  transform: translateY(14%) scale(0.96);
+  background: #e8e8e8;
 }
 
 .bio-modal__ring .image-slot {
@@ -1512,7 +1508,7 @@ button {
   aspect-ratio: 1;
   border-radius: 50%;
   overflow: hidden;
-  background: #ececec;
+  background: #e8e8e8;
 }
 
 .bio-modal__eyebrow {
