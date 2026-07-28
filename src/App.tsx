@@ -259,26 +259,23 @@ function HomePage() {
       </section>
 
       {/* Featured international speaker highlight */}
-      <section className="section highlights reveal" id="highlights" aria-label="Featured sessions highlights">
-        <p className="section-eyebrow">Featured sessions</p>
+      <section className="section highlights reveal" id="highlights" aria-label="International speaker highlight">
+        <p className="section-eyebrow">Highlight</p>
         <h2 className="section-title">
-          <span>Highlights</span>
+          <span>International Speaker</span>
         </h2>
-        <p className="section-lede highlights__lede">
-          Free Communication, Great Debate in immune-mediated skin disease, and plenary
-          lectures from world-renowned experts.
-        </p>
 
         <article className="intl-speaker">
           <div className="intl-speaker__copy">
-            <p className="intl-speaker__label">International speaker</p>
             <h3 className="intl-speaker__name">{INTERNATIONAL_SPEAKER.name}</h3>
             <p className="intl-speaker__role">
               {INTERNATIONAL_SPEAKER.title}, {INTERNATIONAL_SPEAKER.location}
             </p>
             <ul className="intl-speaker__talks">
-              {INTERNATIONAL_SPEAKER.talks.map((talk) => (
-                <li key={talk}>{talk}</li>
+              {INTERNATIONAL_SPEAKER.talks.map((talk, i) => (
+                <li key={talk}>
+                  <span className="intl-speaker__topic-label">Topic {i + 1}:</span> {talk}
+                </li>
               ))}
             </ul>
             <button
