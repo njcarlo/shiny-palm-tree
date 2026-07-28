@@ -1507,8 +1507,6 @@ button {
   object-fit: cover;
   object-position: center top;
   border-radius: 50%;
-  /* Source headshot is tight at the top — shift down for headroom */
-  transform: translateY(14%) scale(0.96);
   background: #e8e8e8;
 }
 
