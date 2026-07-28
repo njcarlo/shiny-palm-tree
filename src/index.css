@@ -1402,6 +1402,10 @@ button {
 
 .intl-speaker__talks li {
   position: relative;
+  display: flex;
+  gap: 0.4rem;
+  align-items: baseline;
+  text-align: left;
   padding-left: 0;
   font-size: clamp(0.82rem, 1.6vw, 0.95rem);
   font-weight: 700;
@@ -1412,8 +1416,8 @@ button {
 }
 
 .intl-speaker__topic-label {
+  flex: none;
   color: var(--accent-lime);
-  margin-right: 0.35rem;
 }
 
 .intl-speaker__bio-btn {
