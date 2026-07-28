@@ -183,7 +183,7 @@ const SPEAKERS: Record<string, Speaker> = {
   },
   'bryan-guevara': {
     slug: 'bryan-guevara',
-    name: 'Dr. Bryan Guevara',
+    name: 'Dr. Bryan Edgar Guevara',
     role: 'Closing Remarks',
   },
   'melanie-doria-ruiz': {
@@ -283,4 +283,5 @@ export const OPENING_SPEAKER: Speaker = speaker('jasmin-jamora', {
 
 export const CLOSING_SPEAKER: Speaker = speaker('bryan-guevara', {
   role: 'Closing Remarks',
+  designation: 'Chair, Immunodermatology Subspecialty Core Group',
 })

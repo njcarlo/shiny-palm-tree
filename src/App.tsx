@@ -417,8 +417,8 @@ function HomePage() {
               />
             </div>
             <h2 className="featured-name">{CLOSING_SPEAKER.name}</h2>
-            {CLOSING_SPEAKER.role && (
-              <p className="featured-role">{CLOSING_SPEAKER.role}</p>
+            {CLOSING_SPEAKER.designation && (
+              <p className="featured-role">{CLOSING_SPEAKER.designation}</p>
             )}
           </div>
         </section>

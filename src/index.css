@@ -2011,6 +2011,17 @@ button {
   width: 100%;
 }
 
+/* Logos with more surrounding whitespace / smaller glyphs read larger */
+.tier-card-minor .tier-card__logo img[src*="zuellig-pharma"],
+.tier-card-minor .tier-card__logo img[src*="glenmark"],
+.tier-card-minor .tier-card__logo img[src*="dmark"],
+.tier-card-minor img[src*="zuellig-pharma"],
+.tier-card-minor img[src*="glenmark"],
+.tier-card-minor img[src*="dmark"] {
+  min-height: 58px;
+  max-height: 68px;
+}
+
 .sponsor-name {
   margin: 0;
   text-align: center;
@@ -2938,6 +2949,16 @@ button {
   .tier-card-minor img {
     min-height: 32px;
     max-height: 40px;
+  }
+
+  .tier-card-minor .tier-card__logo img[src*="zuellig-pharma"],
+  .tier-card-minor .tier-card__logo img[src*="glenmark"],
+  .tier-card-minor .tier-card__logo img[src*="dmark"],
+  .tier-card-minor img[src*="zuellig-pharma"],
+  .tier-card-minor img[src*="glenmark"],
+  .tier-card-minor img[src*="dmark"] {
+    min-height: 46px;
+    max-height: 56px;
   }
 
   .tier-card-minor .sponsor-name {
