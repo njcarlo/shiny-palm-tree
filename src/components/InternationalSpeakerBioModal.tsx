@@ -49,14 +49,16 @@ export function InternationalSpeakerBioModal({ speaker, onClose }: Props) {
         </button>
 
         <div className="bio-modal__header">
-          <div className="bio-modal__photo-wrap">
-            <ImageSlot
-              src={speakerImage(speaker.slug)}
-              alt={speaker.name}
-              placeholderLabel={speaker.name}
-              className="bio-modal__photo"
-              variant="speaker"
-            />
+          <div className="bio-modal__photo-wrap modal-photo-wrap">
+            <div className="modal-ring bio-modal__ring">
+              <ImageSlot
+                src={speakerImage(speaker.slug)}
+                alt={speaker.name}
+                placeholderLabel={speaker.name}
+                className="modal-photo bio-modal__photo"
+                variant="speaker"
+              />
+            </div>
           </div>
           <div className="bio-modal__identity">
             <p className="bio-modal__eyebrow">Biography sketch</p>

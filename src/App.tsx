@@ -319,7 +319,7 @@ function HomePage() {
               <a
                 className="btn btn-yellow btn-shine"
                 href={PROGRAM_INVITE.downloadHref}
-                download="immunodermatology-masterclass-2026-program.png"
+                download="immunodermatology-masterclass-2026-program.jpg"
               >
                 {PROGRAM_INVITE.downloadLabel}
               </a>
@@ -331,27 +331,29 @@ function HomePage() {
           </div>
         </section>
 
-        <section className="section panel reveal" id="opening">
-          <div className="section-eyebrow">Opening remarks</div>
-          <div
-            className="featured-speaker featured-speaker--clickable"
-            onClick={() => openModal(OPENING_SPEAKER)}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') openModal(OPENING_SPEAKER) }}
-            aria-label={`View ${OPENING_SPEAKER.name} details`}
-          >
-            <div className="speaker-ring">
-              <ImageSlot
-                src={speakerImage(OPENING_SPEAKER.slug)}
-                alt={OPENING_SPEAKER.name}
-                placeholderLabel={OPENING_SPEAKER.name}
-                className="speaker-photo"
-                variant="speaker"
-              />
+        <section className="section reveal" id="opening">
+          <div className="session-card session-card--remarks">
+            <div className="section-eyebrow">Opening remarks</div>
+            <div
+              className="featured-speaker featured-speaker--clickable"
+              onClick={() => openModal(OPENING_SPEAKER)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') openModal(OPENING_SPEAKER) }}
+              aria-label={`View ${OPENING_SPEAKER.name} details`}
+            >
+              <div className="speaker-ring">
+                <ImageSlot
+                  src={speakerImage(OPENING_SPEAKER.slug)}
+                  alt={OPENING_SPEAKER.name}
+                  placeholderLabel={OPENING_SPEAKER.name}
+                  className="speaker-photo"
+                  variant="speaker"
+                />
+              </div>
+              <h2 className="featured-name">{OPENING_SPEAKER.name}</h2>
+              <p className="featured-role">{OPENING_SPEAKER.designation}</p>
             </div>
-            <h2 className="featured-name">{OPENING_SPEAKER.name}</h2>
-            <p className="featured-role">{OPENING_SPEAKER.designation}</p>
           </div>
         </section>
 
@@ -395,28 +397,30 @@ function HomePage() {
         ))}
 
         <section className="section reveal" id="closing">
-          <div className="section-eyebrow">Closing remarks</div>
-          <div
-            className="featured-speaker featured-speaker--clickable"
-            onClick={() => openModal(CLOSING_SPEAKER)}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') openModal(CLOSING_SPEAKER) }}
-            aria-label={`View ${CLOSING_SPEAKER.name} details`}
-          >
-            <div className="speaker-ring">
-              <ImageSlot
-                src={speakerImage(CLOSING_SPEAKER.slug)}
-                alt={CLOSING_SPEAKER.name}
-                placeholderLabel={CLOSING_SPEAKER.name}
-                className="speaker-photo"
-                variant="speaker"
-              />
+          <div className="session-card session-card--remarks">
+            <div className="section-eyebrow">Closing remarks</div>
+            <div
+              className="featured-speaker featured-speaker--clickable"
+              onClick={() => openModal(CLOSING_SPEAKER)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') openModal(CLOSING_SPEAKER) }}
+              aria-label={`View ${CLOSING_SPEAKER.name} details`}
+            >
+              <div className="speaker-ring">
+                <ImageSlot
+                  src={speakerImage(CLOSING_SPEAKER.slug)}
+                  alt={CLOSING_SPEAKER.name}
+                  placeholderLabel={CLOSING_SPEAKER.name}
+                  className="speaker-photo"
+                  variant="speaker"
+                />
+              </div>
+              <h2 className="featured-name">{CLOSING_SPEAKER.name}</h2>
+              {CLOSING_SPEAKER.role && (
+                <p className="featured-role">{CLOSING_SPEAKER.role}</p>
+              )}
             </div>
-            <h2 className="featured-name">{CLOSING_SPEAKER.name}</h2>
-            {CLOSING_SPEAKER.designation && (
-              <p className="featured-role">{CLOSING_SPEAKER.designation}</p>
-            )}
           </div>
         </section>
       </div>

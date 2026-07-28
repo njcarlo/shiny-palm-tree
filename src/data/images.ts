@@ -6,7 +6,7 @@ import hero from '../assets/brand/immuderm-masterclass-2026-full-color.webp'
 import pattern from '../assets/brand/pattern_immunoderm.webp'
 import coreGroupDoc from '../assets/docs/immunodermatology-subspecialty-core-group.jpg'
 import directoryDoc from '../assets/docs/immunodermatology-2026-directory.jpg'
-import programDownload from '../assets/docs/immunodermatology-masterclass-2026-program.png'
+import programDownload from '../assets/docs/immunodermatology-masterclass-2026-program.jpg'
 
 const speakerModules = import.meta.glob('../assets/speakers/*.jpg', {
   eager: true,
