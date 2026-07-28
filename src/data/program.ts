@@ -127,10 +127,14 @@ const SPEAKERS: Record<string, Speaker> = {
   'katrina-canlas-estrella': {
     slug: 'katrina-canlas-estrella',
     name: 'Dr. Katrina Canlas-Estrella',
+    credentials: 'FPDS',
+    designation: 'Dermatology — Immunodermatology',
   },
   'roxanne-casis-hao': {
     slug: 'roxanne-casis-hao',
     name: 'Dr. Roxanne Casis-Hao',
+    credentials: 'FPPS, FPSAAI',
+    designation: 'Pediatrics — Allergology & Immunology',
   },
   'jasmin-jamora': {
     slug: 'jasmin-jamora',
@@ -246,7 +250,8 @@ export const PROGRAM: Session[] = [
   },
   {
     id: 'session-2',
-    title: 'New Insights in Urticaria',
+    title:
+      'New Insights in Chronic Spontaneous Urticaria: Perspectives from Immunodermatology and Allergology',
     moderators: [
       speaker('cybill-uy'),
       speaker('josef-concha'),
