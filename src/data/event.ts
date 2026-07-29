@@ -31,7 +31,7 @@ export const EVENT_META = {
     { label: 'Regular (Aug 16–26) — PDS Residents', value: '₱600' },
   ],
   paymentNote:
-    'Scan the QR code to register and pay. PDS Members and Residents need to upload proof of payment for a successful registration.',
+    'For successful registration, PDS Members and Residents must upload their proof of payment via the Google registration form.',
   bank: {
     name: 'BDO',
     accountName: 'Philippine Dermatological Society, Inc.',
