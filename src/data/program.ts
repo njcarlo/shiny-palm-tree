@@ -129,12 +129,29 @@ const SPEAKERS: Record<string, Speaker> = {
     name: 'Dr. Katrina Canlas-Estrella',
     credentials: 'FPDS',
     designation: 'Dermatology — Immunodermatology',
+    affiliations: [
+      'Co-Chief, Immunodermatology Core Group, Philippine Dermatological Society',
+      'Active Consultant and Chief of Immunodermatology, Makati Medical Center',
+      'Consultant, Centre Medical Internationale, BGC and Makati Life Medical Center',
+      'Visiting Consultant, Department of Dermatology, University of the East Ramon Magsaysay Memorial Medical Center',
+      'Residency Training in Dermatology, Makati Medical Center',
+      'Fellowship in Immunodermatology, University of California San Francisco',
+    ],
   },
   'roxanne-casis-hao': {
     slug: 'roxanne-casis-hao',
     name: 'Dr. Roxanne Casis-Hao',
     credentials: 'FPPS, FPSAAI',
     designation: 'Pediatrics — Allergology & Immunology',
+    affiliations: [
+      'Associate Professor, University of the Philippines College of Medicine',
+      'Chief, Division of Allergy and Immunology, University of the Philippines — Philippine General Hospital',
+      'Head, Section of Allergy and Immunology, Department of Pediatrics, Cardinal Santos Medical Center',
+      'Board of Trustees, Philippine Society of Allergy, Asthma and Immunology',
+      'Head, Food Allergy Council, Philippine Society of Allergy, Asthma and Immunology',
+      'Residency Training in Pediatrics, University of the Philippines — Philippine General Hospital',
+      'Fellowship Training in Adult and Pediatric Allergy and Immunology, University of the Philippines — Philippine General Hospital',
+    ],
   },
   'jasmin-jamora': {
     slug: 'jasmin-jamora',
@@ -189,38 +206,67 @@ const SPEAKERS: Record<string, Speaker> = {
   'melanie-doria-ruiz': {
     slug: 'melanie-doria-ruiz',
     name: 'Dr. Melanie Doria-Ruiz',
-    designation: 'Moderator',
     isModerator: true,
+    affiliations: [
+      'Vice-Chair and Research Coordinator, Department of Dermatology, Jose R. Reyes Memorial Medical Center',
+      'Residency Training in Dermatology, Jose R. Reyes Memorial Medical Center',
+      'Fellowship Training in Acquired and Inherited Blistering Diseases, Skin Cancers and Clinical Research Trials, St. George Hospital, Sydney, Australia',
+    ],
   },
   'rogelio-balagat': {
     slug: 'rogelio-balagat',
     name: 'Dr. Rogelio Balagat',
-    designation: 'Moderator',
+    designation: 'Internal Medicine · Rheumatology · Dermatology',
     isModerator: true,
+    affiliations: [
+      'Chairman, Department of Internal Medicine: VRP Medical Center (2017–2019) and Rizal Medical Center (2020–2022)',
+      'Faculty, Mapúa School of Medicine and Ateneo School of Medicine and Public Health',
+    ],
   },
   'cybill-uy': {
     slug: 'cybill-uy',
     name: 'Dr. Cybill Uy',
-    designation: 'Moderator',
     isModerator: true,
+    affiliations: [
+      'Head, Immunodermatology Unit, Department of Dermatology, Southern Isabela Medical Center',
+      'Medical Specialist III, Department of Medicine, Region II Trauma and Medical Center',
+      'Residency Training in Dermatology, University of the Philippines — Philippine General Hospital',
+      'Fellowship in Immunodermatology and Cutaneous Lymphoma, Papageorgiou General Hospital, Aristotle University School of Medicine, Thessaloniki, Greece',
+    ],
   },
   'josef-concha': {
     slug: 'josef-concha',
     name: 'Dr. Josef Symon Concha',
-    designation: 'Moderator',
     isModerator: true,
+    affiliations: [
+      'Founder, The Acne Clinic',
+      'Adjunct Faculty, Dermatology, Philippine General Hospital',
+      'Faculty, Cebu Institute of Medicine',
+      'Residency Training in Dermatology, University of the Philippines — Philippine General Hospital',
+      'Fellowship Training in Photodermatology, Chulalongkorn University',
+      'Fellowship in Autoimmune Skin Diseases, University of Pennsylvania',
+    ],
   },
   'johanna-lazo-dizon': {
     slug: 'johanna-lazo-dizon',
     name: 'Dr. Johanna Pauline Lazo-Dizon',
-    designation: 'Moderator',
     isModerator: true,
+    affiliations: [
+      'Active Consultant, Department of Dermatology, Medical Center Parañaque, Asian Hospital and Medical Center and University of Perpetual Help DALTA Medical Center',
+      'Residency Training in Dermatology, University of the Philippines — Philippine General Hospital',
+      'Fellowship Training in Acquired and Inherited Bullous Diseases and Dermatopharmacology, St. George Hospital, Sydney, Australia',
+    ],
   },
   'kristine-legaspi': {
     slug: 'kristine-legaspi',
     name: 'Dr. Kristine Natalee Legaspi',
-    designation: 'Moderator',
     isModerator: true,
+    affiliations: [
+      'Visiting Dermatology Consultant, St. Gabriel Medical Center, Kalibo, Aklan',
+      'Residency Training in Dermatology, University of Santo Tomas',
+      'Fellowship in Immunodermatology, St. George Hospital, Kogarah NSW, Australia',
+      'Observership in Procedural Dermatology, National Skin Centre, Singapore',
+    ],
   },
 }
 
