@@ -64,7 +64,7 @@ export const SYMPOSIUM = {
     },
   ],
   closing: 'See you there!',
-  flyerSrc: '/images/assets/symposium-flyer-placeholder.webp',
+  flyerSrc: '/images/assets/symposium-flyer.webp',
 } as const
 
 export type InternationalSpeaker = {
