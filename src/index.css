@@ -1854,7 +1854,6 @@ button {
 .symposium-title {
   font-size: clamp(1.15rem, 3vw, 1.5rem);
   font-weight: 800;
-  text-transform: uppercase;
   letter-spacing: 0.03em;
   line-height: 1.35;
   margin-bottom: 1rem;

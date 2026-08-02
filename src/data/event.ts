@@ -51,8 +51,8 @@ export const PROGRAM_INVITE = {
 } as const
 
 export const SYMPOSIUM = {
-  label: 'Sunset Symposium (NOVARTIS)',
-  title: 'The Fast & The Future: 10 Years of Excellence with Secukinumab',
+  label: 'Symposium',
+  title: 'The Fast & The Future: 10 Years of SECUrity with SECUkinumab',
   panelists: [
     {
       name: 'Dr. Maria Deanna S. Ramiscal, FPDS',
