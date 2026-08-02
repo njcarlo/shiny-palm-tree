@@ -1857,6 +1857,8 @@ button {
   letter-spacing: 0.03em;
   line-height: 1.35;
   margin-bottom: 1rem;
+  white-space: pre-line;
+  text-align: center;
   background: linear-gradient(180deg, var(--yellow-soft), var(--yellow));
   -webkit-background-clip: text;
   background-clip: text;
