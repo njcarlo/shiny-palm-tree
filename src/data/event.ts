@@ -52,7 +52,7 @@ export const PROGRAM_INVITE = {
 
 export const SYMPOSIUM = {
   label: 'Symposium',
-  title: 'The Fast and The Future\n10 Years of SECUrity with SECUkinumab',
+  title: 'THE FAST AND THE FUTURE\n10 Years of SECUrity with SECUkinumab',
   panelists: [
     {
       name: 'Dr. Maria Deanna S. Ramiscal, FPDS',
