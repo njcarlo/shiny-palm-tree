@@ -28,10 +28,10 @@ const SPEAKERS: Record<string, Speaker> = {
     designation: 'Dermatology — Immunodermatology and Supportive Oncodermatology',
     affiliations: [
       'Clinical Associate Professor, Department of Dermatology, University of the Philippines College of Medicine — Philippine General Hospital',
-      'Active Consultant, St. Luke’s Medical Center – Global City and Manila Doctors Hospital',
-      'Residency Training in Dermatology, UP-PGH (Chief Resident 2023–2024)',
-      'Fellowship in Autoimmune Skin Disease and Skin Cancer, University of Utah',
-      'Fellowship in Cutaneous Oncology and Supportive Oncodermatology, Stanford University and Cleveland Medical Center',
+      'Consultant, St. Luke’s Medical Center — Global City and Manila Doctors Hospital',
+      'Residency Training in Dermatology, UP-PGH (Chief Resident, 2023)',
+      'Fellowship in Autoimmune Skin Diseases and Skin Cancer, University of Utah',
+      'Subspecialty Training in Cutaneous Oncology and Supportive Oncodermatology, Stanford University and UH Hospitals Cleveland Medical Center',
     ],
   },
   'kenneth-samala': {
